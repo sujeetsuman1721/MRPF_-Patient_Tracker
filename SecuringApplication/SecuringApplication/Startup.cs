@@ -32,8 +32,18 @@ namespace SecuringApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<SecuringApplication.Models.AppContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SecuringApplication.Models.AppContext>();
+            services.AddDbContext<ApplicationContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(setup =>
+            {
+                setup.Password.RequireDigit = true;
+                //setup.SignIn.RequireConfirmedEmail = true;
+
+                setup.Lockout.MaxFailedAccessAttempts = 5;
+                setup.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            })
+            .AddEntityFrameworkStores<ApplicationContext>();
+
 
         }
 

@@ -18,7 +18,7 @@ namespace SecuringApplication.Models
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Gender has to be selected")]
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public int ContactNumber { get; set; }
         [Required(ErrorMessage = "Address required")]
@@ -29,20 +29,9 @@ namespace SecuringApplication.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         [Required]
-        public SecretQuestions SecretQuestions { get; set; }
+        public String SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
     }
-    public enum Gender
-    {
-        Male,
-        Female
-    }
-    public enum SecretQuestions
-    {
-        FavouritePlace,
-        FavouriteDog,
-        FavouriteColor
-
-    }
+  
 }
