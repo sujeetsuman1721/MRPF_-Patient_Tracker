@@ -9,6 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SecuringApplication.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+
+
 
 namespace SecuringApplication
 {
@@ -25,6 +32,9 @@ namespace SecuringApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<SecuringApplication.Models.AppContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SecuringApplication.Models.AppContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
