@@ -29,7 +29,7 @@ namespace PatientTracker.Controllers
             if (IsAdded)
                 return RedirectToAction("Index");
 
-            ModelState.AddModelError("", "Failed to add trainer");
+            ModelState.AddModelError("", "Failed to do registration");
             return View(model);
 
 

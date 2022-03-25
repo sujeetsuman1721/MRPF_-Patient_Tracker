@@ -26,8 +26,8 @@ namespace PatientTracker
             var api1url = Configuration["ApiAddresses:PatientRegistrationServicesAPI"];
             services.AddHttpClient("PatientRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
             services.AddScoped(typeof(PatientRegistrationServices));
-            var api2url = Configuration["ApiAddresses:DoctorsRegistrationServicesAPI"];
-            services.AddHttpClient("DoctorsRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api2url));
+            var api2url = Configuration["ApiAddresses:DoctorRegistrationServicesAPI"];
+            services.AddHttpClient("DoctorRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api2url));
             services.AddScoped(typeof(DoctorRegistrationServices));
             services.AddSession();
         }
@@ -53,7 +53,7 @@ namespace PatientTracker
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=DoctorAuth}/{action=Create}/{id?}");
             });
         }
     }
