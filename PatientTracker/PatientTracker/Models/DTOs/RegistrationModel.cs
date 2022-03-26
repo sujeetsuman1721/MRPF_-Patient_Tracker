@@ -17,8 +17,8 @@ namespace PatientTracker.Models.DTOs
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Gender has to be selected")]
-        public string Gender { get; set; }
-        [Required(ErrorMessage = "Enter correct ContactNumber")]
+        public gender Gender { get; set; }
+        [RegularExpression("^[0-9]{8})|[0-9]+{12}|[0-9]{11}$", ErrorMessage = "Invalid phone")]
         public int ContactNumber { get; set; }
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }
@@ -28,8 +28,22 @@ namespace PatientTracker.Models.DTOs
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         [Required]
-        public String SecretQuestions { get; set; }
+        public secretques SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
     }
+    public enum gender
+    {
+        Male,
+        Female
+
+    }
+    public enum secretques
+    {
+        FavouriteColor,
+        FavouriteFood,
+        FavouriteThing,
+        DateOfBirth
+    }
+
 }

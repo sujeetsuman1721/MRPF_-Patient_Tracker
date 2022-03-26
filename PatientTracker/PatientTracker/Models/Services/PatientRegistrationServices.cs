@@ -20,7 +20,7 @@ namespace PatientTracker.Models.Services
             var Json = JsonConvert.SerializeObject(register);
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
 
-            var Response = await client.PostAsync("/api/patientsauth", Content);
+            var Response = await client.PostAsync("/api/patientauth", Content);
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.Created;
         }

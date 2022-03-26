@@ -12,6 +12,7 @@ namespace PatientTracker.Controllers
     {
         private readonly DoctorRegistrationServices context;
 
+
         public DoctorAuthController(DoctorRegistrationServices context) : base()
         {
             this.context = context;
@@ -39,10 +40,6 @@ namespace PatientTracker.Controllers
         {
             return View();
         }
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }
