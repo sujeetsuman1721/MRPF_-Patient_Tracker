@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PatientTracker.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,12 @@ namespace PatientTracker
             services.AddControllersWithViews();
             var api1url = Configuration["ApiAddresses:PatientRegistrationServicesAPI"];
             services.AddHttpClient("PatientRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
-            services.AddScoped(typeof(PatientRegistrationServices));
+           
             var api2url = Configuration["ApiAddresses:DoctorRegistrationServicesAPI"];
             services.AddHttpClient("DoctorRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api2url));
-            services.AddScoped(typeof(DoctorRegistrationServices));
+            var api3url = Configuration["ApiAddresses:ClerkRegistrationServicesAPI"];
+            services.AddHttpClient("ClerkRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api3url));
+            services.AddScoped(typeof(UserServices));
             services.AddSession();
         }
 
@@ -53,7 +56,7 @@ namespace PatientTracker
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=DoctorAuth}/{action=Create}/{id?}");
+                    pattern: "{controller=Auth/Doctor}/{action=Create}/{id?}");
             });
         }
     }
