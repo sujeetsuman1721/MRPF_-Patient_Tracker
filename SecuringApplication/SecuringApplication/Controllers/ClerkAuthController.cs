@@ -15,15 +15,14 @@ namespace SecuringApplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PatientAuthController : ControllerBase
-    {
+    public class ClerkAuthController : ControllerBase
+    { 
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration configuration;
 
 
-
-        public PatientAuthController(UserManager<ApplicationUser> userManager,
+        public ClerkAuthController(UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager,
         IConfiguration configuration)
         {
@@ -35,36 +34,38 @@ namespace SecuringApplication.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(Patient model)
         {
-            
-           ApplicationUser appUser = new ApplicationUser
-            {
-               UserName = model.ApplicationUser.UserName,
-               FirstName = model.ApplicationUser.FirstName,
-               LastName = model.ApplicationUser.LastName,
-               Address = model.ApplicationUser.Address,
-               Gender = model.ApplicationUser.Gender,
-               ContactNumber = model.ApplicationUser.ContactNumber,
-               Password = model.ApplicationUser.Password,
-               ConfirmPassword = model.ApplicationUser.ConfirmPassword,
-               SecretQuestions = model.ApplicationUser.SecretQuestions,
-               Answer = model.ApplicationUser.Answer
 
-           };
+            ApplicationUser appUser = new ApplicationUser
+            {
+
+                UserName = model.ApplicationUser.UserName,
+                FirstName = model.ApplicationUser.FirstName,
+                LastName = model.ApplicationUser.LastName,
+                Address = model.ApplicationUser.Address,
+                Gender = model.ApplicationUser.Gender,
+                ContactNumber = model.ApplicationUser.ContactNumber,
+                Password = model.ApplicationUser.Password,
+                ConfirmPassword = model.ApplicationUser.ConfirmPassword,
+                SecretQuestions = model.ApplicationUser.SecretQuestions,
+                Answer = model.ApplicationUser.Answer
+
+            };
 
 
             IdentityResult result = await userManager.CreateAsync(appUser, model.ApplicationUser.Password);
             if (!result.Succeeded) return BadRequest(result.Errors);
 
-            if (!await roleManager.RoleExistsAsync("Patient"))
-                await roleManager.CreateAsync(new IdentityRole { Name = "Patient" });
+            if (!await roleManager.RoleExistsAsync("Doctor"))
+                await roleManager.CreateAsync(new IdentityRole { Name = "Doctor" });
 
-            result = await userManager.AddToRoleAsync(appUser, "Patient");
+            result = await userManager.AddToRoleAsync(appUser, "Doctor");
+
+
 
             if (!result.Succeeded) return BadRequest(result.Errors);
 
             return Ok();
         }
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLogin model)
         {
@@ -111,3 +112,4 @@ namespace SecuringApplication.Controllers
 
     }
 }
+

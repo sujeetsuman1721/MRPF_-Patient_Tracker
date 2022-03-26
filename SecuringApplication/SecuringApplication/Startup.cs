@@ -13,9 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using SecuringApplication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace SecuringApplication
 {
@@ -43,6 +42,31 @@ namespace SecuringApplication
                 setup.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             })
             .AddEntityFrameworkStores<ApplicationContext>();
+
+            string key = Configuration["JwtSettings:Key"];
+            string issuer = Configuration["JwtSettings:Issuer"];
+            string audience = Configuration["JwtSettings:Audience"];
+            int durationInMinutes = int.Parse(Configuration["JwtSettings:DurationInMinutes"]);
+
+            byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes(key);
+            SecurityKey securityKey = new SymmetricSecurityKey(keyBytes);
+
+            services.AddAuthentication(setup =>
+            {
+                setup.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultForbidScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(setup => setup.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = audience,
+                ValidIssuer = issuer,
+                IssuerSigningKey = securityKey
+            });
 
 
         }
