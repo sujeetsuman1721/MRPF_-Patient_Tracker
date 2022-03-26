@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using SecuringApplication.Reposetory;
+using SecuringApplication.Models.Registration;
 
 namespace SecuringApplication
 {
@@ -32,6 +34,10 @@ namespace SecuringApplication
         {
             services.AddControllers();
             services.AddDbContext<ApplicationContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
+
+            services.AddScoped<IReposetory<Patient>, GenereicRepository<Patient>>();
+            services.AddScoped<IReposetory<Doctor>, GenereicRepository<Doctor>>();
+            services.AddScoped<IReposetory<Clerk>, GenereicRepository<Clerk>>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(setup =>
             {
