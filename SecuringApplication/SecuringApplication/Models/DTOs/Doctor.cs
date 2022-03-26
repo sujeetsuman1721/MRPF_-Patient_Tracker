@@ -10,8 +10,6 @@ namespace SecuringApplication.Models
     {
         [Key]
         public int DoctorId { get; set; }
-
-
        
         [Required]
         public string Qualification { get; set; }

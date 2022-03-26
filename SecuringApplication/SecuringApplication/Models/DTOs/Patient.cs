@@ -6,10 +6,7 @@ namespace SecuringApplication.Models
     {
         [Key]
 
-        public int PateintId { get; set; }
-
-
-
+        public int PatientId { get; set; }
         public int ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
