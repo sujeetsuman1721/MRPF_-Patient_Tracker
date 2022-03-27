@@ -10,8 +10,8 @@ using SecuringApplication.Models;
 namespace SecuringApplication.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220325183535_the code is added")]
-    partial class thecodeisadded
+    [Migration("20220327064002_the database is created")]
+    partial class thedatabaseiscreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,9 +172,6 @@ namespace SecuringApplication.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ContactNumber")
                         .HasColumnType("int")
                         .HasMaxLength(10);
@@ -190,7 +187,6 @@ namespace SecuringApplication.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
@@ -214,10 +210,6 @@ namespace SecuringApplication.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -228,7 +220,6 @@ namespace SecuringApplication.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecretQuestions")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
@@ -284,7 +275,7 @@ namespace SecuringApplication.Migrations
 
             modelBuilder.Entity("SecuringApplication.Models.Patient", b =>
                 {
-                    b.Property<int>("PateintId")
+                    b.Property<int>("PatientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -295,7 +286,7 @@ namespace SecuringApplication.Migrations
                     b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("PateintId");
+                    b.HasKey("PatientId");
 
                     b.HasIndex("ApplicationUserId1");
 

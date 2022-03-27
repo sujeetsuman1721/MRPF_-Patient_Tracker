@@ -25,13 +25,16 @@ namespace SecuringApplication.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration configuration;
+
+
         private readonly IReposetory<Patient> patientsRepository;
         private readonly IReposetory<Doctor> doctorsRepository;
         private readonly IReposetory<Clerk> clerksRepository;
 
 
-        public AuthController(UserManager<ApplicationUser> userManager,
-        RoleManager<IdentityRole> roleManager,
+        public AuthController(
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
 
           IConfiguration configuration,
           IReposetory<Patient> patientsRepository,
@@ -54,15 +57,14 @@ namespace SecuringApplication.Controllers
 
             ApplicationUser appUser = new ApplicationUser
             {
-               
-               UserName = model.FirstName,
-               FirstName = model.FirstName,
-               LastName = model.LastName,
-               Address = model.Address,
-               Gender = model.Gender,
-               ContactNumber = model.ContactNumber,
-                Password = model.Password,
-                ConfirmPassword = model.ConfirmPassword,
+
+                UserName = model.FirstName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Address = model.Address,
+                Gender = model.Gender,
+                PhoneNumber = model.ContactNumber,
+                PasswordHash = model.Password,
                SecretQuestions = model.SecretQuestions,
                Answer = model.Answer
 
@@ -108,10 +110,8 @@ namespace SecuringApplication.Controllers
                 LastName = model.LastName,
                 Address = model.Address,
                 Gender = model.Gender,
-                ContactNumber = model.ContactNumber,
-                Password=model.Password,
-               
-                ConfirmPassword = model.ConfirmPassword,
+                PhoneNumber = model.ContactNumber,
+                PasswordHash = model.Password,
                 SecretQuestions = model.SecretQuestions,
                 Answer = model.Answer
 
@@ -148,15 +148,13 @@ namespace SecuringApplication.Controllers
 
             ApplicationUser appUser = new ApplicationUser
             {
-
                 UserName = model.FirstName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Address = model.Address,
                 Gender = model.Gender,
-                ContactNumber = model.ContactNumber,
-                Password = model.Password,
-                ConfirmPassword = model.ConfirmPassword,
+                PhoneNumber = model.ContactNumber,
+                PasswordHash = model.Password,
                 SecretQuestions = model.SecretQuestions,
                 Answer = model.Answer
 
@@ -191,7 +189,7 @@ namespace SecuringApplication.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLogin model)
         {
-            //IdentityUser appUser = await userManager.FindByNameAsync(model.Username);
+            
             ApplicationUser appUser = await userManager.FindByNameAsync(model.UserName);
 
             if (appUser == null) return BadRequest("Invalid username/password");
@@ -207,10 +205,13 @@ namespace SecuringApplication.Controllers
             int durationInMinutes = int.Parse(configuration["JwtSettings:DurationInMinutes"]);
 
             IList<Claim> userClaims = await userManager.GetClaimsAsync(appUser);
+
             userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+
             userClaims.Add(new Claim(JwtRegisteredClaimNames.Sub, appUser.UserName));
 
             var roles = await userManager.GetRolesAsync(appUser);
+
             userClaims.Add(new Claim(ClaimTypes.Role, roles.First()));
 
             byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes(key);

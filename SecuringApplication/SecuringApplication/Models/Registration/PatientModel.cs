@@ -29,12 +29,14 @@ namespace SecuringApplication.Models.Registration
         public string Address { get; set; }
         [Required(ErrorMessage = "The type of password should be atleast minimum 8 characters atleast contain 1 capital letter,1 small letter,1 special character ")]
 
+
         [DataType(DataType.Password)]
         [MinLength(6)]
 
         public string Password { get; set; }
         [DataType(DataType.Password)]
 
+        [Compare("Password", ErrorMessage ="the password not mathing")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string SecretQuestions { get; set; }

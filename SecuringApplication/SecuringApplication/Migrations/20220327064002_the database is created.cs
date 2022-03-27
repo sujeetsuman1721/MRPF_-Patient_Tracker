@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SecuringApplication.Migrations
 {
-    public partial class thecodeisadded : Migration
+    public partial class thedatabaseiscreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,15 +40,13 @@ namespace SecuringApplication.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     Gender = table.Column<string>(nullable: false),
                     ContactNumber = table.Column<int>(maxLength: 10, nullable: false),
                     Address = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    ConfirmPassword = table.Column<string>(nullable: true),
-                    SecretQuestions = table.Column<string>(nullable: false),
+                    SecretQuestions = table.Column<string>(nullable: true),
                     Answer = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -208,14 +206,14 @@ namespace SecuringApplication.Migrations
                 name: "Patiennt",
                 columns: table => new
                 {
-                    PateintId = table.Column<int>(nullable: false)
+                    PatientId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<int>(nullable: false),
                     ApplicationUserId1 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patiennt", x => x.PateintId);
+                    table.PrimaryKey("PK_Patiennt", x => x.PatientId);
                     table.ForeignKey(
                         name: "FK_Patiennt_AspNetUsers_ApplicationUserId1",
                         column: x => x.ApplicationUserId1,

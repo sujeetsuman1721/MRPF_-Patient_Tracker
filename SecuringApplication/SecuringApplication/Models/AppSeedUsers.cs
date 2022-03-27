@@ -20,6 +20,7 @@
 //        {
 //            if (!roleManager.Roles.Any())
 //            {
+
 //                await roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
 //                await roleManager.CreateAsync(new IdentityRole { Name = "Patient" });
 //                await roleManager.CreateAsync(new IdentityRole { Name = "Doctor" });

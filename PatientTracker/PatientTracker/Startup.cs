@@ -56,7 +56,7 @@ namespace PatientTracker
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Auth/Doctor}/{action=Create}/{id?}");
+                    pattern: "{controller=Auth}/{action=Create}/{id?}");
             });
         }
     }

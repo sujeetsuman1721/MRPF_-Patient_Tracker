@@ -39,6 +39,7 @@ namespace SecuringApplication
             services.AddScoped<IReposetory<Doctor>, GenereicRepository<Doctor>>();
             services.AddScoped<IReposetory<Clerk>, GenereicRepository<Clerk>>();
 
+
             services.AddIdentity<ApplicationUser, IdentityRole>(setup =>
             {
                 setup.Password.RequireDigit = true;
@@ -87,7 +88,9 @@ namespace SecuringApplication
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

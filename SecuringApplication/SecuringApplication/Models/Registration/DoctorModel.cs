@@ -5,6 +5,10 @@ namespace SecuringApplication.Models.Registration
 {
     public class DoctorModel
     {
+
+        [Key]
+        public int DoctorId { get; set; }
+
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
 
@@ -17,8 +21,7 @@ namespace SecuringApplication.Models.Registration
         public string Gender { get; set; }
 
 
-        [MaxLength(10)]
-        [Required(ErrorMessage = "Enter correct ContactNumber")]
+      
         public string ContactNumber { get; set; }
 
 
@@ -30,18 +33,15 @@ namespace SecuringApplication.Models.Registration
         [MinLength(6)]
 
         public string Password { get; set; }
+
         [DataType(DataType.Password)]
 
+        [Compare("Password", ErrorMessage ="The password is not matching")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
-
-        [Key]
-        public int DoctorId { get; set; }
-
-
 
         [Required]
         public string Qualification { get; set; }

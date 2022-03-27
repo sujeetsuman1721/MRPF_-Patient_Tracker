@@ -30,8 +30,10 @@ namespace SecuringApplication.Models.Registration
         [MinLength(6)]
 
         public string Password { get; set; }
+
         [DataType(DataType.Password)]
 
+        [Compare("Password", ErrorMessage = "The password is not matching")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string SecretQuestions { get; set; }
