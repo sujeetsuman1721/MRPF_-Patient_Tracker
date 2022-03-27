@@ -27,7 +27,7 @@ namespace PatientTracker.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-            var IsAdded = await context.SaveRegister(model);
+            var IsAdded = await context.SavePatient(model);
             if (IsAdded)
                 return RedirectToAction("Index");
 
@@ -45,7 +45,7 @@ namespace PatientTracker.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-            var IsAdded = await context.SaveRegister(model);
+            var IsAdded = await context.SaveDoctor(model);
             if (IsAdded)
                 return RedirectToAction("Index");
 
@@ -54,12 +54,16 @@ namespace PatientTracker.Controllers
 
 
         }
+        public IActionResult ClerkRegister()
+        {
+            return View();
+        }
         [HttpPost("Clerk")]
         public async Task<IActionResult> ClerkRegister(Clerk model)
         {
             if (!ModelState.IsValid)
                 return View(model);
-            var IsAdded = await context.SaveRegister(model);
+            var IsAdded = await context.SaveClerk(model);
             if (IsAdded)
                 return RedirectToAction("Index");
 

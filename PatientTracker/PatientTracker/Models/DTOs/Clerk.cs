@@ -12,7 +12,7 @@ namespace PatientTracker.Models.DTOs
         public int ClerkId { get; set; }
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
-
+        [Required]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Date of birth cant be empty")]
