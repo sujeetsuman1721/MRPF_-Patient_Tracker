@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace PatientTracker.Models.DTOs
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Gender has to be selected")]
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public int ContactNumber { get; set; }
         [Required(ErrorMessage = "Address required")]
@@ -28,8 +29,20 @@ namespace PatientTracker.Models.DTOs
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         [Required]
-        public String SecretQuestions { get; set; }
+        public secretques SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
+    }
+    public enum Gender
+    {
+        Male,
+        Female
+    }
+    public enum secretques
+    {
+        FavouriteColor,
+        FavouriteThing,
+        FavouriteFood,
+        DateOfBirth
     }
 }

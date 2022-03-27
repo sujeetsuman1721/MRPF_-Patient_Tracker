@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using PatientTracker.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PatientTracker.Models.Services
 {
-    public class PatientRegistrationServices
+    public class PatientRegistrationServices:BaseService
     {
-        private readonly HttpClient client;
         public PatientRegistrationServices(IHttpClientFactory factory)
         {
             client = factory.CreateClient("PatientRegistrationServicesAPI");
