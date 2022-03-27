@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SecuringApplication.Models.Registration;
 
 namespace SecuringApplication.Models
 {
@@ -12,9 +13,11 @@ namespace SecuringApplication.Models
 
         //public virtual DbSet<Customer> Customers { get; set; }
 
-        public virtual DbSet<DoctorRegistrationModel> DoctorRegistrationModels { get; set; }
+        public virtual DbSet<Doctor> Doctor { get; set; }
 
-        public virtual DbSet<PatienntRegistrationModel> PatienntRegistrationModels { get; set; }
+        public virtual DbSet<Patient> Patiennt { get; set; }
+
+        public virtual DbSet<Clerk>  Clerks { get; set; }
 
     }
     

@@ -13,9 +13,10 @@ using Microsoft.EntityFrameworkCore;
 using SecuringApplication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using SecuringApplication.Reposetory;
+using SecuringApplication.Models.Registration;
 
 namespace SecuringApplication
 {
@@ -34,6 +35,10 @@ namespace SecuringApplication
             services.AddControllers();
             services.AddDbContext<ApplicationContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
 
+            services.AddScoped<IReposetory<Patient>, GenereicRepository<Patient>>();
+            services.AddScoped<IReposetory<Doctor>, GenereicRepository<Doctor>>();
+            services.AddScoped<IReposetory<Clerk>, GenereicRepository<Clerk>>();
+
             services.AddIdentity<ApplicationUser, IdentityRole>(setup =>
             {
                 setup.Password.RequireDigit = true;
@@ -43,6 +48,31 @@ namespace SecuringApplication
                 setup.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             })
             .AddEntityFrameworkStores<ApplicationContext>();
+
+            string key = Configuration["JwtSettings:Key"];
+            string issuer = Configuration["JwtSettings:Issuer"];
+            string audience = Configuration["JwtSettings:Audience"];
+            int durationInMinutes = int.Parse(Configuration["JwtSettings:DurationInMinutes"]);
+
+            byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes(key);
+            SecurityKey securityKey = new SymmetricSecurityKey(keyBytes);
+
+            services.AddAuthentication(setup =>
+            {
+                setup.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                setup.DefaultForbidScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(setup => setup.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = audience,
+                ValidIssuer = issuer,
+                IssuerSigningKey = securityKey
+            });
 
 
         }

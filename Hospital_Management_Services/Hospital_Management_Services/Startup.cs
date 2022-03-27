@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PatientTracker.Models.Services;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PatientTracker
+namespace Hospital_Management_Services
 {
     public class Startup
     {
@@ -23,11 +24,7 @@ namespace PatientTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            var api1url = Configuration["ApiAddresses:UserServicesAPI"];     
-            services.AddHttpClient("UserServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
-            services.AddScoped(typeof(UserServices));
-            services.AddSession();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,11 +34,6 @@ namespace PatientTracker
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -49,13 +41,7 @@ namespace PatientTracker
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-<<<<<<< HEAD
-                    pattern: "{controller=DoctorAuth}/{action=Create}/{id?}");
-=======
-                    pattern: "{controller=Auth}/{action=ClerkRegister}/{id?}");
->>>>>>> b53e22830f2f9399cdccbdda4219fa28dd4edd28
+                endpoints.MapControllers();
             });
         }
     }

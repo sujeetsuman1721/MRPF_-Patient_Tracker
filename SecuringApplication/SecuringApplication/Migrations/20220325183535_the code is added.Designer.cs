@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SecuringApplication.Models;
 
 namespace SecuringApplication.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220325183535_the code is added")]
+    partial class thecodeisadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,6 +190,7 @@ namespace SecuringApplication.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
@@ -281,7 +284,7 @@ namespace SecuringApplication.Migrations
 
             modelBuilder.Entity("SecuringApplication.Models.Patient", b =>
                 {
-                    b.Property<int>("PatientId")
+                    b.Property<int>("PateintId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -292,7 +295,7 @@ namespace SecuringApplication.Migrations
                     b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("PatientId");
+                    b.HasKey("PateintId");
 
                     b.HasIndex("ApplicationUserId1");
 
