@@ -25,7 +25,7 @@ namespace Patient_Tracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            var api1url = Configuration["ApiAddresses:UserServicesAPI"];
+            var api1url = Configuration["ApiAddresses:Athentication"];
             services.AddHttpClient("UserServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
             services.AddScoped(typeof(UserServices));
             services.AddSession();
