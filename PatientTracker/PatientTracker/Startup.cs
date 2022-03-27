@@ -24,14 +24,10 @@ namespace PatientTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            var api1url = Configuration["ApiAddresses:PatientRegistrationServicesAPI"];
-            services.AddHttpClient("PatientRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
-           
-            var api2url = Configuration["ApiAddresses:DoctorRegistrationServicesAPI"];
-            services.AddHttpClient("DoctorRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api2url));
-            var api3url = Configuration["ApiAddresses:ClerkRegistrationServicesAPI"];
-            services.AddHttpClient("ClerkRegistrationServicesAPI", setup => setup.BaseAddress = new Uri(api3url));
+            var api1url = Configuration["ApiAddresses:UserServicesAPI"];     
+            services.AddHttpClient("UserServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
             services.AddScoped(typeof(UserServices));
+<<<<<<< HEAD
             services.AddSession();
         }
 
@@ -61,3 +57,38 @@ namespace PatientTracker
         }
     }
 }
+=======
+            services.AddSession();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+<<<<<<< HEAD
+                    pattern: "{controller=DoctorAuth}/{action=Create}/{id?}");
+=======
+                    pattern: "{controller=Auth}/{action=ClerkRegister}/{id?}");
+>>>>>>> b53e22830f2f9399cdccbdda4219fa28dd4edd28
+            });
+        }
+    }
+}
+>>>>>>> 5b9e0c732dd303aadb23d2193817489ecca47485
