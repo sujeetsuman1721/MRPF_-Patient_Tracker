@@ -49,7 +49,5 @@ namespace SecuringApplication.Models.Registration
         public string Specialization { get; set; }
 
 
-        public int ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
     }
 }

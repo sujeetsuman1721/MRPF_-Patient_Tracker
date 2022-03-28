@@ -24,9 +24,11 @@ namespace Patient_Tracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+        
             services.AddControllersWithViews();
             var api1url = Configuration["ApiAddresses:Athentication"];
-            services.AddHttpClient("UserServicesAPI", setup => setup.BaseAddress = new Uri(api1url));
+            services.AddHttpClient("Authentication", setup => setup.BaseAddress = new Uri(api1url));
+           
             services.AddScoped(typeof(UserServices));
             services.AddSession();
         }
