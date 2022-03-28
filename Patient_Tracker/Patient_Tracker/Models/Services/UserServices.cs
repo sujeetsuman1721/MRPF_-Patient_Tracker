@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PatientTracker.Models.DTOs;
+using Patient_Tracker.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientTracker.Models.Services
+namespace Patient_Tracker.Models.Services
 {
     public class UserServices
     {
@@ -24,9 +24,10 @@ namespace PatientTracker.Models.Services
         public async Task<bool> SaveClerk(Clerk register)
         {
             var Json = JsonConvert.SerializeObject(register);
+
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
 
-            var Response = await client.PostAsync("/api/auth/clerkregister", Content);
+            var Response = await client.PostAsync("/api/auth/clerkRegister", Content);
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.Created;
         }

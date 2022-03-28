@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Patient_Tracker.Models.DTOs;
+using Patient_Tracker.Models.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PatientTracker.Models.DTOs;
-using PatientTracker.Models.Services;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace PatientTracker.Controllers
+namespace Patient_Tracker.Controllers
 {
     public class AuthController : Controller
     {
@@ -76,5 +74,6 @@ namespace PatientTracker.Controllers
         {
             return View();
         }
+        
     }
 }
