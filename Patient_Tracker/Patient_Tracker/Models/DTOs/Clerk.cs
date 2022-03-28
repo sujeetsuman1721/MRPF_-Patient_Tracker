@@ -20,7 +20,7 @@ namespace Patient_Tracker.Models.DTOs
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
         [Required(ErrorMessage = "Enter correct ContactNumber")]
-        public int ContactNumber { get; set; }
+        public string ContactNumber { get; set; }
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }
         [Required(ErrorMessage = "The type of password should be atleast minimum 8 characters atleast contain 1 capital letter,1 small letter,1 special character ")]

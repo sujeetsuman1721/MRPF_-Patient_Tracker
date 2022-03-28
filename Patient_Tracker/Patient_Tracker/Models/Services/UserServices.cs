@@ -28,7 +28,7 @@ namespace Patient_Tracker.Models.Services
 
             var Response = await client.PostAsync("/api/auth/clerkregister", Content);
             Response.EnsureSuccessStatusCode();
-            return Response.StatusCode == HttpStatusCode.Created;
+            return Response.StatusCode == HttpStatusCode.OK;
         }
         public async Task<bool> SaveDoctor(Doctor register)
         {
@@ -37,7 +37,7 @@ namespace Patient_Tracker.Models.Services
 
             var Response = await client.PostAsync("/api/auth/doctorregister", Content);
             Response.EnsureSuccessStatusCode();
-            return Response.StatusCode == HttpStatusCode.Created;
+            return Response.StatusCode == HttpStatusCode.OK;
         }
         public async Task<bool> SavePatient(Patient register)
         {
@@ -46,7 +46,18 @@ namespace Patient_Tracker.Models.Services
 
             var Response = await client.PostAsync("/api/auth/patientregister", Content);
             Response.EnsureSuccessStatusCode();
-            return Response.StatusCode == HttpStatusCode.Created;
+            return Response.StatusCode == HttpStatusCode.OK;
+        }
+        public async Task<LoginResponse> Login(LoginRequest login)
+        {
+            var Json = JsonConvert.SerializeObject(login);
+            var Content = new StringContent(Json, Encoding.UTF8, "application/json");
+
+            var Response = await client.PostAsync("/api/auth/login", Content);
+            Response.EnsureSuccessStatusCode();
+            Json = await Response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<LoginResponse>(Json);
+            return result;
         }
     }
 }
