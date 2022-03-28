@@ -17,11 +17,13 @@ namespace Patient_Tracker.Controllers
         {
             this.userServices = userServices;
         }
-        public IActionResult PatientRegister()
+       
+       
+        public IActionResult Patient()
         {
             return View();
         }
-        [HttpPost("Patient")]
+        [HttpPost("PatientRegister")]
         public async Task<IActionResult> PatientRegister(Patient model)
         {
             if (!ModelState.IsValid)
@@ -35,7 +37,7 @@ namespace Patient_Tracker.Controllers
 
 
         }
-        public IActionResult DoctorRegister()
+        public IActionResult Doctor()
         {
             return View();
         }
@@ -53,7 +55,7 @@ namespace Patient_Tracker.Controllers
 
 
         }
-        public IActionResult ClerkRegister()
+        public IActionResult Clerk()
         {
             return View();
         }
@@ -88,13 +90,14 @@ namespace Patient_Tracker.Controllers
             HttpContext.Session.SetString("role", Result.role);
 
             if (Result.role.Equals("Admin"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             else if (Result.role.Equals("Clerk"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Clerk");
             else if (Result.role.Equals("Doctor"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Doctor");
             else if (Result.role.Equals("Patient"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Patient");
+
             ModelState.AddModelError("", "Cannot identify the user");
             return View(model);
         }

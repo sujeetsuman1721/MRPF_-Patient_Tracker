@@ -9,6 +9,8 @@ namespace SecuringApplication.Models.Registration
         [Key]
         public int DoctorId { get; set; }
 
+        public string UserName { get; set; }
+
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
 

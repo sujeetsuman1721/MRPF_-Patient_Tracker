@@ -1,4 +1,6 @@
-﻿using SecuringApplication.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SecuringApplication.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SecuringApplication.Reposetory
@@ -19,5 +21,10 @@ namespace SecuringApplication.Reposetory
         {
             return await context.SaveChangesAsync();
         }
+        public async Task<IReadOnlyCollection<T>> GetAsync()
+        {
+            return await context.Set<T>().ToListAsync();
+        }
+
     }
 }

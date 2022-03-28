@@ -1,16 +1,19 @@
-﻿@model Patient_Tracker.Models.DTOs.Patient
+﻿@model Patient_Tracker.Models.DTOs.Doctor
 
 @{
-    ViewData["Title"] = "PatientRegister";
+    ViewData["Title"] = "DoctorRegister";
 }
 
-<h1>PatientRegister</h1>
-
-<h4>Patient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="PatientRegister">
+<
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info Doctor</h3>
+        <form asp-action="DoctorRegister">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -29,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select class="form-control"id="Gender" name="Gender">
+                <select class="form-control" id="Gender" name="Gender">
                     <option>Male</option>
                     <option>Female</option>
                 </select>
@@ -71,11 +74,32 @@
                 <span asp-validation-for="Answer" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Qualification" class="control-label"></label>
+                <input asp-for="Qualification" class="form-control" />
+                <span asp-validation-for="Qualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialization" class="control-label"></label>
+                <input asp-for="Specialization" class="form-control" />
+                <span asp-validation-for="Specialization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+  
+                    </div>
+                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a class="fw-bold text-body" asp-controller="Auth" asp-action="Login"><u>Login here</u></a></p>
+
+
+
+
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -40,6 +40,7 @@ namespace SecuringApplication.Controllers
           IReposetory<Patient> patientsRepository,
           IReposetory<Doctor> doctorsRepository,
           IReposetory<Clerk> clerksRepository)
+
         {
 
         
@@ -142,6 +143,10 @@ namespace SecuringApplication.Controllers
             return Ok();
         }
 
+
+
+
+
         [HttpPost("ClerkRegister")]
         public async Task<IActionResult> Register(ClerkModel model)
         {
@@ -186,11 +191,15 @@ namespace SecuringApplication.Controllers
             return Ok();
         }
 
+
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLogin model)
         {
             
             ApplicationUser appUser = await userManager.FindByNameAsync(model.UserName);
+
+
 
             if (appUser == null) return BadRequest("Invalid username/password");
 

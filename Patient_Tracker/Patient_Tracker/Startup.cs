@@ -30,6 +30,7 @@ namespace Patient_Tracker
             services.AddHttpClient("Authentication", setup => setup.BaseAddress = new Uri(api1url));
            
             services.AddScoped(typeof(UserServices));
+
             services.AddSession();
         }
 
@@ -52,12 +53,13 @@ namespace Patient_Tracker
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Auth}/{action=ClerkRegister}/{id?}");
+                    pattern: "{controller=Home}/{action=index}/{id?}");
             });
         }
     }

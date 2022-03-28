@@ -28,6 +28,8 @@ namespace Patient_Tracker.Models.Services
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
 
             var Response = await client.PostAsync("/api/auth/ClerkRegister", Content);
+
+
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
         }
@@ -60,5 +62,7 @@ namespace Patient_Tracker.Models.Services
             var result = JsonConvert.DeserializeObject<LoginResponse>(Json);
             return result;
         }
+
+
     }
 }

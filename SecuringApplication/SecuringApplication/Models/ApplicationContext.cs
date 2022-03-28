@@ -11,8 +11,6 @@ namespace SecuringApplication.Models
 
         }
 
-        //public virtual DbSet<Customer> Customers { get; set; }
-
         public virtual DbSet<Doctor> Doctor { get; set; }
 
         public virtual DbSet<Patient> Patiennt { get; set; }

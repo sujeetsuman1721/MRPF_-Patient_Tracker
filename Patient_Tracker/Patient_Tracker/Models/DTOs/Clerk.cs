@@ -8,7 +8,6 @@ namespace Patient_Tracker.Models.DTOs
 {
     public class Clerk
     {
-
         [Key]
         public int ClerkId { get; set; }
         [Required(ErrorMessage = "FirstName can't be empty")]
