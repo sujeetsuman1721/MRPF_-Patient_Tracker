@@ -8,6 +8,8 @@ namespace Patient_Tracker.Models.DTOs
 {
     public class Doctor
     {
+        [Key]
+        public int DoctorId { get; set; }
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
 
@@ -41,18 +43,9 @@ namespace Patient_Tracker.Models.DTOs
         [Required]
         public string Answer { get; set; }
 
-        [Key]
-        public int DoctorId { get; set; }
-
-
-
         [Required]
         public string Qualification { get; set; }
         [Required]
         public string Specialization { get; set; }
-
-
-        public int ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
     }
 }

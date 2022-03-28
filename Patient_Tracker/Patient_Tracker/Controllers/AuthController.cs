@@ -28,7 +28,7 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SavePatient(model);
             if (IsAdded)
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
 
             ModelState.AddModelError("", "Failed to do registration");
             return View(model);
@@ -46,7 +46,7 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SaveDoctor(model);
             if (IsAdded)
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
 
             ModelState.AddModelError("", "Failed to do registration");
             return View(model);
@@ -64,7 +64,7 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SaveClerk(model);
             if (IsAdded)
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
 
             ModelState.AddModelError("", "Failed to do registration");
             return View(model);

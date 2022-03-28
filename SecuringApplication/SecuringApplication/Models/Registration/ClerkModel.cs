@@ -28,7 +28,6 @@ namespace SecuringApplication.Models.Registration
 
         [DataType(DataType.Password)]
         [MinLength(6)]
-
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

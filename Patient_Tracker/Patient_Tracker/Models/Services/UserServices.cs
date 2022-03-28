@@ -16,7 +16,7 @@ namespace Patient_Tracker.Models.Services
         private readonly HttpClient client;
         public UserServices(IHttpClientFactory factory)
         {
-            client = factory.CreateClient("UserServicesAPI");
+            client = factory.CreateClient("Authentication");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -24,9 +24,10 @@ namespace Patient_Tracker.Models.Services
         public async Task<bool> SaveClerk(Clerk register)
         {
             var Json = JsonConvert.SerializeObject(register);
+
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
 
-            var Response = await client.PostAsync("/api/auth/clerkregister", Content);
+            var Response = await client.PostAsync("/api/auth/ClerkRegister", Content);
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
         }
