@@ -7,9 +7,9 @@ namespace Maintain_Patient_Info.Base
 {
     public interface IRepository<T> where T:class
     {
-        T add(T item);
-        T delete(T item);
-        T update(T item);
+        T Add(T item);
+        T Delete(T item);
+        T Update(T item);
         Task<T> GetAsync(int id);
 
 

@@ -30,11 +30,11 @@ namespace Maintain_Patient_Info.Controllers
             return Ok(DTOs);
         }
         [HttpGet("{id}")]
-        public IActionResult GetPatientById(long id)
+        public IActionResult GetPatientById(int id)
         {
-            var getPatients = new getPatientById(id);
-            var dto = Get(getPatients);
-            return Ok(dto);
+            var Patients = PatientRepository.GetAsync(id);
+            
+            return Ok(Patients);
 
         }
         [HttpPost]
@@ -42,7 +42,7 @@ namespace Maintain_Patient_Info.Controllers
         public async Task<IActionResult> Post(patient_info model)
         {
           //  patient_info patient = mapper.Map<patient_info>(model);
-            PatientRepository.add(model);
+            PatientRepository.Add(model);
             await PatientRepository.SaveAsync();
            
             return  StatusCode(201);
@@ -53,7 +53,7 @@ namespace Maintain_Patient_Info.Controllers
         public async Task<IActionResult> Put(DTO_PM model)
         {
             patient_info patient = mapper.Map<patient_info>(model);
-            PatientRepository.update(patient);
+            PatientRepository.Update(patient);
             await PatientRepository.SaveAsync();
             var dto = mapper.Map<DTO_PM>(patient);
             return Ok(dto);
@@ -66,7 +66,7 @@ namespace Maintain_Patient_Info.Controllers
         public async Task<IActionResult> Delete(int patientId)
         {
             patient_info patient = new patient_info { Id = patientId };
-            PatientRepository.delete(patient);
+            PatientRepository.Delete(patient);
             await PatientRepository.SaveAsync();
             return NoContent();
 

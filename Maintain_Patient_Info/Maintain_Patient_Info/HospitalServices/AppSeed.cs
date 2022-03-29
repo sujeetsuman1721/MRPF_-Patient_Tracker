@@ -7,7 +7,7 @@ namespace HospitalService.Models
 {
     public class AppSeed
     {
-        public async Task SeedUsersAsync()
+        public void SeedUsersAsync()
         {
             var sampath = new Room
             {
