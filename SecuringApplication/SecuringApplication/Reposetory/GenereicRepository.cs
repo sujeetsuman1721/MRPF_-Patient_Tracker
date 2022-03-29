@@ -23,7 +23,9 @@ namespace SecuringApplication.Reposetory
         }
         public async Task<IReadOnlyCollection<T>> GetAsync()
         {
-            return await context.Set<T>().ToListAsync();
+
+            return (IReadOnlyCollection<T>)await context.Patiennt.Include(x=>x.ApplicationUser).ToListAsync();
+          
         }
 
     }

@@ -4,7 +4,7 @@
     ViewData["Title"] = "DoctorRegister";
 }
 
-<
+
 <section class="h-100 h-custom" style="background-color: #8fc4b7;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -15,6 +15,11 @@
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info Doctor</h3>
         <form asp-action="DoctorRegister">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />

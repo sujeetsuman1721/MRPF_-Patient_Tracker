@@ -30,10 +30,16 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SavePatient(model);
             if (IsAdded)
+            {
+                TempData["Success"] = model.UserName + " registered Successfully";
+
                 return RedirectToAction("Login");
+            }
 
             ModelState.AddModelError("", "Failed to do registration");
+            TempData["Failure"] = model.UserName + " You are not able  Successfully";
             return View(model);
+
 
 
         }
@@ -48,9 +54,13 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SaveDoctor(model);
             if (IsAdded)
-                return RedirectToAction("Login");
+            {
 
+                TempData["Success"] = model.UserName + " registered Successfully";
+                return RedirectToAction("Login");
+            }
             ModelState.AddModelError("", "Failed to do registration");
+            TempData["Failure"] = model.UserName + " You are not able  Successfully";
             return View(model);
 
 
@@ -66,9 +76,14 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await userServices.SaveClerk(model);
             if (IsAdded)
+            {
+                TempData["Success"] = model.UserName + " registered Successfully";
+
                 return RedirectToAction("Login");
+            }
 
             ModelState.AddModelError("", "Failed to do registration");
+            TempData["Failure"] = model.UserName + " You are not able  Successfully";
             return View(model);
 
 

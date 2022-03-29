@@ -42,8 +42,6 @@ namespace SecuringApplication.Controllers
           IReposetory<Clerk> clerksRepository)
 
         {
-
-        
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.configuration = configuration;
@@ -59,7 +57,7 @@ namespace SecuringApplication.Controllers
             ApplicationUser appUser = new ApplicationUser
             {
 
-                UserName = model.FirstName,
+                UserName = model.UserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Address = model.Address,
@@ -84,7 +82,7 @@ namespace SecuringApplication.Controllers
             
 
             doctor.ApplicationUser = appUser;
-            doctor.DoctorId = model.DoctorId;
+          
             doctor.Qualification=model.Qualification;
             doctor.Specialization=model.Specialization;
 
@@ -106,7 +104,7 @@ namespace SecuringApplication.Controllers
             ApplicationUser appUser = new ApplicationUser
             {
 
-                UserName = model.FirstName,
+                UserName = model.UserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Address = model.Address,
@@ -132,8 +130,7 @@ namespace SecuringApplication.Controllers
             Patient  patient = new Patient();
 
             patient.ApplicationUser = appUser;
-            patient.PatientId = model.PateintId;
-
+            
             patientsRepository.Add(patient);
             await patientsRepository.SaveAsync();
 
@@ -153,7 +150,7 @@ namespace SecuringApplication.Controllers
 
             ApplicationUser appUser = new ApplicationUser
             {
-                UserName = model.FirstName,
+                UserName = model.UserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Address = model.Address,
@@ -178,7 +175,7 @@ namespace SecuringApplication.Controllers
 
 
             clerk.ApplicationUser = appUser;
-            clerk.ClerkId = model.ClerkId;
+         
 
 
 

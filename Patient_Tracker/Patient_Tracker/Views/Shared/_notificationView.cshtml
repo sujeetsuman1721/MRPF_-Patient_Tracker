@@ -1,0 +1,15 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if(TempData["Success"] !=null)
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success(@TempData["Success"]', 'Please login now')
+
+    </script>
+    <h2>@TempData["Success"]</h2>
+}

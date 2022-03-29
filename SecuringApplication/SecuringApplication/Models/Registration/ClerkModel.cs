@@ -5,8 +5,10 @@ namespace SecuringApplication.Models.Registration
 {
     public class ClerkModel
     {
-        [Key]
-        public int ClerkId { get; set; }
+        
+        [Required]
+        public string UserName { get; set; }
+
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
 

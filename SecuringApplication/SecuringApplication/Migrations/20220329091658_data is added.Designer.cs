@@ -10,8 +10,8 @@ using SecuringApplication.Models;
 namespace SecuringApplication.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220327064002_the database is created")]
-    partial class thedatabaseiscreated
+    [Migration("20220329091658_data is added")]
+    partial class dataisadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

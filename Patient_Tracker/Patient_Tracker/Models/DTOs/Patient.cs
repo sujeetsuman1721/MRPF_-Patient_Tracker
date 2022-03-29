@@ -11,7 +11,7 @@ namespace Patient_Tracker.Models.DTOs
         [Key]
         public int PateintId { get; set; }
 
-
+        public string UserName { get; set; }
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
 
@@ -24,6 +24,7 @@ namespace Patient_Tracker.Models.DTOs
         public string Gender { get; set; }
 
 
+        [MaxLength(10)]
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public string ContactNumber { get; set; }
 
@@ -31,12 +32,16 @@ namespace Patient_Tracker.Models.DTOs
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "The type of password should be atleast minimum 8 characters atleast contain 1 capital letter,1 small letter,1 special character ")]
         [DataType(DataType.Password)]
         [MinLength(6)]
-        public string Password { get; set; }
+        [Required(ErrorMessage = "Password should be minimum 6 letters with special character included")]
 
+        public string Password { get; set; }
         [DataType(DataType.Password)]
+
+        [Required(ErrorMessage = "Password should be minimum 6 letters with special character included")]
+        [MinLength(6)]
+        [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
         [Required]

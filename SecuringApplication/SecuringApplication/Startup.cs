@@ -90,6 +90,9 @@ namespace SecuringApplication
                 }
             }));
 
+            // adding the seed service for the
+            services.AddScoped(typeof(AppSeedUsers));
+
 
         }
 
