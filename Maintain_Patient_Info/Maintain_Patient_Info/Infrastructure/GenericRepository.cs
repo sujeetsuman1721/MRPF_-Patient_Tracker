@@ -25,6 +25,17 @@ namespace Maintain_Patient_Info.Infrastructure
         {
             return context.Update(item).Entity;
         }
+       
+
+        public async Task<T> GetAsync(int id)
+
+        {​​​​​
+
+            return await context.Set<T>().FindAsync(id);
+
+        }​​​​​
+
+
 
 
         public async Task<IReadOnlyCollection<T>> GetAsync()
@@ -39,6 +50,9 @@ namespace Maintain_Patient_Info.Infrastructure
             return await context.SaveChangesAsync();
         }
 
-        
+       
+
+
+
     }
 }

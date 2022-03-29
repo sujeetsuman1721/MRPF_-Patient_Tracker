@@ -29,7 +29,14 @@ namespace Maintain_Patient_Info.Controllers
             var DTOs = mapper.Map<List<DTO_PM>>(patient); 
             return Ok(DTOs);
         }
+        [HttpGet("{id}")]
+        public IActionResult GetPatientById(long id)
+        {
+            var getPatients = new getPatientById(id);
+            var dto = Get(getPatients);
+            return Ok(dto);
 
+        }
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Post(patient_info model)
