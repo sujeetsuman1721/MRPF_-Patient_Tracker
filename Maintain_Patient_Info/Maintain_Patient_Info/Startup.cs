@@ -1,3 +1,4 @@
+
 using Maintain_Patient_Info.Base;
 using Maintain_Patient_Info.HospitalServices;
 using Maintain_Patient_Info.Infrastructure;
@@ -32,22 +33,25 @@ namespace Maintain_Patient_Info
             services.AddCors();
             services.AddControllers();
             var connectionstring = Configuration.GetConnectionString("PM_Connection");
-            services.AddDbContext<PatientManagementContext> (setup => setup.UseSqlServer(connectionstring));
-            services.AddScoped<IRepository<patient_info>, GenericRepository<patient_info>>();
+            services.AddDbContext<PatientManagementContext>(setup => setup.UseSqlServer(connectionstring));
+            services.AddScoped<IRepository<PatientsRegistory>, GenericRepository<PatientsRegistory>>();
             services.AddScoped<IRepository<LabTests>, GenericRepository<LabTests>>();
             services.AddScoped<IRepository<Consultation>, GenericRepository<Consultation>>();
             services.AddScoped<IRepository<PrescriptionDetails>, GenericRepository<PrescriptionDetails>>();
             services.AddScoped<IRepository<Room>, GenericRepository<Room>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            // adding the seed service for the
+           
+
             //services.AddScoped(typeof(AppSeed));
-            services.AddSwaggerGen(setup =>setup.SwaggerDoc("v1" ,new OpenApiInfo
-                { 
+            services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo
+            {
                 Title = "Patient Management",
-                Description =" Maintain patients information"
-            
+                Description = " Maintain patients information"
+
             }));
-                }
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -61,7 +65,8 @@ namespace Maintain_Patient_Info
             }
             app.UseCors(setup => setup.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
             app.UseRouting();
-             
+
+            app.UseAuthorization();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

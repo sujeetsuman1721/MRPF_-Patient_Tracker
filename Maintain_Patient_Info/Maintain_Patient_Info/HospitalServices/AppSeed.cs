@@ -1,55 +1,119 @@
-﻿using Maintain_Patient_Info.HospitalServices;
-using Maintain_Patient_Info.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//using Maintain_Patient_Info.HospitalServices;
+//using Microsoft.EntityFrameworkCore;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
 
-namespace Maintain_Patient_Info.HospitalServices
-{
-    public class AppSeed
-    {
-        /*private readonly PatientManagementContext context;
+//namespace HospitalService.Models
+//{
+//    public static class AppSeed
+//    {
+//        public static void SeedFacilityAsync(this ModelBuilder modelsBuilder)
+//        {
+//            modelsBuilder.Entity<Room>().HasData(
 
-        public AppSeed(PatientManagementContext context)
-        {
-            this.context = context;
-        }
-        public void SeedUsersAsync()
-        {
-            var LabTests = new List<LabTests>
-            {
-                new LabTests{LabTestName="BloodTest",LabTestResult="O+"},
-                new LabTests{LabTestName="CovidTest",LabTestResult="Negative"},
-                new LabTests{LabTestName="CreatineTest",LabTestResult="14.4"}
+//               new Room
+//               {
 
-            };
-            LabTests.ForEach(l => context.labTests.Add(l));
-            context.SaveChanges();
-            var PrescriptionDetails = new List<PrescriptionDetails>
-            {
-                new PrescriptionDetails{PrescriptionId="AOMB12",MedicineDetails="Paracetemol",Quantity=2},
-                new PrescriptionDetails{PrescriptionId="BNM056",MedicineDetails="Dolo650",Quantity=1}
+//                   RoomType = "Single",
+//                   charge = 4000
 
-            };
-            PrescriptionDetails.ForEach(p => context.prescriptionDetails.Add(p));
-            context.SaveChanges();
-            var consultation = new List<Consultation>
-            {
-                new Consultation{DocName="Prabhakar",Purpose="Rmp"},
-                new Consultation{DocName="Chandini",Purpose="CovidTest"}
 
-            };
-            consultation.ForEach(c => context.consultation.Add(c));
-            context.SaveChanges();
-            var room = new List<Room>
-            {
-                new Room{RoomType="General",NoOfDays=2,Num=102},
-                new Room{RoomType="General",NoOfDays=1,Num=101}
+//               },
+//              new Room
+//              {
+//                  RoomType = "Single",
+//                  charge = 4000
+//              },
 
-            };
-            room.ForEach(r => context.rooms.Add(r));
-            context.SaveChanges();
-        }*/
-    }
-}
+//              new Room
+//              {
+//                  RoomType = "Double",
+//                  charge = 4000
+//              },
+//              new Room
+//              {
+
+//                  RoomType = "ICU",
+//                  charge = 6000
+//              },
+//              new Room
+//              {
+
+//                  RoomType = "Special Rooms",
+//                  charge = 6500
+//              }
+//              );
+
+//            modelsBuilder.Entity<LabTests>().HasData(
+
+//           new LabTests
+//           {
+
+//               LabTestName = "Blood Test",
+//               LabTestResult = "Completed",
+//               Charge = 150
+//           },
+//           new LabTests
+//           {
+
+//               LabTestName = "Creatine Test",
+//               LabTestResult = "Pending",
+//               Charge = 200
+//           },
+//             new LabTests
+//             {
+
+//                 LabTestName = "Lipid Profile",
+//                 LabTestResult = "Completed",
+//                 Charge = 100
+//             },
+
+//             new LabTests
+//             {
+
+//                 LabTestName = "Diabetes Test",
+//                 LabTestResult = "Pending",
+//                 Charge = 150
+//             }
+//             );
+
+//            modelsBuilder.Entity<Consultation>().HasData(
+//                new Consultation
+//                {
+
+//                    DoctorName = "Hari",
+//                    Purpose = "skin Problem",
+//                    Charge = 4005
+
+
+//                },
+//            new Consultation
+//            {
+//                DocId = 2,
+//                DoctorName = "Rahul",
+//                Purpose = "Headache",
+
+//                Charge = 500
+//            },
+//            new Consultation
+//            {
+//                DocId = 3,
+//                DoctorName = "Kiran",
+//                Purpose = "Fever",
+
+//                Charge = 450
+//            },
+//            new Consultation
+//            {
+//                DocId = 4,
+//                DoctorName = "Srikanth",
+//                Purpose = "Stomach Pain",
+
+//                Charge = 500
+//            }
+//            ); 
+//        }
+//    }
+//}

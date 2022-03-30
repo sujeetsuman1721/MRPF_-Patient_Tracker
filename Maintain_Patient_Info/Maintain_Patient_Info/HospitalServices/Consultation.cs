@@ -10,8 +10,10 @@ namespace Maintain_Patient_Info.HospitalServices
     {
         [Key]
         public int DocId { get; set; }
-        public string DocName { get; set; }
+        public string DoctorName { get; set; }
         public string Purpose { get; set; }
+        public int Charge { get; set; }
+
 
     }
 }

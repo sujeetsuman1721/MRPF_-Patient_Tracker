@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-    [Migration("20220330095600_db")]
-    partial class db
+    [Migration("20220330173925_the data is added")]
+    partial class thedataisadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Maintain_Patient_Info.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Maintain_Patient_Info.Base.patient_info", b =>
+            modelBuilder.Entity("Maintain_Patient_Info.Base.PatientsRegistory", b =>
                 {
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(450)");
@@ -50,7 +50,10 @@ namespace Maintain_Patient_Info.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DocName")
+                    b.Property<int>("Charge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DoctorName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Purpose")
@@ -59,6 +62,36 @@ namespace Maintain_Patient_Info.Migrations
                     b.HasKey("DocId");
 
                     b.ToTable("consultation");
+
+                    b.HasData(
+                        new
+                        {
+                            DocId = 1,
+                            Charge = 4005,
+                            DoctorName = "Hari",
+                            Purpose = "skin Problem"
+                        },
+                        new
+                        {
+                            DocId = 2,
+                            Charge = 500,
+                            DoctorName = "Rahul",
+                            Purpose = "Headache"
+                        },
+                        new
+                        {
+                            DocId = 3,
+                            Charge = 450,
+                            DoctorName = "Kiran",
+                            Purpose = "Fever"
+                        },
+                        new
+                        {
+                            DocId = 4,
+                            Charge = 500,
+                            DoctorName = "Srikanth",
+                            Purpose = "Stomach Pain"
+                        });
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.LabTests", b =>
@@ -67,6 +100,9 @@ namespace Maintain_Patient_Info.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Charge")
+                        .HasColumnType("int");
 
                     b.Property<string>("LabTestName")
                         .HasColumnType("nvarchar(max)");
@@ -77,6 +113,36 @@ namespace Maintain_Patient_Info.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("labTests");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Charge = 150,
+                            LabTestName = "Blood Test",
+                            LabTestResult = "Completed"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Charge = 200,
+                            LabTestName = "Creatine Test",
+                            LabTestResult = "Pending"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Charge = 100,
+                            LabTestName = "Lipid Profile",
+                            LabTestResult = "Completed"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Charge = 150,
+                            LabTestName = "Diabetes Test",
+                            LabTestResult = "Pending"
+                        });
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.PrescriptionDetails", b =>
@@ -107,18 +173,47 @@ namespace Maintain_Patient_Info.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NoOfDays")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Num")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoomType")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("charge")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoomType = "Single",
+                            charge = 4000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoomType = "Single",
+                            charge = 4000
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoomType = "Double",
+                            charge = 4000
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoomType = "ICU",
+                            charge = 6000
+                        },
+                        new
+                        {
+                            Id = 5,
+                            RoomType = "Special Rooms",
+                            charge = 6500
+                        });
                 });
 #pragma warning restore 612, 618
         }

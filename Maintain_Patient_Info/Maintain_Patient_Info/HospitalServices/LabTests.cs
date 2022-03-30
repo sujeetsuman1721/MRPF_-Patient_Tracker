@@ -12,6 +12,7 @@ namespace Maintain_Patient_Info.HospitalServices
         public int Id { get; set; }
         public string LabTestName { get; set; }
         public string LabTestResult { get; set; }
+        public int Charge { get; set; }
 
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maintain_Patient_Info.Migrations
 {
-    public partial class db : Migration
+    public partial class thedataisadded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,9 @@ namespace Maintain_Patient_Info.Migrations
                 {
                     DocId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DocName = table.Column<string>(nullable: true),
-                    Purpose = table.Column<string>(nullable: true)
+                    DoctorName = table.Column<string>(nullable: true),
+                    Purpose = table.Column<string>(nullable: true),
+                    Charge = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,7 +29,8 @@ namespace Maintain_Patient_Info.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LabTestName = table.Column<string>(nullable: true),
-                    LabTestResult = table.Column<string>(nullable: true)
+                    LabTestResult = table.Column<string>(nullable: true),
+                    Charge = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,13 +73,46 @@ namespace Maintain_Patient_Info.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Num = table.Column<int>(nullable: false),
-                    RoomType = table.Column<string>(nullable: true),
-                    NoOfDays = table.Column<int>(nullable: false)
+                    charge = table.Column<int>(nullable: false),
+                    RoomType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_rooms", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "consultation",
+                columns: new[] { "DocId", "Charge", "DoctorName", "Purpose" },
+                values: new object[,]
+                {
+                    { 1, 4005, "Hari", "skin Problem" },
+                    { 2, 500, "Rahul", "Headache" },
+                    { 3, 450, "Kiran", "Fever" },
+                    { 4, 500, "Srikanth", "Stomach Pain" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "labTests",
+                columns: new[] { "Id", "Charge", "LabTestName", "LabTestResult" },
+                values: new object[,]
+                {
+                    { 1, 150, "Blood Test", "Completed" },
+                    { 2, 200, "Creatine Test", "Pending" },
+                    { 3, 100, "Lipid Profile", "Completed" },
+                    { 4, 150, "Diabetes Test", "Pending" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "rooms",
+                columns: new[] { "Id", "RoomType", "charge" },
+                values: new object[,]
+                {
+                    { 1, "Single", 4000 },
+                    { 2, "Single", 4000 },
+                    { 3, "Double", 4000 },
+                    { 4, "ICU", 6000 },
+                    { 5, "Special Rooms", 6500 }
                 });
         }
 

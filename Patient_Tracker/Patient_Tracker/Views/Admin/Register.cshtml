@@ -13,9 +13,10 @@
    IEnumerable<PatientModel> patients = ViewData["patients"] as IEnumerable<PatientModel>;
 }
 
+ <p><b>Student List</b></p>
 <table>
     <tr>
-        <th>Name</th>
+      
         
     </tr>
     @foreach (DoctorModel doctor in doctors)
@@ -26,13 +27,9 @@
         </tr>
     }
 </table>
- <p><b>Student List</b></p>
+
 <table>
-    <tr>
-       
-        <th>Name</th>
-        <th>Enrollment No</th>
-    </tr>
+   
     @foreach (PatientModel patient in patients)
     {
         <tr>

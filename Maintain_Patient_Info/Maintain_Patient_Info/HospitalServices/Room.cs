@@ -10,8 +10,8 @@ namespace Maintain_Patient_Info.HospitalServices
     {
         [Key]
         public int Id { get; set; }
-        public int Num { get; set; }
+        public int charge { get; set; }
         public string RoomType { get; set; }
-        public int NoOfDays { get; set; }
+       
     }
 }

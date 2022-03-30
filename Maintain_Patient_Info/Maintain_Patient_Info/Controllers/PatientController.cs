@@ -11,9 +11,9 @@ namespace Maintain_Patient_Info.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private readonly IRepository<patient_info> PatientRepository;
+        private readonly IRepository<PatientsRegistory> PatientRepository;
         private readonly IMapper mapper;
-        public PatientController(IRepository<patient_info> PatientRepository , IMapper mapper)
+        public PatientController(IRepository<PatientsRegistory> PatientRepository , IMapper mapper)
         {
            this.PatientRepository = PatientRepository;
             this.mapper = mapper;
@@ -22,7 +22,7 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(200,Type = typeof(IEnumerable<DTO_PM>))]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<patient_info> patient = await PatientRepository.GetAsync();
+            IEnumerable<PatientsRegistory> patient = await PatientRepository.GetAsync();
 
             var DTOs = mapper.Map<List<DTO_PM>>(patient); 
             return Ok(DTOs);
@@ -31,7 +31,7 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(200,Type=typeof(DTO_PM))]
         public async Task<IActionResult> GetPatientByName(string username)
         {
-           patient_info Patients = await PatientRepository.GetAsync(username);
+           PatientsRegistory Patients = await PatientRepository.GetAsync(username);
             var DTO = mapper.Map<DTO_PM>(Patients);
             
             return Ok(DTO);
@@ -41,7 +41,7 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(201, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Post(DTO_PM model)
         {
-          patient_info patient = mapper.Map<patient_info>(model);
+          PatientsRegistory patient = mapper.Map<PatientsRegistory>(model);
             PatientRepository.Add(patient);
             await PatientRepository.SaveAsync();
             var dto = mapper.Map<DTO_PM>(patient);
@@ -52,7 +52,7 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(200, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Put(DTO_PM model)
         {
-            patient_info patient = mapper.Map<patient_info>(model);
+            PatientsRegistory patient = mapper.Map<PatientsRegistory>(model);
             PatientRepository.Update(patient);
             await PatientRepository.SaveAsync();
             var dto = mapper.Map<DTO_PM>(patient);
@@ -65,7 +65,7 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(204)]
         public async Task<IActionResult> Delete(string username)
         {
-            patient_info patient = new patient_info { Username= username };
+            PatientsRegistory patient = new PatientsRegistory { Username= username };
             PatientRepository.Delete(patient);
             await PatientRepository.SaveAsync();
             return NoContent();

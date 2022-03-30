@@ -13,7 +13,7 @@ namespace Maintain_Patient_Info.Infrastructure
     {
         public AutoMapperProfile()
         {
-            CreateMap<DTO_PM, patient_info>().ReverseMap();
+            CreateMap<DTO_PM, PatientsRegistory>().ReverseMap();
             CreateMap<LabTestsDTO, LabTests>().ReverseMap();
             CreateMap<PrescriptionDTO, PrescriptionDetails>().ReverseMap();
             CreateMap<ConsultationDTO,Consultation>().ReverseMap();
