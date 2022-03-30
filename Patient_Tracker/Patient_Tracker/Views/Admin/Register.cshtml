@@ -1,0 +1,46 @@
+﻿@using Patient_Tracker.Models.ApplicationModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register New Patient Here</h1>
+
+
+@{
+
+   IEnumerable<DoctorModel> doctors = ViewData["doctors"] as IEnumerable<DoctorModel>;
+   IEnumerable<PatientModel> patients = ViewData["patients"] as IEnumerable<PatientModel>;
+}
+
+<table>
+    <tr>
+        <th>Name</th>
+        
+    </tr>
+    @foreach (DoctorModel doctor in doctors)
+    {
+        <tr>
+            <td>@doctor.ApplicationUser.FirstName</td>
+            
+        </tr>
+    }
+</table>
+ <p><b>Student List</b></p>
+<table>
+    <tr>
+       
+        <th>Name</th>
+        <th>Enrollment No</th>
+    </tr>
+    @foreach (PatientModel patient in patients)
+    {
+        <tr>
+            <td>@patient.ApplicationUser.FirstName</td>
+           
+        </tr>
+    }
+</table>
+
+
+

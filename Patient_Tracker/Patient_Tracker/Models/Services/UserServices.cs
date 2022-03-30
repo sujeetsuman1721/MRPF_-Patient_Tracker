@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Patient_Tracker.Models.ApplicationModel;
 using Patient_Tracker.Models.DTOs;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,35 @@ namespace Patient_Tracker.Models.Services
             return result;
         }
 
+
+
+        public async Task<IReadOnlyCollection<DoctorModel>> GetDoctors()
+        {
+
+            var Response = await client.GetAsync("/api/AccessUsers/GetDoctors");
+
+            Response.EnsureSuccessStatusCode();
+
+            var Json = await Response.Content.ReadAsStringAsync();
+            var doctor = JsonConvert.DeserializeObject<List<DoctorModel>>(Json);
+
+
+            return doctor;
+        }
+
+        public async Task<IReadOnlyCollection<PatientModel>> GetPatients()
+        {
+
+            var Response = await client.GetAsync("/api/AccessUsers/GetPatients");
+
+            Response.EnsureSuccessStatusCode();
+
+            var Json = await Response.Content.ReadAsStringAsync();
+            var patients = JsonConvert.DeserializeObject<List<PatientModel>>(Json);
+
+
+            return patients;
+        }
 
     }
 }
