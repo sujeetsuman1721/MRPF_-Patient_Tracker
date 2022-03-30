@@ -1,4 +1,5 @@
 using Maintain_Patient_Info.Base;
+using Maintain_Patient_Info.HospitalServices;
 using Maintain_Patient_Info.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,9 +34,13 @@ namespace Maintain_Patient_Info
             var connectionstring = Configuration.GetConnectionString("PM_Connection");
             services.AddDbContext<PatientManagementContext> (setup => setup.UseSqlServer(connectionstring));
             services.AddScoped<IRepository<patient_info>, GenericRepository<patient_info>>();
+            services.AddScoped<IRepository<LabTests>, GenericRepository<LabTests>>();
+            services.AddScoped<IRepository<Consultation>, GenericRepository<Consultation>>();
+            services.AddScoped<IRepository<PrescriptionDetails>, GenericRepository<PrescriptionDetails>>();
+            services.AddScoped<IRepository<Room>, GenericRepository<Room>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            
 
+            //services.AddScoped(typeof(AppSeed));
             services.AddSwaggerGen(setup =>setup.SwaggerDoc("v1" ,new OpenApiInfo
                 { 
                 Title = "Patient Management",
@@ -56,7 +61,7 @@ namespace Maintain_Patient_Info
             }
             app.UseCors(setup => setup.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
             app.UseRouting();
-
+             
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -21,10 +21,8 @@ namespace Maintain_Patient_Info.Migrations
 
             modelBuilder.Entity("Maintain_Patient_Info.Base.patient_info", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -32,21 +30,93 @@ namespace Maintain_Patient_Info.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Prescription")
+                    b.Property<string>("DoctorName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Result")
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.HasKey("Username");
+
+                    b.ToTable("patient_infos");
+                });
+
+            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
+                {
+                    b.Property<int>("DocId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DocName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Purpose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DocId");
+
+                    b.ToTable("consultation");
+                });
+
+            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.LabTests", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("LabTestName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LabTestResult")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("patient_infos");
+                    b.ToTable("labTests");
+                });
+
+            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.PrescriptionDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MedicineDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrescriptionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("prescriptionDetails");
+                });
+
+            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NoOfDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Num")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("rooms");
                 });
 #pragma warning restore 612, 618
         }

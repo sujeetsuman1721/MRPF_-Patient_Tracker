@@ -9,14 +9,12 @@ namespace Maintain_Patient_Info.Base
     public class patient_info
     {
         [Key]
-        public int Id { get; set; }
         public string Username {get; set;}
         
         public int DoctorId { get; set; }
-        public int PatientId { get; set; }
+        public string DoctorName { get; set; }
         public DateTime Date { get; set; }
-        public string Prescription { get; set; }
-        public string Result { get; set; }
+        public string Status { get; set; }
         
 
         

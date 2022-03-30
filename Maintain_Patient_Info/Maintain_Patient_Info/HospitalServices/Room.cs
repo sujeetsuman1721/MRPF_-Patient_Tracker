@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HospitalService.Models
+namespace Maintain_Patient_Info.HospitalServices
 {
     public class Room
     {
+        [Key]
+        public int Id { get; set; }
         public int Num { get; set; }
-        public string Type { get; set; }
-        public long Charges { get; set; }
-
+        public string RoomType { get; set; }
+        public int NoOfDays { get; set; }
     }
 }

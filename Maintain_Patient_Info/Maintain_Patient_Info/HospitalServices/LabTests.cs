@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HospitalService.Models
+namespace Maintain_Patient_Info.HospitalServices
 {
     public class LabTests
     {
+        [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Result { get; set; }
-
-        public long Charges { get; set; }
+        public string LabTestName { get; set; }
+        public string LabTestResult { get; set; }
 
     }
 }
