@@ -10,7 +10,7 @@ namespace Maintain_Patient_Info.Base
         T Add(T item);
         T Delete(T item);
         T Update(T item);
-        Task<T> GetAsync(int id);
+        Task<T> GetAsync(string username);
 
 
         Task<IReadOnlyCollection<T>> GetAsync();

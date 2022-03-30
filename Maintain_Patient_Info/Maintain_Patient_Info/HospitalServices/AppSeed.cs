@@ -1,108 +1,55 @@
-﻿using System;
+﻿using Maintain_Patient_Info.HospitalServices;
+using Maintain_Patient_Info.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HospitalService.Models
+namespace Maintain_Patient_Info.HospitalServices
 {
     public class AppSeed
     {
+        /*private readonly PatientManagementContext context;
+
+        public AppSeed(PatientManagementContext context)
+        {
+            this.context = context;
+        }
         public void SeedUsersAsync()
         {
-            var sampath = new Room
+            var LabTests = new List<LabTests>
             {
-                Num = 01,
-                Type = "Single",
-                Charges = 5000
+                new LabTests{LabTestName="BloodTest",LabTestResult="O+"},
+                new LabTests{LabTestName="CovidTest",LabTestResult="Negative"},
+                new LabTests{LabTestName="CreatineTest",LabTestResult="14.4"}
+
             };
-            var rahul = new Room
+            LabTests.ForEach(l => context.labTests.Add(l));
+            context.SaveChanges();
+            var PrescriptionDetails = new List<PrescriptionDetails>
             {
-                Num = 02,
-                Type = "Double",
-                Charges = 2500
+                new PrescriptionDetails{PrescriptionId="AOMB12",MedicineDetails="Paracetemol",Quantity=2},
+                new PrescriptionDetails{PrescriptionId="BNM056",MedicineDetails="Dolo650",Quantity=1}
+
             };
-            var sara = new Room
+            PrescriptionDetails.ForEach(p => context.prescriptionDetails.Add(p));
+            context.SaveChanges();
+            var consultation = new List<Consultation>
             {
-                Num = 03,
-                Type = "General Ward",
-                Charges = 500
+                new Consultation{DocName="Prabhakar",Purpose="Rmp"},
+                new Consultation{DocName="Chandini",Purpose="CovidTest"}
+
             };
-            var sankeerth = new Room
+            consultation.ForEach(c => context.consultation.Add(c));
+            context.SaveChanges();
+            var room = new List<Room>
             {
-                Num = 04,
-                Type = "ICU",
-                Charges = 6000
+                new Room{RoomType="General",NoOfDays=2,Num=102},
+                new Room{RoomType="General",NoOfDays=1,Num=101}
+
             };
-            var rakesh = new Room
-            {
-                Num = 05,
-                Type = "Special Rooms",
-                Charges = 6500
-            };
-            var nithish = new LabTests
-            {
-                Id = 1,
-                Name = "Blood Test",
-                Result = "Completed",
-                Charges = 150
-            };
-            var bhavana = new LabTests
-            {
-                Id = 2,
-                Name = "Creatine Test",
-                Result = "Pending",
-                Charges= 200
-            };
-            var samhitha = new LabTests
-            {
-                Id = 3,
-                Name = "Lipid Profile",
-                Result = "Completed",
-                Charges=100
-            };
-            var mahesh = new LabTests
-            {
-                Id = 4,
-                Name = "Diabetes Test",
-                Result = "Pending",
-                Charges=150
-            };
-            var anusha = new Consultation
-            {
-                DocId=1,
-                DocName = "Hari",
-                Purpose = "skin Problem",
-                Prescription = "Aciclovir",
-                Diet = "Avoid Oily Food and Eat Healthy Vegetables",
-              Charges=450
-            };
-            var sindhu = new Consultation
-            {
-                DocId=2,
-                DocName = "Rahul",
-                Purpose = "Headache",
-                Prescription="Sumaptriptan",
-                Diet="Avoid soft drinks and Ice creams",
-                Charges=500
-            };
-            var niveditha = new Consultation
-            {
-                DocId=3,
-                DocName = "Kiran",
-                Purpose = "Fever",
-                Prescription="Aspirin",
-                Diet="Eat Chicken Soup,eat spicy foods,drink coconut water",
-                Charges=450
-            };
-            var bindhu = new Consultation
-            {
-                DocId=4,
-                DocName = "Srikanth",
-                Purpose = "Stomach Pain",
-                Prescription="Doxycycline",
-                Diet="Eat bananas,rice,applesauce and toast",
-                Charges=500
-            };
-        }
+            room.ForEach(r => context.rooms.Add(r));
+            context.SaveChanges();
+        }*/
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Maintain_Patient_Info.Base;
+using Maintain_Patient_Info.HospitalServices;
+using Maintain_Patient_Info.models;
 
 namespace Maintain_Patient_Info.Infrastructure
 {
@@ -12,6 +14,10 @@ namespace Maintain_Patient_Info.Infrastructure
         public AutoMapperProfile()
         {
             CreateMap<DTO_PM, patient_info>().ReverseMap();
+            CreateMap<LabTestsDTO, LabTests>().ReverseMap();
+            CreateMap<PrescriptionDTO, PrescriptionDetails>().ReverseMap();
+            CreateMap<ConsultationDTO,Consultation>().ReverseMap();
+            CreateMap<RoomDTO, Room>().ReverseMap();
         }
 
     }

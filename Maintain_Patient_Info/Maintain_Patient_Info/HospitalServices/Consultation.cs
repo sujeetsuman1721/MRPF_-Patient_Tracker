@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HospitalService.Models
+namespace Maintain_Patient_Info.HospitalServices
 {
     public class Consultation
     {
+        [Key]
         public int DocId { get; set; }
         public string DocName { get; set; }
         public string Purpose { get; set; }
-        public string Prescription { get; set; }
-        public string Diet { get; set; }
-        public long Charges { get; set; }
 
     }
 }
