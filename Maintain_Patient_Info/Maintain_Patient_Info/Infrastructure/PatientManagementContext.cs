@@ -16,11 +16,10 @@ namespace Maintain_Patient_Info.Infrastructure
         {
 
         }
-        public virtual DbSet<PatientsRegistory> patient_infos { get; set; }
-        public virtual DbSet<LabTests> labTests { get; set; } 
-        public virtual DbSet<PrescriptionDetails> prescriptionDetails { get; set; }
-        public virtual DbSet<Consultation> consultation { get; set; }
-        public virtual DbSet<Room> rooms { get; set; }
+        public virtual DbSet<PatientsRegistory> Patient_Infos { get; set; }
+        public virtual DbSet<LabTests> LabTests { get; set; } 
+        public virtual DbSet<Consultation> Consultation { get; set; }
+        public virtual DbSet<Room> RoomDetails { get; set; }
         protected override void OnModelCreating(ModelBuilder modelsBuilder)
         {
             modelsBuilder.Entity<Room>().HasData(
@@ -82,7 +81,7 @@ namespace Maintain_Patient_Info.Infrastructure
              {
                  Id=3,
 
-                 LabTestName = "Lipid Profile",
+                 LabTestName = "Prick Test",
                  LabTestResult = "Completed",
                  Charge = 100
              },
@@ -113,7 +112,7 @@ namespace Maintain_Patient_Info.Infrastructure
                 DocId=2,
                 
                 DoctorName = "Rahul",
-                Purpose = "Headache",
+                Purpose = "Cardiac CheckUp",
 
                 Charge = 500
             },
@@ -122,7 +121,7 @@ namespace Maintain_Patient_Info.Infrastructure
                 DocId=3,
              
                 DoctorName = "Kiran",
-                Purpose = "Fever",
+                Purpose = "Kidney CheckUp",
 
                 Charge = 450
             },
@@ -131,7 +130,7 @@ namespace Maintain_Patient_Info.Infrastructure
                 DocId=4,
                
                 DoctorName = "Srikanth",
-                Purpose = "Stomach Pain",
+                Purpose = "Sugar CheckUp",
 
                 Charge = 500
             }

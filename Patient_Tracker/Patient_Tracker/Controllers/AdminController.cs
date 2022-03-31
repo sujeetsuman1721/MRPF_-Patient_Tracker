@@ -7,19 +7,13 @@ namespace Patient_Tracker.Controllers
     public class AdminController : Controller
     {
         private readonly UserServices userServices;
+        private readonly HospitalServices hospitalServices;
 
-        public AdminController(UserServices userServices)
+        public AdminController(UserServices userServices,HospitalServices hospitalServices)
         {
             this.userServices = userServices;
-        }
-
-        public IActionResult Index()
-        {
-           
-            return View();
-        }
-
-        
+            this.hospitalServices = hospitalServices;
+        }        
 
         public async Task<IActionResult> Register()
         {

@@ -15,7 +15,6 @@ namespace Maintain_Patient_Info.Infrastructure
         {
             CreateMap<DTO_PM, PatientsRegistory>().ReverseMap();
             CreateMap<LabTestsDTO, LabTests>().ReverseMap();
-            CreateMap<PrescriptionDTO, PrescriptionDetails>().ReverseMap();
             CreateMap<ConsultationDTO,Consultation>().ReverseMap();
             CreateMap<RoomDTO, Room>().ReverseMap();
         }

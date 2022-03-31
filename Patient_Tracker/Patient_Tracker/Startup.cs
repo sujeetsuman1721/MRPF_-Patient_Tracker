@@ -28,8 +28,11 @@ namespace Patient_Tracker
             services.AddControllersWithViews();
             var api1url = Configuration["ApiAddresses:Athentication"];
             services.AddHttpClient("Authentication", setup => setup.BaseAddress = new Uri(api1url));
-           
+            var api2url = Configuration["ApiAddresses:Services"];
+            services.AddHttpClient("Services", setup => setup.BaseAddress = new Uri(api2url));
+
             services.AddScoped(typeof(UserServices));
+            services.AddScoped(typeof(HospitalServices));
 
             services.AddSession();
         }

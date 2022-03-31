@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maintain_Patient_Info.Migrations
 {
-    public partial class thedataisadded : Migration
+    public partial class servicedb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "consultation",
+                name: "Consultation",
                 columns: table => new
                 {
                     DocId = table.Column<int>(nullable: false)
@@ -19,11 +19,11 @@ namespace Maintain_Patient_Info.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_consultation", x => x.DocId);
+                    table.PrimaryKey("PK_Consultation", x => x.DocId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "labTests",
+                name: "LabTests",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,11 +34,11 @@ namespace Maintain_Patient_Info.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_labTests", x => x.Id);
+                    table.PrimaryKey("PK_LabTests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "patient_infos",
+                name: "Patient_Infos",
                 columns: table => new
                 {
                     Username = table.Column<string>(nullable: false),
@@ -49,26 +49,11 @@ namespace Maintain_Patient_Info.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_patient_infos", x => x.Username);
+                    table.PrimaryKey("PK_Patient_Infos", x => x.Username);
                 });
 
             migrationBuilder.CreateTable(
-                name: "prescriptionDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PrescriptionId = table.Column<string>(nullable: true),
-                    MedicineDetails = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_prescriptionDetails", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "rooms",
+                name: "RoomDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -78,33 +63,33 @@ namespace Maintain_Patient_Info.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_rooms", x => x.Id);
+                    table.PrimaryKey("PK_RoomDetails", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "consultation",
+                table: "Consultation",
                 columns: new[] { "DocId", "Charge", "DoctorName", "Purpose" },
                 values: new object[,]
                 {
                     { 1, 4005, "Hari", "skin Problem" },
-                    { 2, 500, "Rahul", "Headache" },
-                    { 3, 450, "Kiran", "Fever" },
-                    { 4, 500, "Srikanth", "Stomach Pain" }
+                    { 2, 500, "Rahul", "Cardiac CheckUp" },
+                    { 3, 450, "Kiran", "Kidney CheckUp" },
+                    { 4, 500, "Srikanth", "Sugar CheckUp" }
                 });
 
             migrationBuilder.InsertData(
-                table: "labTests",
+                table: "LabTests",
                 columns: new[] { "Id", "Charge", "LabTestName", "LabTestResult" },
                 values: new object[,]
                 {
                     { 1, 150, "Blood Test", "Completed" },
                     { 2, 200, "Creatine Test", "Pending" },
-                    { 3, 100, "Lipid Profile", "Completed" },
+                    { 3, 100, "Prick Test", "Completed" },
                     { 4, 150, "Diabetes Test", "Pending" }
                 });
 
             migrationBuilder.InsertData(
-                table: "rooms",
+                table: "RoomDetails",
                 columns: new[] { "Id", "RoomType", "charge" },
                 values: new object[,]
                 {
@@ -119,19 +104,16 @@ namespace Maintain_Patient_Info.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "consultation");
+                name: "Consultation");
 
             migrationBuilder.DropTable(
-                name: "labTests");
+                name: "LabTests");
 
             migrationBuilder.DropTable(
-                name: "patient_infos");
+                name: "Patient_Infos");
 
             migrationBuilder.DropTable(
-                name: "prescriptionDetails");
-
-            migrationBuilder.DropTable(
-                name: "rooms");
+                name: "RoomDetails");
         }
     }
 }

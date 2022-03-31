@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-    [Migration("20220330173925_the data is added")]
-    partial class thedataisadded
+    [Migration("20220330183611_servicedb")]
+    partial class servicedb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Username");
 
-                    b.ToTable("patient_infos");
+                    b.ToTable("Patient_Infos");
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
@@ -61,7 +61,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("DocId");
 
-                    b.ToTable("consultation");
+                    b.ToTable("Consultation");
 
                     b.HasData(
                         new
@@ -76,21 +76,21 @@ namespace Maintain_Patient_Info.Migrations
                             DocId = 2,
                             Charge = 500,
                             DoctorName = "Rahul",
-                            Purpose = "Headache"
+                            Purpose = "Cardiac CheckUp"
                         },
                         new
                         {
                             DocId = 3,
                             Charge = 450,
                             DoctorName = "Kiran",
-                            Purpose = "Fever"
+                            Purpose = "Kidney CheckUp"
                         },
                         new
                         {
                             DocId = 4,
                             Charge = 500,
                             DoctorName = "Srikanth",
-                            Purpose = "Stomach Pain"
+                            Purpose = "Sugar CheckUp"
                         });
                 });
 
@@ -112,7 +112,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("labTests");
+                    b.ToTable("LabTests");
 
                     b.HasData(
                         new
@@ -133,7 +133,7 @@ namespace Maintain_Patient_Info.Migrations
                         {
                             Id = 3,
                             Charge = 100,
-                            LabTestName = "Lipid Profile",
+                            LabTestName = "Prick Test",
                             LabTestResult = "Completed"
                         },
                         new
@@ -143,27 +143,6 @@ namespace Maintain_Patient_Info.Migrations
                             LabTestName = "Diabetes Test",
                             LabTestResult = "Pending"
                         });
-                });
-
-            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.PrescriptionDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MedicineDetails")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrescriptionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("prescriptionDetails");
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Room", b =>
@@ -181,7 +160,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("rooms");
+                    b.ToTable("RoomDetails");
 
                     b.HasData(
                         new

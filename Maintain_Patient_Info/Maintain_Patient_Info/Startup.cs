@@ -37,7 +37,6 @@ namespace Maintain_Patient_Info
             services.AddScoped<IRepository<PatientsRegistory>, GenericRepository<PatientsRegistory>>();
             services.AddScoped<IRepository<LabTests>, GenericRepository<LabTests>>();
             services.AddScoped<IRepository<Consultation>, GenericRepository<Consultation>>();
-            services.AddScoped<IRepository<PrescriptionDetails>, GenericRepository<PrescriptionDetails>>();
             services.AddScoped<IRepository<Room>, GenericRepository<Room>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
