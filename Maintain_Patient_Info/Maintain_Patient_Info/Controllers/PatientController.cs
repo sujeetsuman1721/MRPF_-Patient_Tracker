@@ -38,14 +38,15 @@ namespace Maintain_Patient_Info.Controllers
 
         }
         [HttpPost("AddPatient")]
-        [ProducesResponseType(201, Type = typeof(DTO_PM))]
+        [ProducesResponseType(200, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Post(DTO_PM model)
         {
           PatientsRegistory patient = mapper.Map<PatientsRegistory>(model);
-            PatientRepository.Add(patient);
+          PatientRepository.Add(patient);
             await PatientRepository.SaveAsync();
             var dto = mapper.Map<DTO_PM>(patient);
-            return  StatusCode(201,dto);
+
+            return  StatusCode(200,dto);
 
         }
         [HttpPut]
@@ -60,16 +61,16 @@ namespace Maintain_Patient_Info.Controllers
 
         }
 
-        [HttpDelete]
-        [Route("{username}")]
-        [ProducesResponseType(204)]
-        public async Task<IActionResult> Delete(string username)
-        {
-            PatientsRegistory patient = new PatientsRegistory { Username= username };
-            PatientRepository.Delete(patient);
-            await PatientRepository.SaveAsync();
-            return NoContent();
+        //[HttpDelete]
+        //[Route("{username}")]
+        //[ProducesResponseType(204)]
+        //public async Task<IActionResult> Delete()
+        //{
+        //    PatientsRegistory patient = new PatientsRegistory { PateintId=  };
+        //    PatientRepository.Delete(patient);
+        //    await PatientRepository.SaveAsync();
+        //    return NoContent();
 
-        }
+        //}
     }
 }

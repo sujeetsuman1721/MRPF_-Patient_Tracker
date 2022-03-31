@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Patient_Tracker.Models.DTOs
 {
-    public class Patient
+    public class PatientDTO
     {
         [Key]
         public int PateintId { get; set; }

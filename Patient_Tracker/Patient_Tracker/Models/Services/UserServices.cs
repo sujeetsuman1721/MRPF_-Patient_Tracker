@@ -17,12 +17,16 @@ namespace Patient_Tracker.Models.Services
         private readonly HttpClient client;
         public UserServices(IHttpClientFactory factory)
         {
+           
             client = factory.CreateClient("Authentication");
-            client.DefaultRequestHeaders.Accept.Clear();
+
+            
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+
+
         }
-        public async Task<bool> SaveClerk(Clerk register)
+        public async Task<bool> SaveClerk(ClerkDTO register)
         {
             var Json = JsonConvert.SerializeObject(register);
 
@@ -34,7 +38,7 @@ namespace Patient_Tracker.Models.Services
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
         }
-        public async Task<bool> SaveDoctor(Doctor register)
+        public async Task<bool> SaveDoctor(DoctorDTO register)
         {
             var Json = JsonConvert.SerializeObject(register);
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
@@ -43,7 +47,7 @@ namespace Patient_Tracker.Models.Services
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
         }
-        public async Task<bool> SavePatient(Patient register)
+        public async Task<bool> SavePatient(PatientDTO register)
         {
             var Json = JsonConvert.SerializeObject(register);
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");

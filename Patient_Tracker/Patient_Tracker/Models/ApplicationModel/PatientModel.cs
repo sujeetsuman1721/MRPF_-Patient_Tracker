@@ -5,7 +5,7 @@ namespace Patient_Tracker.Models.ApplicationModel
     public class PatientModel
     {
         [Key]
-        public int DoctorId { get; set; }
+        public int PatientId { get; set; }
 
         public int ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

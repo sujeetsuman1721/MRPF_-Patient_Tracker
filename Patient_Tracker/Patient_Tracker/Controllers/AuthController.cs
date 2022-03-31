@@ -24,7 +24,7 @@ namespace Patient_Tracker.Controllers
             return View();
         }
         [HttpPost("PatientRegister")]
-        public async Task<IActionResult> PatientRegister(Patient model)
+        public async Task<IActionResult> PatientRegister(PatientDTO model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -48,7 +48,7 @@ namespace Patient_Tracker.Controllers
             return View();
         }
         [HttpPost("Doctor")]
-        public async Task<IActionResult> DoctorRegister(Doctor model)
+        public async Task<IActionResult> DoctorRegister(DoctorDTO model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -70,7 +70,7 @@ namespace Patient_Tracker.Controllers
             return View();
         }
         [HttpPost("Clerk")]
-        public async Task<IActionResult> ClerkRegister(Clerk model)
+        public async Task<IActionResult> ClerkRegister(ClerkDTO model)
         {
             if (!ModelState.IsValid)
                 return View(model);

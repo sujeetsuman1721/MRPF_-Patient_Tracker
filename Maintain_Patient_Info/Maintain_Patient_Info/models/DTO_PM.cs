@@ -9,12 +9,14 @@ namespace Maintain_Patient_Info.models
     public class DTO_PM
     {
         [Key]
-        public string Username { get; set; }
-        [Required]
+        public int Id { get; set; }
+
+
+        public int PateintId { get; set; }
+
         public int DoctorId { get; set; }
-        public string DoctorName { get; set; }
-        [Required]
-        public DateTime Date { get; set; }
+
+        public DateTime DateOfRegi { get; set; }
         public string Status { get; set; }
 
     }

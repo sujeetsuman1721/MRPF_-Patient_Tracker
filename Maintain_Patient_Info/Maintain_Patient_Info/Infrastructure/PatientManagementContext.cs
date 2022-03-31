@@ -16,11 +16,11 @@ namespace Maintain_Patient_Info.Infrastructure
         {
 
         }
-        public virtual DbSet<PatientsRegistory> patient_infos { get; set; }
-        public virtual DbSet<LabTests> labTests { get; set; } 
-        public virtual DbSet<PrescriptionDetails> prescriptionDetails { get; set; }
-        public virtual DbSet<Consultation> consultation { get; set; }
-        public virtual DbSet<Room> rooms { get; set; }
+        public virtual DbSet<PatientsRegistory> PatientsRegistory { get; set; }
+        public virtual DbSet<LabTests> LabTests { get; set; } 
+       
+        public virtual DbSet<Consultation> Consultation { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
         protected override void OnModelCreating(ModelBuilder modelsBuilder)
         {
             modelsBuilder.Entity<Room>().HasData(

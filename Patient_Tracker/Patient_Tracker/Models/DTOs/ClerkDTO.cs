@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Patient_Tracker.Models.DTOs
 {
-    public class Doctor
+    public class ClerkDTO
     {
         [Key]
-        public int DoctorId { get; set; }
-        public string UserName { get; set; }    
+        public int ClerkId { get; set; }
+        [Required(ErrorMessage = "FirstName can't be empty")]
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "FirstName can't be empty")]
         public string FirstName { get; set; }
@@ -24,19 +25,17 @@ namespace Patient_Tracker.Models.DTOs
         public string Gender { get; set; }
 
 
-        [MaxLength(10)]
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public string ContactNumber { get; set; }
-
-
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }
        
         [DataType(DataType.Password)]
         [MinLength(6)]
         [Required(ErrorMessage = "Password should be minimum 6 letters with special character included")]
-     
+
         public string Password { get; set; }
+
         [DataType(DataType.Password)]
 
         [Required(ErrorMessage = "Password should be minimum 6 letters with special character included")]
@@ -47,15 +46,6 @@ namespace Patient_Tracker.Models.DTOs
         public string SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
-
-        [Required]
-        public string Qualification { get; set; }
-        [Required]
-        public string Specialization { get; set; }
     }
-
-   
-  
-
-
 }
+

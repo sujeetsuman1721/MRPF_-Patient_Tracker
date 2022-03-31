@@ -1,43 +1,51 @@
-﻿@using Patient_Tracker.Models.ApplicationModel
+﻿@model Patient_Tracker.Models.HospitalServices.PatientRegistory
 
 @{
     ViewData["Title"] = "Register";
 }
 
-<h1>Register New Patient Here</h1>
+<h1>Register</h1>
+
+<h4>PatientRegistory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PateintId" class="control-label"></label>
+                <select asp-for="PateintId" class="form-control" asp-items="@ViewBag.patientList">
+                   
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label"></label>
+         
+               <select asp-for="DoctorId" class="form-control" asp-items="@ViewBag.DoctorList">
+                  
+                </select>
+            </div>
+             
+          
+            <div class="form-group">
+                <label asp-for="DateOfRegi" class="control-label"></label>
+                <input asp-for="DateOfRegi" class="form-control" />
+                <span asp-validation-for="DateOfRegi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
 
-@{
 
-   IEnumerable<DoctorModel> doctors = ViewData["doctors"] as IEnumerable<DoctorModel>;
-   IEnumerable<PatientModel> patients = ViewData["patients"] as IEnumerable<PatientModel>;
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
- <p><b>Student List</b></p>
-<table>
-    <tr>
-      
-        
-    </tr>
-    @foreach (DoctorModel doctor in doctors)
-    {
-        <tr>
-            <td>@doctor.ApplicationUser.FirstName</td>
-            
-        </tr>
-    }
-</table>
-
-<table>
-   
-    @foreach (PatientModel patient in patients)
-    {
-        <tr>
-            <td>@patient.ApplicationUser.FirstName</td>
-           
-        </tr>
-    }
-</table>
-
-
-

@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Patient_Tracker.Models.DTOs;
+using Patient_Tracker.Models.HospitalServices;
 using Patient_Tracker.Models.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Patient_Tracker.Controllers
@@ -7,9 +11,11 @@ namespace Patient_Tracker.Controllers
     public class AdminController : Controller
     {
         private readonly UserServices userServices;
+        private readonly PatientServices patientServices;
 
-        public AdminController(UserServices userServices)
+        public AdminController(UserServices userServices,PatientServices patientServices)
         {
+            this.patientServices = patientServices;
             this.userServices = userServices;
         }
 
@@ -29,15 +35,61 @@ namespace Patient_Tracker.Controllers
             var patients = await userServices.GetPatients();
 
             var doctors = await userServices.GetDoctors();
-            // fetch the data of doctor
 
-            ViewData["patients"] = patients;
-            ViewData["doctors"] = doctors;
+           var doctorlist= new List<DoctorDTO>();
+            // fetch the data of
+            //
+            //
+           
 
+            foreach (var dt in doctors)
+            {
+                var d= new DoctorDTO();
+
+                d.DoctorId = dt.DoctorId;
+                d.FirstName=dt.ApplicationUser.FirstName;
+              
+                d.LastName = dt.ApplicationUser.LastName;
+
+                doctorlist.Add(d);
+                
+            }
+
+            var patientlist = new List<PatientDTO>();
+
+            foreach (var pt in patients)
+            {
+                var p = new PatientDTO();
+
+                p.PateintId = pt.PatientId;
+                p.FirstName = pt.ApplicationUser.FirstName;
+
+                p.LastName = pt.ApplicationUser.LastName;
+
+                patientlist.Add(p);
+
+            }
+
+            ViewBag.patientList = new SelectList(patientlist, "PateintId", "FirstName");
+
+            ViewBag.DoctorList = new SelectList(doctorlist, "DoctorId", "FirstName");
 
             return View();
         }
 
 
-    }
+        [HttpPost]
+        public async Task<IActionResult> Register(PatientRegistory model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var IsAdded = await patientServices.AppointPatient(model);
+           
+            return View(model);
+
+        }
+        
+
+
+        }
 }

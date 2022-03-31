@@ -21,24 +21,26 @@ namespace Maintain_Patient_Info.Migrations
 
             modelBuilder.Entity("Maintain_Patient_Info.Base.PatientsRegistory", b =>
                 {
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("DateOfRegi")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DoctorName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PateintId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Username");
+                    b.HasKey("Id");
 
-                    b.ToTable("patient_infos");
+                    b.ToTable("PatientsRegistory");
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
@@ -59,7 +61,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("DocId");
 
-                    b.ToTable("consultation");
+                    b.ToTable("Consultation");
 
                     b.HasData(
                         new
@@ -110,7 +112,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("labTests");
+                    b.ToTable("LabTests");
 
                     b.HasData(
                         new
@@ -143,27 +145,6 @@ namespace Maintain_Patient_Info.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.PrescriptionDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MedicineDetails")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrescriptionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("prescriptionDetails");
-                });
-
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Room", b =>
                 {
                     b.Property<int>("Id")
@@ -179,7 +160,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("rooms");
+                    b.ToTable("Rooms");
 
                     b.HasData(
                         new
