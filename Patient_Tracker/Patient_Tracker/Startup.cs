@@ -31,11 +31,14 @@ namespace Patient_Tracker
 
             services.AddHttpClient("Authentication", setup => setup.BaseAddress = new Uri(api1url));
 
+
             services.AddHttpClient("PatientInfo", setup => setup.BaseAddress = new Uri(api2url));
             
 
             services.AddScoped(typeof(UserServices));
             services.AddScoped(typeof(PatientServices));
+
+
 
             services.AddSession();
         }
