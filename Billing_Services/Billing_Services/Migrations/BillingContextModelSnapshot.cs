@@ -25,6 +25,9 @@ namespace Billing_Services.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ConsultationCharges")
                         .HasColumnType("int");
 
@@ -33,6 +36,9 @@ namespace Billing_Services.Migrations
 
                     b.Property<int>("RoomCharges")
                         .HasColumnType("int");
+
+                    b.Property<long>("TotalAmount")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

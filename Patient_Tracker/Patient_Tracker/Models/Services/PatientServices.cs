@@ -9,7 +9,7 @@ using System.Net;
 using System.Collections.Generic;
 
 using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
-using System.Collections.Generic;
+
 using Patient_Tracker.Models.DTOs;
 
 

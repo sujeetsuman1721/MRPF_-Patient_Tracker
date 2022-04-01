@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Billing_Services.Migrations
 {
     [DbContext(typeof(BillingContext))]
-    [Migration("20220401100603_chargesdb")]
-    partial class chargesdb
+    [Migration("20220401135723_database")]
+    partial class database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,9 @@ namespace Billing_Services.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ConsultationCharges")
                         .HasColumnType("int");
 
@@ -35,6 +38,9 @@ namespace Billing_Services.Migrations
 
                     b.Property<int>("RoomCharges")
                         .HasColumnType("int");
+
+                    b.Property<long>("TotalAmount")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

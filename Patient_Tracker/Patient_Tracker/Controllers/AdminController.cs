@@ -153,8 +153,7 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
-
-
+        
         public async Task<IActionResult> AddFacility(int id)
         {
             ViewBag.Id = id;
@@ -176,6 +175,12 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
+
+
+
+
+
+
 
 
 

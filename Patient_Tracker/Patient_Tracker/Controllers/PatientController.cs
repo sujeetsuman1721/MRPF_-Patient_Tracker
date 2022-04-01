@@ -4,6 +4,8 @@ namespace Patient_Tracker.Controllers
 {
     public class PatientController : Controller
     {
+
+      
         public IActionResult Index()
         {
             return View();
@@ -13,6 +15,8 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
+
+
 
     }
 }
