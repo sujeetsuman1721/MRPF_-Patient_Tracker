@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,16 @@ namespace Billing_Services
             services.AddDbContext<BillingContext>(setup => setup.UseSqlServer(connectionstring));
             services.AddScoped<IRepository<BillingServices>, GenericRepository<BillingServices>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title="BillingServices",
-                Description="Charges"
-
+                Title = "User Manager API",
+                Description = "Allow the User to Register and Login ",
+                Contact = new OpenApiContact
+                {
+                    Email = "PatientTracker@outlook.com",
+                    Name = "Patient Tracker"
+                }
             }));
         }
        

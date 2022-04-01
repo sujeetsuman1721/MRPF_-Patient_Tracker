@@ -155,7 +155,7 @@ namespace Patient_Tracker.Controllers
         }
 
 
-        public async Task<IActionResult> AddFacility(int patientId)
+        public async Task<IActionResult> AddFacility(int id)
         {
             var labTests = await hospitalServices.GetLabTests();
             ViewBag.Labtests = new SelectList(labTests, "LabTestId", "LabTestName");
