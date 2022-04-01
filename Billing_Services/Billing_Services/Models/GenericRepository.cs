@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Billing_Services.Models
 {
-    public class GenericRepository
-   <T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
 
     {
         private readonly BillingContext context;
