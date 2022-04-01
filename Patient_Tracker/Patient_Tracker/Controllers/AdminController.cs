@@ -23,7 +23,12 @@ namespace Patient_Tracker.Controllers
             this.patientServices = patientServices;
             this.userServices = userServices;
        
-        }        
+        }  
+        
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Register()
         {
@@ -33,6 +38,7 @@ namespace Patient_Tracker.Controllers
             var patients = await userServices.GetPatients();
 
             var doctors = await userServices.GetDoctors();
+
 
            var doctorlist= new List<DoctorDTO>();
             // fetch the data of
@@ -83,11 +89,29 @@ namespace Patient_Tracker.Controllers
                 return View(model);
             var IsAdded = await patientServices.AppointPatient(model);
            
-            return View(model);
+            return RedirectToAction("Appointed");
 
         }
-        
+
+        public async Task<IActionResult> Appointed()
+        {
+            var pat= await patientServices.GetAppointedDoctor();
+
+
+
+            return View(pat);
 
 
         }
+
+        //public async Task<IActionResult> AddFacility(int patientId)
+        //{
+            
+
+
+        //}
+
+
+
+    }
 }

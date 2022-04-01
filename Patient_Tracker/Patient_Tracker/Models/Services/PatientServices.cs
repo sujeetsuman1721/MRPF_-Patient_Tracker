@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.Collections.Generic;
 
 namespace Patient_Tracker.Models.Services
 {
@@ -32,6 +33,19 @@ namespace Patient_Tracker.Models.Services
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
 
+        }
+
+        public async Task<IReadOnlyCollection<PatientRegistory>> GetAppointedDoctor()
+        {
+            var Response = await client.GetAsync("/api/Patient/PatientInfo");
+
+            Response.EnsureSuccessStatusCode();
+
+            var Json = await Response.Content.ReadAsStringAsync();
+            var patients = JsonConvert.DeserializeObject<List<PatientRegistory>>(Json);
+
+
+            return patients;
         }
     }
 

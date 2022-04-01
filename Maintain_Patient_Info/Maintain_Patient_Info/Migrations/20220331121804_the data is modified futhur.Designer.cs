@@ -10,13 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-<<<<<<<< HEAD:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220331104854_the data is modified futhur.Designer.cs
-    [Migration("20220331104854_the data is modified futhur")]
+    [Migration("20220331121804_the data is modified futhur")]
     partial class thedataismodifiedfuthur
-========
-    [Migration("20220330183611_servicedb")]
-    partial class servicedb
->>>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220330183611_servicedb.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,11 +42,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<<< HEAD:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220331104854_the data is modified futhur.Designer.cs
                     b.ToTable("PatientsRegistory");
-========
-                    b.ToTable("Patient_Infos");
->>>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220330183611_servicedb.Designer.cs
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
@@ -171,11 +162,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<<< HEAD:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220331104854_the data is modified futhur.Designer.cs
-                    b.ToTable("Rooms");
-========
-                    b.ToTable("RoomDetails");
->>>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7:Maintain_Patient_Info/Maintain_Patient_Info/Migrations/20220330183611_servicedb.Designer.cs
+                    b.ToTable("Room");
 
                     b.HasData(
                         new

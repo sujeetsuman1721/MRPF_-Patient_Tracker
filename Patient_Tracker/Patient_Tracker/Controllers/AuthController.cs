@@ -17,8 +17,12 @@ namespace Patient_Tracker.Controllers
         {
             this.userServices = userServices;
         }
-       
-       
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
         public IActionResult Patient()
         {
             return View();
@@ -116,10 +120,14 @@ namespace Patient_Tracker.Controllers
             ModelState.AddModelError("", "Cannot identify the user");
             return View(model);
         }
-        public IActionResult Index()
+
+        public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            TempData["Logoff"] = "You Logged Out Successfully!";
+            return RedirectToAction("Login");
         }
-        
+
+
     }
 }

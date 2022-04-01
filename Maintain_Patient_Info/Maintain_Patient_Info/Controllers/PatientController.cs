@@ -39,14 +39,14 @@ namespace Maintain_Patient_Info.Controllers
         }
         [HttpPost("AddPatient")]
         [ProducesResponseType(200, Type = typeof(DTO_PM))]
-        public async Task<IActionResult> Post(DTO_PM model)
+        public async Task<IActionResult> Post(PatientsRegistory model)
         {
-          PatientsRegistory patient = mapper.Map<PatientsRegistory>(model);
-          PatientRepository.Add(patient);
+          
+          PatientRepository.Add(model);
             await PatientRepository.SaveAsync();
-            var dto = mapper.Map<DTO_PM>(patient);
+            
 
-            return  StatusCode(200,dto);
+            return  StatusCode(200,model);
 
         }
         [HttpPut]

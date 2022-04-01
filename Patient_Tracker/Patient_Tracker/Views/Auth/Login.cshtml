@@ -3,8 +3,14 @@
 @{
     ViewData["Title"] = "Login";
 }
-
-<partial name="_notificationView" />
+@if (TempData["Success"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+}
+@if (TempData["Logoff"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Logoff"]</p>
+}
 
 <h4>Login</h4>
 

@@ -78,10 +78,10 @@ namespace Patient_Tracker.Models.Services
             Response.EnsureSuccessStatusCode();
 
             var Json = await Response.Content.ReadAsStringAsync();
-            var doctor = JsonConvert.DeserializeObject<List<DoctorModel>>(Json);
+            var doctors = JsonConvert.DeserializeObject<List<DoctorModel>>(Json);
 
 
-            return doctor;
+            return doctors;
         }
 
         public async Task<IReadOnlyCollection<PatientModel>> GetPatients()

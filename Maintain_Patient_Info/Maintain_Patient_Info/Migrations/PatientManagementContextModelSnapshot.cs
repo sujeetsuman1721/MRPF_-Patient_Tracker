@@ -40,11 +40,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
                     b.ToTable("PatientsRegistory");
-=======
-                    b.ToTable("Patient_Infos");
->>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
@@ -164,11 +160,7 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
-                    b.ToTable("Rooms");
-=======
-                    b.ToTable("RoomDetails");
->>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7
+                    b.ToTable("Room");
 
                     b.HasData(
                         new
