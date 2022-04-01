@@ -12,9 +12,11 @@ namespace Billing_Services.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AppointmentId = table.Column<int>(nullable: false),
                     ConsultationCharges = table.Column<int>(nullable: false),
                     LabTestCharges = table.Column<int>(nullable: false),
-                    RoomCharges = table.Column<int>(nullable: false)
+                    RoomCharges = table.Column<int>(nullable: false),
+                    TotalAmount = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {

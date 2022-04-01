@@ -10,8 +10,10 @@ namespace Billing_Services.DTO
     {
         [Key]
         public int Id { get; set; }
+        public int AppointmentId { get; set; }
         public int ConsultationCharges { get; set; }
         public int LabTestCharges { get; set; }
         public int RoomCharges { get; set; }
+        public long TotalAmount { get; set; }
     }
 }
