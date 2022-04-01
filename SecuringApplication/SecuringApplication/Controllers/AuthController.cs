@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SecuringApplication.Models;
+using SecuringApplication.Models.DTOs;
 using SecuringApplication.Models.Registration;
 using SecuringApplication.Reposetory;
 using System;
@@ -234,9 +235,20 @@ namespace SecuringApplication.Controllers
                 );
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             string token = tokenHandler.WriteToken(jwtSecurityToken);
-            var response = new { jwt = token, name = appUser.UserName, role = roles.First() };
+            var response = new LoginResponse { jwt = token, name = appUser.UserName, role = roles.First(),UserId=0 };
+           
+            //if (response.role == "Patient")
+            //{
+            //    response.UserId=patientsRepository.GetByUserId(appUser.Id).Pa
+            //}
+            //if (response.role == "Doctor")
+            //{
+            //    response.UserId = doctorsRepository.GetByUserId(appUser.Id).D
+            //}
             return Ok(response);
         }
+
+      
 
 
     }

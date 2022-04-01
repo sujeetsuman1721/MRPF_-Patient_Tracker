@@ -38,6 +38,7 @@ namespace Maintain_Patient_Info
             services.AddScoped<IRepository<LabTests>, GenericRepository<LabTests>>();
             services.AddScoped<IRepository<Consultation>, GenericRepository<Consultation>>();
             services.AddScoped<IRepository<Room>, GenericRepository<Room>>();
+            services.AddScoped<IRepository<Facilites>, GenericRepository<Facilites>>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // adding the seed service for the

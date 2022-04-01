@@ -8,5 +8,11 @@ namespace Patient_Tracker.Controllers
         {
             return View();
         }
+        public IActionResult GetDetails()
+        {
+            return View();
+
+        }
+
     }
 }

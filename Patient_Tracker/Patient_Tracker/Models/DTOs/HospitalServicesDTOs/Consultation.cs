@@ -9,8 +9,7 @@ namespace Patient_Tracker.Models.DTOs.HospitalServicesDTOs
     public class Consultation
     {
         [Key]
-        public int DocId { get; set; }
-        public string DoctorName { get; set; }
+        public int ConsultationId { get; set; }
         public string Purpose { get; set; }
         public int Charge { get; set; }
     }

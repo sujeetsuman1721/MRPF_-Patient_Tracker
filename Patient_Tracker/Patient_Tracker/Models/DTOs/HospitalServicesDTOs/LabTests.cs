@@ -9,7 +9,7 @@ namespace Patient_Tracker.Models.DTOs.HospitalServicesDTOs
     public class LabTests
     {
         [Key]
-        public int Id { get; set; }
+        public int LabTestId { get; set; }
         public string LabTestName { get; set; }
         public string LabTestResult { get; set; }
         public int Charge { get; set; }

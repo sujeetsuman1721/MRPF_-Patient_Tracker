@@ -61,16 +61,6 @@ namespace Maintain_Patient_Info.Controllers
 
         }
 
-        //[HttpDelete]
-        //[Route("{username}")]
-        //[ProducesResponseType(204)]
-        //public async Task<IActionResult> Delete()
-        //{
-        //    PatientsRegistory patient = new PatientsRegistory { PateintId=  };
-        //    PatientRepository.Delete(patient);
-        //    await PatientRepository.SaveAsync();
-        //    return NoContent();
-
-        //}
+       
     }
 }

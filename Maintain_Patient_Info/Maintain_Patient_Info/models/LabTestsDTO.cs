@@ -9,8 +9,9 @@ namespace Maintain_Patient_Info.models
     public class LabTestsDTO
     {
         [Key]
-        public int Id { get; set; }
+        public int LabTestId { get; set; }
         public string LabTestName { get; set; }
         public string LabTestResult { get; set; }
+        public string Charge { get; set; }
     }
 }

@@ -9,9 +9,8 @@ namespace Maintain_Patient_Info.models
     public class RoomDTO
     {
         [Key]
-        public int Id { get; set; }
-        public int Num { get; set; }
+        public int RoomId { get; set; }
         public string RoomType { get; set; }
-        public int NoOfDays { get; set; }
+        public int Charge { get; set; }
     }
 }

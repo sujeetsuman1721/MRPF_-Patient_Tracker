@@ -18,14 +18,19 @@ namespace Maintain_Patient_Info.Infrastructure
         }
 
         public virtual DbSet<PatientsRegistory> PatientsRegistory { get; set; }
-        public virtual DbSet<LabTests> LabTests { get; set; } 
-       
+        public virtual DbSet<LabTests> LabTests { get; set; }
+
         public virtual DbSet<Consultation> Consultation { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
+
 
         public virtual DbSet<PatientsRegistory> Patient_Infos { get; set; }
      
         public virtual DbSet<Room> RoomDetails { get; set; }
+
+
+        public virtual DbSet<PatientsRegistory> PatientsRegistories { get; set; }
+        public virtual DbSet<Facilites> Facilites { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelsBuilder)
         {
@@ -34,7 +39,7 @@ namespace Maintain_Patient_Info.Infrastructure
                new Room
                {
 
-                   Id=1,
+                   RoomId = 1,
                    RoomType = "Single",
                    charge = 4000
 
@@ -42,26 +47,26 @@ namespace Maintain_Patient_Info.Infrastructure
                },
               new Room
               {
-                  Id = 2,
+                  RoomId = 2,
                   RoomType = "Single",
                   charge = 4000
               },
 
               new Room
               {
-                  Id=3,
+                  RoomId = 3,
                   RoomType = "Double",
                   charge = 4000
               },
               new Room
               {
-                  Id=4,
+                  RoomId = 4,
                   RoomType = "ICU",
                   charge = 6000
               },
               new Room
               {
-                  Id=5,
+                  RoomId = 5,
                   RoomType = "Special Rooms",
                   charge = 6500
               }
@@ -71,14 +76,14 @@ namespace Maintain_Patient_Info.Infrastructure
 
            new LabTests
            {
-               Id = 1,
+               LabTestId = 1,
                LabTestName = "Blood Test",
-               LabTestResult = "Completed",
+               LabTestResult="Pending",
                Charge = 150
            },
            new LabTests
            {
-               Id=2,
+               LabTestId = 2,
 
                LabTestName = "Creatine Test",
                LabTestResult = "Pending",
@@ -86,7 +91,7 @@ namespace Maintain_Patient_Info.Infrastructure
            },
              new LabTests
              {
-                 Id=3,
+                 LabTestId = 3,
 
                  LabTestName = "Prick Test",
                  LabTestResult = "Completed",
@@ -95,20 +100,18 @@ namespace Maintain_Patient_Info.Infrastructure
 
              new LabTests
              {
-                 Id=4,
+                 LabTestId = 4,
 
                  LabTestName = "Diabetes Test",
                  LabTestResult = "Pending",
                  Charge = 150
              }
-             ) ;
+             );
 
             modelsBuilder.Entity<Consultation>().HasData(
                 new Consultation
                 {
-                    DocId = 1,
-
-                    DoctorName = "Hari",
+                    ConsultationId=1,
                     Purpose = "skin Problem",
                     Charge = 4005
 
@@ -116,27 +119,21 @@ namespace Maintain_Patient_Info.Infrastructure
                 },
             new Consultation
             {
-                DocId=2,
-                
-                DoctorName = "Rahul",
+                ConsultationId=2,
                 Purpose = "Cardiac CheckUp",
 
                 Charge = 500
             },
             new Consultation
             {
-                DocId=3,
-             
-                DoctorName = "Kiran",
+                ConsultationId=3,
                 Purpose = "Kidney CheckUp",
 
                 Charge = 450
             },
             new Consultation
             {
-                DocId=4,
-               
-                DoctorName = "Srikanth",
+               ConsultationId=4,
                 Purpose = "Sugar CheckUp",
 
                 Charge = 500
@@ -147,7 +144,4 @@ namespace Maintain_Patient_Info.Infrastructure
 
 
     }
-
-    
-
 }
