@@ -8,8 +8,7 @@ namespace Patient_Tracker.Models.DTOs
 {
     public class Facilities
     {
-        [Key]
-        public int Id { get; set; }
+       
         
         public int AppointmentId { get; set; }
         public int ConsultationId { get; set; }

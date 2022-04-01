@@ -10,8 +10,8 @@ namespace Maintain_Patient_Info.Base
     {
         [Key]
         public int Id { get; set; }
-        public int PatientId { get; set; }
-        public int DoctorId { get; set; }
+
+        public int AppointmentId { get; set; }
         public int ConsultationId { get; set; }
         public int RoomId { get; set; }
         public int LabTestId { get; set; }

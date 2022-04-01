@@ -36,6 +36,7 @@ namespace Billing_Services
 
             services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo
             {
+<<<<<<< HEAD
                 Title = "User Manager API",
                 Description = "Allow the User to Register and Login ",
                 Contact = new OpenApiContact
@@ -43,6 +44,16 @@ namespace Billing_Services
                     Email = "PatientTracker@outlook.com",
                     Name = "Patient Tracker"
                 }
+=======
+                Title="BillingServices",
+                Description="Charges",
+                Contact=new OpenApiContact
+                {
+                    Email="PatientTracker@outlook.com",
+                    Name="PatientTracker"
+                }
+
+>>>>>>> 164d104ed906bc6240e8ee104273a1b8f4ae08d0
             }));
         }
        

@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Patient_Tracker.Models.DTOs;
 using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Patient_Tracker.Models.Services
@@ -45,6 +48,21 @@ namespace Patient_Tracker.Models.Services
             var Json = await Response.Content.ReadAsStringAsync();
             var consultants = JsonConvert.DeserializeObject<List<Consultation>>(Json);
             return consultants;
+        }
+
+        public async Task<bool> AddFacility(Facilities facilities)
+        {
+
+            var Json = JsonConvert.SerializeObject(facilities);
+
+            var Content = new StringContent(Json, Encoding.UTF8, "application/json");
+
+            var Response = await client.PostAsync("/api/Facilities/AddFacility", Content);
+
+
+            Response.EnsureSuccessStatusCode();
+            return Response.StatusCode == HttpStatusCode.OK;
+
         }
     }
 }

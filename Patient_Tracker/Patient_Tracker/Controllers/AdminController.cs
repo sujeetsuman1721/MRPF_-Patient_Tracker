@@ -157,12 +157,22 @@ namespace Patient_Tracker.Controllers
 
         public async Task<IActionResult> AddFacility(int id)
         {
+            ViewBag.Id = id;
             var labTests = await hospitalServices.GetLabTests();
             ViewBag.Labtests = new SelectList(labTests, "LabTestId", "LabTestName");
             var consultants = await hospitalServices.GetConsultationDetails();
             ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
             var rooms = await hospitalServices.GetRoomDetails();
             ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFacility(Facilities facilities)
+        {
+            
+            await hospitalServices.AddFacility(facilities);
             return View();
 
         }

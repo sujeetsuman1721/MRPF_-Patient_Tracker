@@ -61,6 +61,51 @@ namespace Maintain_Patient_Info.Controllers
             return Ok(dto);
         }
 
+        [HttpGet("GetByRoomId")]
+        [ProducesResponseType(200, Type = typeof(RoomDTO))]
+
+        public async Task<IActionResult> GetRoomById(int roomId)
+        {
+
+            IEnumerable<Room> rooms = await roomRepository.GetAsync();
+
+            var room = rooms
+                   .Where(r => r.RoomId == roomId);
+
+
+            return Ok(room);
+        }
+
+        [HttpGet("GetByLabId")]
+        [ProducesResponseType(200, Type = typeof(LabTestsDTO))]
+
+        public async Task<IActionResult> GetByLabId(int LabTestId)
+        {
+
+            IEnumerable<LabTests> labTests = await labtestsrepository.GetAsync();
+
+            var labTest = labTests
+                   .Where(l => l.LabTestId == LabTestId);
+
+
+            return Ok(labTest);
+        }
+
+        [HttpGet("ConsultationId")]
+        [ProducesResponseType(200, Type = typeof(ConsultationDTO))]
+
+        public async Task<IActionResult> ConsultationId(int consultationId)
+        {
+
+            IEnumerable<Consultation> consultants = await consultationRepository.GetAsync();
+
+            var consultant = consultants
+                   .Where(co => co.ConsultationId == consultationId);
+
+
+            return Ok(consultant);
+        }
+
 
     }
 }
