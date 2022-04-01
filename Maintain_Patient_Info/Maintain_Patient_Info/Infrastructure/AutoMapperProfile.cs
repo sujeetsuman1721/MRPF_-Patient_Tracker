@@ -17,6 +17,7 @@ namespace Maintain_Patient_Info.Infrastructure
             CreateMap<LabTestsDTO, LabTests>().ReverseMap();
             CreateMap<ConsultationDTO,Consultation>().ReverseMap();
             CreateMap<RoomDTO, Room>().ReverseMap();
+            CreateMap<FacilitiesDTO, Facilites>().ReverseMap();
         }
 
     }

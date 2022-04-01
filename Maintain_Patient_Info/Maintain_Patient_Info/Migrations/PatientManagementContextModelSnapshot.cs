@@ -19,6 +19,33 @@ namespace Maintain_Patient_Info.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Maintain_Patient_Info.Base.Facilites", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ConsultationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LabTestId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Facilites");
+                });
+
             modelBuilder.Entity("Maintain_Patient_Info.Base.PatientsRegistory", b =>
                 {
                     b.Property<int>("Id")
@@ -40,16 +67,12 @@ namespace Maintain_Patient_Info.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
                     b.ToTable("PatientsRegistory");
-=======
-                    b.ToTable("Patient_Infos");
->>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Consultation", b =>
                 {
-                    b.Property<int>("DocId")
+                    b.Property<int>("ConsultationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -57,50 +80,43 @@ namespace Maintain_Patient_Info.Migrations
                     b.Property<int>("Charge")
                         .HasColumnType("int");
 
-                    b.Property<string>("DoctorName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Purpose")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DocId");
+                    b.HasKey("ConsultationId");
 
                     b.ToTable("Consultation");
 
                     b.HasData(
                         new
                         {
-                            DocId = 1,
+                            ConsultationId = 1,
                             Charge = 4005,
-                            DoctorName = "Hari",
                             Purpose = "skin Problem"
                         },
                         new
                         {
-                            DocId = 2,
+                            ConsultationId = 2,
                             Charge = 500,
-                            DoctorName = "Rahul",
                             Purpose = "Cardiac CheckUp"
                         },
                         new
                         {
-                            DocId = 3,
+                            ConsultationId = 3,
                             Charge = 450,
-                            DoctorName = "Kiran",
                             Purpose = "Kidney CheckUp"
                         },
                         new
                         {
-                            DocId = 4,
+                            ConsultationId = 4,
                             Charge = 500,
-                            DoctorName = "Srikanth",
                             Purpose = "Sugar CheckUp"
                         });
                 });
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.LabTests", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LabTestId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -114,35 +130,35 @@ namespace Maintain_Patient_Info.Migrations
                     b.Property<string>("LabTestResult")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("LabTestId");
 
                     b.ToTable("LabTests");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            LabTestId = 1,
                             Charge = 150,
                             LabTestName = "Blood Test",
-                            LabTestResult = "Completed"
+                            LabTestResult = "Pending"
                         },
                         new
                         {
-                            Id = 2,
+                            LabTestId = 2,
                             Charge = 200,
                             LabTestName = "Creatine Test",
                             LabTestResult = "Pending"
                         },
                         new
                         {
-                            Id = 3,
+                            LabTestId = 3,
                             Charge = 100,
                             LabTestName = "Prick Test",
                             LabTestResult = "Completed"
                         },
                         new
                         {
-                            Id = 4,
+                            LabTestId = 4,
                             Charge = 150,
                             LabTestName = "Diabetes Test",
                             LabTestResult = "Pending"
@@ -151,7 +167,7 @@ namespace Maintain_Patient_Info.Migrations
 
             modelBuilder.Entity("Maintain_Patient_Info.HospitalServices.Room", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -162,42 +178,38 @@ namespace Maintain_Patient_Info.Migrations
                     b.Property<int>("charge")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("RoomId");
 
-<<<<<<< HEAD
                     b.ToTable("Rooms");
-=======
-                    b.ToTable("RoomDetails");
->>>>>>> 340ce19387372fc6c78a23e62af23ea45c6588f7
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            RoomId = 1,
                             RoomType = "Single",
                             charge = 4000
                         },
                         new
                         {
-                            Id = 2,
+                            RoomId = 2,
                             RoomType = "Single",
                             charge = 4000
                         },
                         new
                         {
-                            Id = 3,
+                            RoomId = 3,
                             RoomType = "Double",
                             charge = 4000
                         },
                         new
                         {
-                            Id = 4,
+                            RoomId = 4,
                             RoomType = "ICU",
                             charge = 6000
                         },
                         new
                         {
-                            Id = 5,
+                            RoomId = 5,
                             RoomType = "Special Rooms",
                             charge = 6500
                         });

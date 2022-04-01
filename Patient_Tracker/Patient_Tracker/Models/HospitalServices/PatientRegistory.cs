@@ -7,7 +7,7 @@ namespace Patient_Tracker.Models.HospitalServices
     {
 
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
 
         public int PateintId { get; set; }
