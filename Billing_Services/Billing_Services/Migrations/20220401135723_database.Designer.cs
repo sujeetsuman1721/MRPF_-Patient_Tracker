@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Billing_Services.Migrations
 {
     [DbContext(typeof(BillingContext))]
-    [Migration("20220401134218_newdatabase")]
-    partial class newdatabase
+    [Migration("20220401135723_database")]
+    partial class database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

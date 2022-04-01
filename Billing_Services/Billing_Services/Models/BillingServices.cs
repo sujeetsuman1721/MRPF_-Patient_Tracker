@@ -14,9 +14,11 @@ namespace Billing_Services.Models
         public int ConsultationCharges { get; set; }
         public int LabTestCharges { get; set; }
         public int RoomCharges { get; set; }
+
         public long TotalAmount { get; set; }
        
 
        
+
     }
 }

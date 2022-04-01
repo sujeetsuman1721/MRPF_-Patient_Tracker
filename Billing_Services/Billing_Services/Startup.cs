@@ -35,12 +35,14 @@ namespace Billing_Services
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo
             {
+
                 Title = "Billing Services API",
                 Description = "Allow to generate a bill ",
                 Contact = new OpenApiContact
                 {
                     Email = "PatientTracker@outlook.com",
-                    Name = "Patient Tracker"
+                    Name = "Patient Tracker",
+
                 }
 
             }));
