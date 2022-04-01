@@ -14,9 +14,6 @@ namespace Billing_Services.Models
         public int LabTestCharges { get; set; }
         public int RoomCharges { get; set; }
 
-        internal static Task<IEnumerable<BillingServices>> GetAsync()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -22,7 +22,7 @@ namespace Billing_Services.Controllers
         }
         [HttpGet("GetCharges")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<BillingDTO>))]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetCharges()
         {
             IEnumerable<BillingServices> billing = await BillingRepository.GetAsync();
 
@@ -33,17 +33,11 @@ namespace Billing_Services.Controllers
         [ProducesResponseType(200, Type = typeof(BillingDTO))]
         public async Task<IActionResult> Post(BillingServices model)
         {
-
             BillingRepository.Add(model);
             await BillingRepository.SaveAsync();
 
-
             return StatusCode(200, model);
 
-        }
-        public IActionResult Index()
-        {
-            return View();
         }
     }
 }

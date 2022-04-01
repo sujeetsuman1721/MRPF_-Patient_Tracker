@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,13 @@ namespace Billing_Services
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title="BillingServices",
-                Description="Charges"
+                Title = "Billing Services API",
+                Description = "Allow to generate a bill ",
+                Contact = new OpenApiContact
+                {
+                    Email = "PatientTracker@outlook.com",
+                    Name = "Patient Tracker"
+                }
 
             }));
         }
