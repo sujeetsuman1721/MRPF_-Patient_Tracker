@@ -14,7 +14,7 @@ namespace Patient_Tracker.Models.Services
         private readonly HttpClient client;
         public  HospitalServices(IHttpClientFactory factory)
         {
-            client = factory.CreateClient("Services");
+            client = factory.CreateClient("PatientInfo");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -22,7 +22,7 @@ namespace Patient_Tracker.Models.Services
         public async Task<List<LabTests>> GetLabTests()
         {
             var labTests = new List<LabTests>();
-            var Response = await client.GetAsync("/api/hospitalservices/labtests");
+            var Response = await client.GetAsync("/api/HospitalServices/LabTests");
             Response.EnsureSuccessStatusCode();
             var Json = await Response.Content.ReadAsStringAsync();
             labTests = JsonConvert.DeserializeObject<List<LabTests>>(Json);
@@ -31,7 +31,7 @@ namespace Patient_Tracker.Models.Services
         public async Task<List<RoomDetails>> GetRoomDetails()
         {
             var roomDetails = new List<RoomDetails>();
-            var Response = await client.GetAsync("/api/hospitalservices/roomdetails");
+            var Response = await client.GetAsync("/api/HospitalServices/RoomDetails");
             Response.EnsureSuccessStatusCode();
             var Json = await Response.Content.ReadAsStringAsync();
             roomDetails = JsonConvert.DeserializeObject<List<RoomDetails>>(Json);
@@ -39,11 +39,11 @@ namespace Patient_Tracker.Models.Services
         }
         public async Task<List<Consultation>> GetConsultationDetails()
         {
-            var consultants = new List<Consultation>();
-            var Response = await client.GetAsync("/api/hospitalservices/consultationdetails");
+         
+            var Response = await client.GetAsync("/api/HospitalServices/ConsultationDetails");
             Response.EnsureSuccessStatusCode();
             var Json = await Response.Content.ReadAsStringAsync();
-            consultants = JsonConvert.DeserializeObject<List<Consultation>>(Json);
+            var consultants = JsonConvert.DeserializeObject<List<Consultation>>(Json);
             return consultants;
         }
     }

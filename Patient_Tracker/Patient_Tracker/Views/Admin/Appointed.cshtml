@@ -9,26 +9,17 @@
 <p>
     <a asp-action="Register">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped table-dark">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PateintId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfRegi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
+         <tr>
+          <th scope="col">Appointment Id</th>
+          <th scope="col">Paseint Id</th>
+          <th scope="col">Doctor Id</th>
+           <th scope="col">Date of Appointment</th>
+          <th scope="col">Status</th>
+          <th scope="col">Add Facility</th>
         </tr>
+       
     </thead>
     <tbody>
 @foreach (var item in Model) {
@@ -43,13 +34,13 @@
                 @Html.DisplayFor(modelItem => item.DoctorId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfRegi)
+                @Html.DisplayFor(modelItem => (item.DateOfRegi))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Add Facility", "AddFacility", new {  id=item.PateintId  }) |
+                @Html.ActionLink("Add Facility", "AddFacility", new {  id=item.PateintId  }) 
                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>

@@ -14,14 +14,17 @@ namespace Patient_Tracker.Controllers
 
         private readonly PatientServices patientServices;
 
+        private readonly HospitalServices hospitalServices;
+
     
 
 
-        public AdminController(UserServices userServices, PatientServices patientServices)
+        public AdminController(UserServices userServices, PatientServices patientServices,HospitalServices hospital)
 
         {
             this.patientServices = patientServices;
             this.userServices = userServices;
+            this.hospitalServices = hospital;
        
 
         }  
@@ -141,23 +144,28 @@ namespace Patient_Tracker.Controllers
             ViewBag.patientList = new SelectList(patientlist, "PateintId", "FirstName");
 
             ViewBag.DoctorList = new SelectList(doctorlist, "DoctorId", "FirstName");
-            var labTests = await patientServices.GetLabTests();
+            var labTests = await hospitalServices.GetLabTests();
             ViewBag.Labtests = new SelectList(labTests, "LabTestId", "LabTestName");
-            var consultants = await patientServices.GetConsultationDetails();
+            var consultants = await hospitalServices.GetConsultationDetails();
             ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
-            var rooms = await patientServices.GetRoomDetails();
+            var rooms = await hospitalServices.GetRoomDetails();
             ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
             return View();
 
         }
 
 
-        //public async Task<IActionResult> AddFacility(int patientId)
-        //{
-            
+        public async Task<IActionResult> AddFacility(int patientId)
+        {
+            var labTests = await hospitalServices.GetLabTests();
+            ViewBag.Labtests = new SelectList(labTests, "LabTestId", "LabTestName");
+            var consultants = await hospitalServices.GetConsultationDetails();
+            ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
+            var rooms = await hospitalServices.GetRoomDetails();
+            ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
+            return View();
 
-
-        //}
+        }
 
 
 

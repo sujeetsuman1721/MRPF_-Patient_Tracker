@@ -108,6 +108,8 @@ namespace Patient_Tracker.Controllers
             HttpContext.Session.SetString("name", Result.name);
             HttpContext.Session.SetString("role", Result.role);
 
+           // HttpContext.Session.SetInt32("Id", Result.Id);
+
             if (Result.role.Equals("Admin"))
                 return RedirectToAction("Index", "Admin");
             else if (Result.role.Equals("Clerk"))

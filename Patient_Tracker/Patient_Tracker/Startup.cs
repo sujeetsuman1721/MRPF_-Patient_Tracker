@@ -37,6 +37,7 @@ namespace Patient_Tracker
 
             services.AddScoped(typeof(UserServices));
             services.AddScoped(typeof(PatientServices));
+            services.AddScoped(typeof(HospitalServices));
 
 
 
