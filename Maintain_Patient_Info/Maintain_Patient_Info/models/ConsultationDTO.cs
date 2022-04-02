@@ -11,6 +11,6 @@ namespace Maintain_Patient_Info.models
         [Key]
         public int ConsultationId { get; set; }
         public string Purpose { get; set; }
-        public string Charge { get; set; }
+        public int Charge { get; set; }
     }
 }

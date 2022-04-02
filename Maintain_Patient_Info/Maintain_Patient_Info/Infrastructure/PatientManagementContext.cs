@@ -22,14 +22,6 @@ namespace Maintain_Patient_Info.Infrastructure
 
         public virtual DbSet<Consultation> Consultation { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-
-
-        public virtual DbSet<PatientsRegistory> Patient_Infos { get; set; }
-     
-        public virtual DbSet<Room> RoomDetails { get; set; }
-
-
-        public virtual DbSet<PatientsRegistory> PatientsRegistories { get; set; }
         public virtual DbSet<Facilites> Facilites { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelsBuilder)
@@ -41,7 +33,7 @@ namespace Maintain_Patient_Info.Infrastructure
 
                    RoomId = 1,
                    RoomType = "Single",
-                   charge = 4000
+                   Charge = 4000
 
 
                },
@@ -49,26 +41,26 @@ namespace Maintain_Patient_Info.Infrastructure
               {
                   RoomId = 2,
                   RoomType = "Single",
-                  charge = 4000
+                  Charge = 4000
               },
 
               new Room
               {
                   RoomId = 3,
                   RoomType = "Double",
-                  charge = 4000
+                  Charge = 4000
               },
               new Room
               {
                   RoomId = 4,
                   RoomType = "ICU",
-                  charge = 6000
+                  Charge = 6000
               },
               new Room
               {
                   RoomId = 5,
                   RoomType = "Special Rooms",
-                  charge = 6500
+                  Charge = 6500
               }
               );
 

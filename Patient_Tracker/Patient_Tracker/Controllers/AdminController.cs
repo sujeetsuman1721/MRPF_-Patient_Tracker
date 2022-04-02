@@ -16,16 +16,18 @@ namespace Patient_Tracker.Controllers
 
         private readonly HospitalServices hospitalServices;
 
-    
+        private readonly BillingServices billingServices;
 
 
-        public AdminController(UserServices userServices, PatientServices patientServices,HospitalServices hospital)
+        public AdminController(UserServices userServices, PatientServices patientServices,HospitalServices hospitalServices,BillingServices billingServices)
 
         {
             this.patientServices = patientServices;
             this.userServices = userServices;
-            this.hospitalServices = hospital;
-       
+            this.hospitalServices = hospitalServices;
+            this.billingServices = billingServices;
+   
+
 
         }
 
@@ -177,10 +179,37 @@ namespace Patient_Tracker.Controllers
             return RedirectToAction("Appointed");
 
         }
+        public async Task<IActionResult> Billing()
+        {
+            var pat = await patientServices.GetAppointedDoctor();
 
+            return View(pat);
 
+        }
 
+        public async Task<IActionResult> GenerateBill(int id)
+        {
+            ViewBag.Id = id;
+            var labcharges = await hospitalServices.GetLabTests();
+            ViewBag.LabtestCharges = new SelectList(labcharges, "LabTestId", "Charge");
+            var consultantcharges = await hospitalServices.GetConsultationDetails();
+            ViewBag.ConsultationCharges = new SelectList(consultantcharges, "ConsultationId", "Charge");
+            var roomcharges = await hospitalServices.GetRoomDetails();
+            ViewBag.RoomCharges = new SelectList(roomcharges, "RoomId", "charge");
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> GenerateBill(Billing billing)
+        {
+            /*if(billing.LabTestCharges>=0 && billing.RoomCharges>=0 && billing.ConsultationCharges>=0)
+            {
+                billing.TotalAmount = billing.RoomCharges + billing.LabTestCharges + billing.ConsultationCharges;
+            }*/
+            await billingServices.GenerateBill(billing);
+            return View();
+
+        }
 
 
 
