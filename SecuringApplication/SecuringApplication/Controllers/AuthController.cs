@@ -176,10 +176,6 @@ namespace SecuringApplication.Controllers
 
 
             clerk.ApplicationUser = appUser;
-         
-
-
-
             clerksRepository.Add(clerk);
             await clerksRepository.SaveAsync();
 
@@ -194,10 +190,10 @@ namespace SecuringApplication.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLogin model)
         {
+
+            
             
             ApplicationUser appUser = await userManager.FindByNameAsync(model.UserName);
-
-
 
             if (appUser == null) return BadRequest("Invalid username/password");
 
@@ -236,11 +232,12 @@ namespace SecuringApplication.Controllers
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             string token = tokenHandler.WriteToken(jwtSecurityToken);
             var response = new LoginResponse { jwt = token, name = appUser.UserName, role = roles.First(),UserId=0 };
-           
-            //if (response.role == "Patient")
-            //{
-            //    response.UserId=patientsRepository.GetByUserId(appUser.Id).Pa
-            //}
+
+
+            if (response.role == "Patient")
+            {
+                response.UserId =await patientsRepository.GetByUserId(appUser.Id);
+            }
             //if (response.role == "Doctor")
             //{
             //    response.UserId = doctorsRepository.GetByUserId(appUser.Id).D

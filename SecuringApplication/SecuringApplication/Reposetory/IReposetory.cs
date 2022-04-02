@@ -10,6 +10,7 @@ namespace SecuringApplication.Reposetory
 
         Task<int> SaveAsync();
 
-
+      
+       Task<int> GetByUserId(string id);
     }
 }

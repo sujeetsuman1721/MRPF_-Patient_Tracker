@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SecuringApplication.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SecuringApplication.Reposetory
@@ -27,6 +28,16 @@ namespace SecuringApplication.Reposetory
             return (IReadOnlyCollection<T>)await context.Patiennt.Include(x=>x.ApplicationUser).ToListAsync();
           
         }
+        
 
+      
+
+        async Task<int> IReposetory<T>.GetByUserId(string id)
+        {
+          
+            Patient patient = (Patient)context.Patiennt.Where(patient => patient.ApplicationUserId == id);
+
+            return patient.PatientId;
+        }
     }
 }

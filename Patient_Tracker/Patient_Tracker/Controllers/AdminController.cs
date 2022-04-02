@@ -27,9 +27,11 @@ namespace Patient_Tracker.Controllers
             this.hospitalServices = hospital;
        
 
-        }  
+        }
+
         
-        
+
+
         public IActionResult Index()
 
         {
@@ -172,9 +174,11 @@ namespace Patient_Tracker.Controllers
         {
             
             await hospitalServices.AddFacility(facilities);
-            return View();
+            return RedirectToAction("Appointed");
 
         }
+
+
 
 
 

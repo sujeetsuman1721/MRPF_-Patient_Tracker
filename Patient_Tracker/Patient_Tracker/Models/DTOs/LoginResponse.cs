@@ -7,6 +7,7 @@ namespace Patient_Tracker.Models.DTOs
 {
     public class LoginResponse
     {
+        public int Id { get; set; }
         public string jwt { get; set; }
         public string name { get; set; }
         public string role { get; set; }

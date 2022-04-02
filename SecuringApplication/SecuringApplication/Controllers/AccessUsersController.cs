@@ -35,9 +35,6 @@ namespace SecuringApplication.Controllers
             this.clerksRepository = clerksRepository;
         }
 
-
-       
-
         [HttpGet("GetDoctors")]
         public async Task<IActionResult> GetDoctors()
         {
