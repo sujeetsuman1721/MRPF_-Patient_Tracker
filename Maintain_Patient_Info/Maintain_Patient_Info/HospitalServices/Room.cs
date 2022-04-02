@@ -10,7 +10,7 @@ namespace Maintain_Patient_Info.HospitalServices
     {
         [Key]
         public int RoomId { get; set; }
-        public int charge { get; set; }
+        public int Charge { get; set; }
         public string RoomType { get; set; }
        
     }
