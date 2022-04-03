@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SecuringApplication.Models.Registration
 {
@@ -7,7 +8,11 @@ namespace SecuringApplication.Models.Registration
         [Key]
         public int ClerkId { get; set; }
 
-        public int ApplicationUserId { get; set; }
+        public string  ApplicationUserId { get; set; }
+
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
+
+        
     }
 }

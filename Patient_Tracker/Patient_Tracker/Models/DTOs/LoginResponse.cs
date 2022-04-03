@@ -10,5 +10,6 @@ namespace Patient_Tracker.Models.DTOs
         public string jwt { get; set; }
         public string name { get; set; }
         public string role { get; set; }
+        public int UserId { get; set; }
     }
 }

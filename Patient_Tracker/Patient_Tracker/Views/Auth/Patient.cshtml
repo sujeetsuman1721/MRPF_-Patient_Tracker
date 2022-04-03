@@ -11,32 +11,32 @@
                 <div class="card rounded-3">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info Patient</h3>
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Information Patient</h3>
         <form asp-action="PatientRegister">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
              <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                <label>UserName</label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
+                <label>First Name</label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
+                <label>Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
+                <label>Date Of Birth</label>
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
+                <label>Gender</label>
                 <select class="form-control"id="Gender" name="Gender">
                     <option>Male</option>
                     <option>Female</option>
@@ -44,37 +44,37 @@
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactNumber" class="control-label"></label>
+                <label>Contact Number</label>
                 <input asp-for="ContactNumber" class="form-control" />
                 <span asp-validation-for="ContactNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label >Address</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label >Password</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <label>Confirm Password</label>
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SecretQuestions" class="control-label"></label>
+                <label>Secret Questions</label>
                 <select class="form-control" id="SecretQuestions" name="SecretQuestions">
-                    <option>FavouriteFood</option>
-                    <option>FavouriteColor</option>
-                    <option>FavouritePlace</option>
+                    <option>Favourite Food</option>
+                    <option>Favourite Color</option>
+                    <option>Favourite Place</option>
                     <option>Date Of Birth</option>
                 </select>
                 <span asp-validation-for="SecretQuestions" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Answer" class="control-label"></label>
+                <label>Answer</label>
                 <input asp-for="Answer" class="form-control" />
                 <span asp-validation-for="Answer" class="text-danger"></span>
             </div>

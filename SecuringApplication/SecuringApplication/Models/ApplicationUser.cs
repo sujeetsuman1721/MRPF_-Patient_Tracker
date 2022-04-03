@@ -13,6 +13,8 @@ namespace SecuringApplication.Models
         
         public string LastName { get; set; }
 
+        public string Status { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Gender has to be selected")]

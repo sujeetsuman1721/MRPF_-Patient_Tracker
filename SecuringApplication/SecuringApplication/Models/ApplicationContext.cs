@@ -13,7 +13,7 @@ namespace SecuringApplication.Models
 
         public virtual DbSet<Doctor> Doctor { get; set; }
 
-        public virtual DbSet<Patient> Patiennt { get; set; }
+        public virtual DbSet<Patient> Patient { get; set; }
 
         public virtual DbSet<Clerk>  Clerks { get; set; }
 

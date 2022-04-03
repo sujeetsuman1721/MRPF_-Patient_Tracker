@@ -27,11 +27,7 @@ namespace Patient_Tracker.Controllers
             this.hospitalServices = hospitalServices;
             this.billingServices = billingServices;
    
-
-
-        }  
-        
-        
+        }
         public IActionResult Index()
 
         {
@@ -174,7 +170,7 @@ namespace Patient_Tracker.Controllers
         {
             
             await hospitalServices.AddFacility(facilities);
-            return View();
+            return RedirectToAction("Appointed");
 
         }
         public async Task<IActionResult> Billing()
@@ -195,6 +191,9 @@ namespace Patient_Tracker.Controllers
             var consultantcharge = patientServices.GetConsultantId(id);
             ViewBag.Id = id;
             var roomcharge = patientServices.GetRoomById(id);*/
+
+            var appointment = await hospitalServices.GetAppointmentById(id);
+
             ViewBag.Id = id;
             //var appid = await patientServices.GetFacilities();
             //ViewBag.AppointmentId = new SelectList(appid, "AppointmentId", "AppointmentId");
@@ -204,6 +203,8 @@ namespace Patient_Tracker.Controllers
             ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
             var roomcharges = await hospitalServices.GetRoomDetails();
             ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
+
+            //var TotalCharge = roomcharges + consultantcharges + labcharges;
             return View();
         }
 
@@ -219,6 +220,8 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
+
+
 
 
 

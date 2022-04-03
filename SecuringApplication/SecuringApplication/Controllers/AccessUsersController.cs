@@ -35,9 +35,6 @@ namespace SecuringApplication.Controllers
             this.clerksRepository = clerksRepository;
         }
 
-
-       
-
         [HttpGet("GetDoctors")]
         public async Task<IActionResult> GetDoctors()
         {
@@ -51,11 +48,13 @@ namespace SecuringApplication.Controllers
 
         public async Task<IActionResult> GetPatient()
         {
-            IEnumerable<Patient> patients = await context.Patiennt.Include(x => x.ApplicationUser).ToListAsync();
+            IEnumerable<Patient> patients = await context.Patient.Include(x => x.ApplicationUser).ToListAsync();
 
 
             return Ok(patients);
         }
+
+
 
 
     }

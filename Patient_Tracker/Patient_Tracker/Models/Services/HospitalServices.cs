@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Patient_Tracker.Models.DTOs;
 using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
+using Patient_Tracker.Models.HospitalServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,5 +65,25 @@ namespace Patient_Tracker.Models.Services
             return Response.StatusCode == HttpStatusCode.OK;
 
         }
+
+        public async Task<PatientRegistory> GetAppointmentById(int id)
+        {
+
+            var appointmentdetail = new PatientRegistory();
+
+            var response = await client.GetAsync($"/api/Facilities/GetByAppontmentById/{id}");
+
+
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            appointmentdetail=  JsonConvert.DeserializeObject< PatientRegistory>(json);
+
+            return appointmentdetail;
+
+        }
+
+
     }
 }

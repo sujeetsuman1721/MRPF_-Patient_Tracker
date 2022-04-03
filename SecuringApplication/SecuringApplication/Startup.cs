@@ -39,9 +39,11 @@ namespace SecuringApplication
             services.AddControllers();
             services.AddDbContext<ApplicationContext>(setup => setup.UseSqlServer(Configuration.GetConnectionString("con")));
 
-            services.AddScoped<IReposetory<Patient>, GenereicRepository<Patient>>();
-            services.AddScoped<IReposetory<Doctor>, GenereicRepository<Doctor>>();
-            services.AddScoped<IReposetory<Clerk>, GenereicRepository<Clerk>>();
+       
+            services.AddScoped<IReposetory<Clerk>, ClerkRepository<Clerk>>();
+
+            services.AddScoped<IReposetory<Patient>, PatientRepository<Patient>>();
+            services.AddScoped<IReposetory<Doctor>, DoctorReposetory<Doctor>>();
 
 
             services.AddIdentity<ApplicationUser, IdentityRole>(setup =>

@@ -30,6 +30,8 @@ namespace Patient_Tracker.Models.Services
             var generatebill = JsonConvert.DeserializeObject<List<Billing>>(Json);
             return generatebill;
         }
+
+        //
         public async Task<bool> GenerateBill(Billing billing)
         {
 

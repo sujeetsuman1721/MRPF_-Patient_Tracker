@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Patient_Tracker.Models.ApplicationModel
 {
@@ -7,7 +8,8 @@ namespace Patient_Tracker.Models.ApplicationModel
         [Key]
         public int PatientId { get; set; }
 
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

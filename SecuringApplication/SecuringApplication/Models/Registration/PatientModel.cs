@@ -21,6 +21,8 @@ namespace SecuringApplication.Models.Registration
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
 
+        public string Status { get; set; }
+
       
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public string ContactNumber { get; set; }

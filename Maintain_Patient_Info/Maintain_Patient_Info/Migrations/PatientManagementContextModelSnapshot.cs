@@ -169,46 +169,46 @@ namespace Maintain_Patient_Info.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Charge")
+                        .HasColumnType("int");
+
                     b.Property<string>("RoomType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("charge")
-                        .HasColumnType("int");
-
                     b.HasKey("RoomId");
 
-                    b.ToTable("Room");
+                    b.ToTable("Rooms");
 
                     b.HasData(
                         new
                         {
                             RoomId = 1,
-                            RoomType = "Single",
-                            charge = 4000
+                            Charge = 4000,
+                            RoomType = "Single"
                         },
                         new
                         {
                             RoomId = 2,
-                            RoomType = "Single",
-                            charge = 4000
+                            Charge = 4000,
+                            RoomType = "Single"
                         },
                         new
                         {
                             RoomId = 3,
-                            RoomType = "Double",
-                            charge = 4000
+                            Charge = 4000,
+                            RoomType = "Double"
                         },
                         new
                         {
                             RoomId = 4,
-                            RoomType = "ICU",
-                            charge = 6000
+                            Charge = 6000,
+                            RoomType = "ICU"
                         },
                         new
                         {
                             RoomId = 5,
-                            RoomType = "Special Rooms",
-                            charge = 6500
+                            Charge = 6500,
+                            RoomType = "Special Rooms"
                         });
                 });
 #pragma warning restore 612, 618
