@@ -49,5 +49,7 @@ namespace Patient_Tracker.Models.DTOs
 
         [Required]
         public string Answer { get; set; }
+
+        public string Status { get; set; } = "UnAproove";
     }
 }

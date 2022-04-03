@@ -3,12 +3,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Select What oparation you want to perform</h3>
+<h1 style="text-align:center; margin-top:20px;"> Welcome to Admin Dashboard </h1>
 
- <h5><a class="link-primary"  asp-controller="Admin" asp-action="Register">Register</a></h5>
 
-     <h5><a class="link-primary" asp-controller="Admin" asp-action="Appointed">Update</a></h5>
+      <div class="row margin">
+        
+        <div class="col-md-4" style="margin-top:50px;">
+            <a asp-action="Register" asp-controller="Admin" class="btn btn-secondary "><b>Register</b></a>
+        </div>
+        <div class="col-md-4" style="margin-top:50px;">
+             <a asp-action="Update" asp-controller="Admin" class="btn btn-secondary "><b>Update</b></a>
 
-     <h5><a class="link-primary" asp-controller="Admin" asp-action="Billing">Billing</a></h5>
+        </div>
+        <div class="col-md-4" style="margin-top:50px;">
+             <a asp-action="Billing" asp-controller="Admin" class="btn btn-secondary "><b>Billing</b></a>
+
+        </div>
+    </div>
       
 

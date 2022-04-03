@@ -108,7 +108,7 @@ namespace Patient_Tracker.Controllers
             HttpContext.Session.SetString("name", Result.name);
             HttpContext.Session.SetString("role", Result.role);
 
-            HttpContext.Session.SetInt32("Id", Result.Id);
+            HttpContext.Session.SetInt32("UserId", Result.UserId);
 
        
 

@@ -13,7 +13,7 @@ namespace Maintain_Patient_Info.Controllers
     [ApiController]
     public class FacilitiesController : Controller
     {
-       
+
         private readonly IRepository<Facilites> facilitiesRepository;
         private readonly IMapper mapper;
         public FacilitiesController(IRepository<Facilites> facilitiesRepository, IMapper mapper)
@@ -42,22 +42,34 @@ namespace Maintain_Patient_Info.Controllers
             return StatusCode(200, dto);
 
         }
-        [HttpGet("GetByAppontmentId")]
+        [HttpGet]
+        [Route("[action]/{AppointmentId}")]
         [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
 
-        public async Task<IActionResult> GetFacility(int AppontmentId)
+        public async Task<IActionResult> GetByAppontmentById(int AppointmentId)
         {
 
             IEnumerable<Facilites> facilities = await facilitiesRepository.GetAsync();
 
             var  facility = facilities
-                   .Where(f => f.AppointmentId == AppontmentId);
+                   .Where(f => f.AppointmentId == AppointmentId);
 
             
             return Ok(facility);
         }
 
-       
+        [HttpGet]
+        [Route("[action]/{patinetId}")]
+        [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
+
+        public async Task<IActionResult> GetAppointmentByPatientId(int patinetId)
+        {
+
+            IEnumerable<Facilites> facilities = await facilitiesRepository.GetAsync();
+            return Ok(facilities);
+        }
+
+
 
 
 

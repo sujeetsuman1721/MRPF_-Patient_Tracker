@@ -23,7 +23,7 @@ namespace SecuringApplication.Models.Registration
         public string Gender { get; set; }
 
 
-      
+        public string Status { get; set; }
         public string ContactNumber { get; set; }
 
 

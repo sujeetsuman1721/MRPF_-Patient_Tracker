@@ -52,6 +52,8 @@ namespace Patient_Tracker.Models.DTOs
         public string Qualification { get; set; }
         [Required]
         public string Specialization { get; set; }
+
+        public string Status { get; set; }= "UnAproove";
     }
 
    

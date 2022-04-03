@@ -21,6 +21,7 @@ namespace Patient_Tracker.Models.DTOs
         [Required(ErrorMessage = "Date of birth cant be empty")]
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
+
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
 
@@ -46,6 +47,8 @@ namespace Patient_Tracker.Models.DTOs
         public string SecretQuestions { get; set; }
         [Required]
         public string Answer { get; set; }
+
+        public string Status { get; set; }= "UnAproove";
     }
 }
 

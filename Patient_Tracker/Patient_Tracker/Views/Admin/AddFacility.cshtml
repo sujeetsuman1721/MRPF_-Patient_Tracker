@@ -4,20 +4,21 @@
     ViewData["Title"] = "AddFacility";
 }
 
-<h1>AddFacility</h1>
-
-<h4>Facilities</h4>
+<h3 style="text-align:center; margin-top:20px;">Add Facility For The Appointment Id  @ViewBag.Id</h3>
 <hr />
-<div class="row">
+<div style=class="row">
     <div class="col-md-4">
         <form asp-action="AddFacility">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
             
             <div class="form-group">
                 <label asp-for="AppointmentId" class="control-label"></label>
-                <input asp-for="AppointmentId" value=@ViewBag.Id class="field left" readonly  />
+                <label asp-for="AppointmentId" >   @ViewBag.Id    </label>
                
                 <span asp-validation-for="AppointmentId" class="text-danger"></span>
+
             </div>
              <div class="form-group">
                 <label asp-for="ConsultationId" class="control-label">Purpose</label>

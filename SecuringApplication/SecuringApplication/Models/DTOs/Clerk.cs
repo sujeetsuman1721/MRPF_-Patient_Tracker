@@ -12,5 +12,7 @@ namespace SecuringApplication.Models.Registration
 
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
+
+        
     }
 }

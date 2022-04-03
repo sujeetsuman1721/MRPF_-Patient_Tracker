@@ -9,8 +9,9 @@ namespace SecuringApplication.Reposetory
         Task<IReadOnlyCollection<T>> GetAsync();
 
         Task<int> SaveAsync();
+        
 
-      
-       Task<int> GetByUserId(string id);
+
+         Task<int> GetByUserId(string id);
     }
 }

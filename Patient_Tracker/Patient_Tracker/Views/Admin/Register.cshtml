@@ -4,22 +4,21 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
+<h1 style="text-align:center; margin-top:20px;">Take a new Appoinment</h1>
 
-<h4>PatientRegistory</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="PateintId" class="control-label"></label>
+                <label>1. Select the Patient from below List</label>
                 <select asp-for="PateintId" class="form-control" asp-items="@ViewBag.patientList">
                    
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="DoctorId" class="control-label"></label>
+                <label>1. Select the doctor from below List</label>
          
                <select asp-for="DoctorId" class="form-control" asp-items="@ViewBag.DoctorList">
                   
@@ -28,13 +27,17 @@
              
           
             <div class="form-group">
-                <label asp-for="DateOfRegi" class="control-label"></label>
+                <label>3. Select Date of Appointment</label>
                 <input asp-for="DateOfRegi" class="form-control" />
                 <span asp-validation-for="DateOfRegi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <label>4.Select Status</label>
+                 <select class="form-control" id="Status" name="Status">
+                    <option>Pending</option>
+                    <option>Running</option>
+
+                </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">

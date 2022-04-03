@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maintain_Patient_Info.Migrations
 {
-    public partial class thedataisadeed : Migration
+    public partial class dataisadded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,17 +69,17 @@ namespace Maintain_Patient_Info.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Room",
+                name: "Rooms",
                 columns: table => new
                 {
                     RoomId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    charge = table.Column<int>(nullable: false),
+                    Charge = table.Column<int>(nullable: false),
                     RoomType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Room", x => x.RoomId);
+                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
 
             migrationBuilder.InsertData(
@@ -105,15 +105,15 @@ namespace Maintain_Patient_Info.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Room",
-                columns: new[] { "RoomId", "RoomType", "charge" },
+                table: "Rooms",
+                columns: new[] { "RoomId", "Charge", "RoomType" },
                 values: new object[,]
                 {
-                    { 1, "Single", 4000 },
-                    { 2, "Single", 4000 },
-                    { 3, "Double", 4000 },
-                    { 4, "ICU", 6000 },
-                    { 5, "Special Rooms", 6500 }
+                    { 1, 4000, "Single" },
+                    { 2, 4000, "Single" },
+                    { 3, 4000, "Double" },
+                    { 4, 6000, "ICU" },
+                    { 5, 6500, "Special Rooms" }
                 });
         }
 
@@ -132,7 +132,7 @@ namespace Maintain_Patient_Info.Migrations
                 name: "PatientsRegistory");
 
             migrationBuilder.DropTable(
-                name: "Room");
+                name: "Rooms");
         }
     }
 }

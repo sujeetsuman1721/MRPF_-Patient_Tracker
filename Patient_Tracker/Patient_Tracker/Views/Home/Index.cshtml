@@ -8,12 +8,24 @@
     <hr/>
     <h4>Please choose your Role here</h4>
 
-     <hr/>
-     <h5><a class="link-primary"  asp-controller="Auth" asp-action="Doctor">Doctor</a></h5>
 
-     <h5><a class="link-primary" asp-controller="Auth" asp-action="Patient">Patient</a></h5>
 
-     <h5><a class="link-primary" asp-controller="Auth" asp-action="Clerk">Clerk</a></h5>
+<div class="text-center" style="margin-top:50px;">
+    <div class="row margin">
+        
+        <div class="col-md-4" style="margin-top:50px;">
+            <a asp-action="Doctor" asp-controller="Auth" class="btn btn-secondary "><b>Doctor</b></a>
+        </div>
+        <div class="col-md-4" style="margin-top:50px;">
+             <a asp-action="Patient" asp-controller="Auth" class="btn btn-secondary "><b>Patient</b></a>
+
+        </div>
+        <div class="col-md-4" style="margin-top:50px;">
+             <a asp-action="Clerk" asp-controller="Auth" class="btn btn-secondary "><b>Clerk</b></a>
+
+        </div>
+    </div>
+</div>
       
     
 </div>

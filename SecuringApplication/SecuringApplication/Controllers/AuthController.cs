@@ -65,8 +65,9 @@ namespace SecuringApplication.Controllers
                 Gender = model.Gender,
                 PhoneNumber = model.ContactNumber,
                 PasswordHash = model.Password,
-               SecretQuestions = model.SecretQuestions,
-               Answer = model.Answer
+                SecretQuestions = model.SecretQuestions,
+                Answer = model.Answer,
+               Status = model.Status,
 
            };
 
@@ -236,12 +237,12 @@ namespace SecuringApplication.Controllers
 
             if (response.role == "Patient")
             {
-                response.UserId =await patientsRepository.GetByUserId(appUser.Id);
+                response.UserId = await patientsRepository.GetByUserId(appUser.Id);
             }
-            //if (response.role == "Doctor")
-            //{
-            //    response.UserId = doctorsRepository.GetByUserId(appUser.Id).D
-            //}
+            if (response.role == "Doctor")
+            {
+                response.UserId = await doctorsRepository.GetByUserId(appUser.Id);
+            }
             return Ok(response);
         }
 

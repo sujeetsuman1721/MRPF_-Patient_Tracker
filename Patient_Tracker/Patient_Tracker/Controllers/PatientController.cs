@@ -7,7 +7,7 @@ namespace Patient_Tracker.Controllers
     public class PatientController : Controller
     { 
 
-        public int  patientId;
+        public int ? patientId;
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             base.OnActionExecuting(context);
@@ -15,8 +15,10 @@ namespace Patient_Tracker.Controllers
             ViewBag.FirstName = HttpContext.Session.GetString("firstname");
             //ViewBag.PatientId=HttpContext.Session.GetInt32()
             var Role = HttpContext.Session.GetString("role");
+            patientId=HttpContext.Session.GetInt32("Id");
+            
             ViewBag.Role = Role;
-            if (!Role.Equals("HospitalAdmin"))
+            if (!Role.Equals("Patient"))
                 context.Result = new RedirectToActionResult("Logout", "Auth", null);
         }
 
