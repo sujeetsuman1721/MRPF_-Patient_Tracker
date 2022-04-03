@@ -187,13 +187,23 @@ namespace Patient_Tracker.Controllers
 
         public async Task<IActionResult> GenerateBill(int id)
         {
+
+            /*var appid = patientServices.GetAppointmentById(id);
             ViewBag.Id = id;
+            var labcharge = patientServices.GetLabById(id);
+            ViewBag.Id = id;
+            var consultantcharge = patientServices.GetConsultantId(id);
+            ViewBag.Id = id;
+            var roomcharge = patientServices.GetRoomById(id);*/
+            ViewBag.Id = id;
+            //var appid = await patientServices.GetFacilities();
+            //ViewBag.AppointmentId = new SelectList(appid, "AppointmentId", "AppointmentId");
             var labcharges = await hospitalServices.GetLabTests();
-            ViewBag.LabtestCharges = new SelectList(labcharges, "LabTestId", "Charge");
+            ViewBag.LabtestCharges = new SelectList(labcharges, "Charge", "Charge");
             var consultantcharges = await hospitalServices.GetConsultationDetails();
-            ViewBag.ConsultationCharges = new SelectList(consultantcharges, "ConsultationId", "Charge");
+            ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
             var roomcharges = await hospitalServices.GetRoomDetails();
-            ViewBag.RoomCharges = new SelectList(roomcharges, "RoomId", "charge");
+            ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
             return View();
         }
 
@@ -204,6 +214,7 @@ namespace Patient_Tracker.Controllers
             {
                 billing.TotalAmount = billing.RoomCharges + billing.LabTestCharges + billing.ConsultationCharges;
             }*/
+            billing.Id = 0;
             await billingServices.GenerateBill(billing);
             return View();
 

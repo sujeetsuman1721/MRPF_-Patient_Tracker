@@ -17,6 +17,8 @@ namespace SecuringApplication.Models
 
         public virtual DbSet<Clerk>  Clerks { get; set; }
 
+        public virtual DbSet<ApplicationUser> AspNetUsers { get; set; }
+
     }
     
 }

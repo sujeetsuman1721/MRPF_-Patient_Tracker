@@ -42,25 +42,19 @@ namespace Maintain_Patient_Info.Controllers
             return StatusCode(200, dto);
 
         }
-        [HttpGet("GetByAppontmentId")]
+        [HttpGet]
+        [Route("[action]/{AppointmentId}")]
         [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
 
-        public async Task<IActionResult> GetFacility(int AppontmentId)
+        public async Task<IActionResult> GetByAppontmentById(int AppointmentId)
         {
 
             IEnumerable<Facilites> facilities = await facilitiesRepository.GetAsync();
+            var facility = facilities
+            .Where(f => f.AppointmentId == AppointmentId);
 
-            var  facility = facilities
-                   .Where(f => f.AppointmentId == AppontmentId);
-
-            
             return Ok(facility);
         }
-
-       
-
-
-
 
     }
 }

@@ -92,6 +92,46 @@ namespace Patient_Tracker.Models.Services
 
 
         }
+        public async Task<PatientRegistory> GetAppointmentById(int id)
+        {
+            var appointmentdetail = new PatientRegistory();
+            var response = await client.GetAsync($"/api/Facilities/GetByAppontmentById/{id}");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            appointmentdetail = JsonConvert.DeserializeObject<PatientRegistory>(json);
+            return appointmentdetail;
+
+        }
+        public async Task<LabTests> GetLabById(int id)
+        {
+            var labid = new LabTests();
+            var response = await client.GetAsync($"/api/Facilities/getbylabid");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            labid = JsonConvert.DeserializeObject<LabTests>(json);
+            return labid;
+
+        }
+        public async Task<Consultation> GetConsultantId(int id)
+        {
+            var consultantid = new Consultation();
+            var response = await client.GetAsync($"/api/Facilities/ConsltationId");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            consultantid = JsonConvert.DeserializeObject<Consultation>(json);
+            return consultantid;
+
+        }
+        public async Task<RoomDetails> GetRoomById(int id)
+        {
+            var roomid = new RoomDetails();
+            var response = await client.GetAsync($"/api/Facilities/GetRoomById");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            roomid = JsonConvert.DeserializeObject<RoomDetails>(json);
+            return roomid;
+
+        }
     }
 
    

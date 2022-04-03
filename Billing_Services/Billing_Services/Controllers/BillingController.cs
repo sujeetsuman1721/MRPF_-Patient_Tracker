@@ -33,6 +33,8 @@ namespace Billing_Services.Controllers
         [ProducesResponseType(200, Type = typeof(BillingDTO))]
         public async Task<IActionResult> Post(BillingServices model)
         {
+            model.TotalAmount = model.LabTestCharges + model.RoomCharges+model.ConsultationCharges;
+         //   model.Id = 0;
             BillingRepository.Add(model);
             await BillingRepository.SaveAsync();
 
