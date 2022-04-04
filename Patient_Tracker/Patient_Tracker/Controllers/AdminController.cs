@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Patient_Tracker.Models.DTOs;
+using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
 using Patient_Tracker.Models.HospitalServices;
 using Patient_Tracker.Models.Services;
 using System.Collections.Generic;
@@ -159,12 +160,14 @@ namespace Patient_Tracker.Controllers
         public async Task<IActionResult> AddFacility(int id)
         {
             ViewBag.Id = id;
+
             var labTests = await hospitalServices.GetLabTests();
             ViewBag.Labtests = new SelectList(labTests, "LabTestId", "LabTestName");
             var consultants = await hospitalServices.GetConsultationDetails();
             ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
             var rooms = await hospitalServices.GetRoomDetails();
             ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
+           
             return View();
 
         }
@@ -188,38 +191,21 @@ namespace Patient_Tracker.Controllers
         public async Task<IActionResult> GenerateBill(int id)
         {
 
-           
-
-           var facility =await hospitalServices.GetFacilityByAppontmentId(id);
-
-          
-            var consIs = facility.ConsultationId;
-            var roomId = facility.RoomId;
+            var facility = await hospitalServices.GetFacilityByAppontmentId(id);
             var labId = facility.LabTestId;
-
-           var cons=await hospitalServices.GetConsltantByConsId(consIs);
-           // // var room=
-           // // var labtest==
-
-
-           ////ViewBag.chargeCon = cons.Charge;
-
-           // //
-           // //
-
-
+            var consId = facility.ConsultationId;
+            var roomId = facility.RoomId;
            
 
-            //ViewBag.Id = id;
+            var room = await hospitalServices.GetRoomById(roomId);
+            var cons = await hospitalServices.GetRoomById(consId);
+            var Lab=await hospitalServices.GetLabTestById(consId);
 
-            //ViewBag
-     
-            //var labcharges = await hospitalServices.GetLabTests();
-            //ViewBag.LabtestCharges = new SelectList(labch, "Charge", "Charge");
-            //var consultantcharges = await hospitalServices.GetConsultationDetails();
-            //ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
-            //var roomcharges = await hospitalServices.GetRoomDetails();
-            //ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
+            ViewBag.LabCharge = Lab.Charge;
+            ViewBag.conCharge=cons.Charge;
+            ViewBag.RoomCharge = room.Charge;
+
+            ViewBag.totalCharge = Lab.Charge + cons.Charge + room.Charge;
 
             return View();
         }
@@ -227,11 +213,7 @@ namespace Patient_Tracker.Controllers
         [HttpPost]
         public async Task<IActionResult> GenerateBill(Billing billing)
         {
-            /*if(billing.LabTestCharges>=0 && billing.RoomCharges>=0 && billing.ConsultationCharges>=0)
-            {
-                billing.TotalAmount = billing.RoomCharges + billing.LabTestCharges + billing.ConsultationCharges;
-            }*/
-            billing.Id = 0;
+         
             await billingServices.GenerateBill(billing);
             return View();
 

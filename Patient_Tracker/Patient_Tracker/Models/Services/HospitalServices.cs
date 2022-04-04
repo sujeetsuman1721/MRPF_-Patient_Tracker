@@ -70,29 +70,60 @@ namespace Patient_Tracker.Models.Services
 
         public async Task<Facilities> GetFacilityByAppontmentId(int appointmentId)
         {
-            var facility = new Facilities();
+
+            var facilities = new Facilities();
+
 
             var response = await client.GetAsync($"/api/Facilities/GetFacilityByAppontmentId/{appointmentId}");
             response.EnsureSuccessStatusCode();
             var json = response.Content.ReadAsStringAsync().Result;
 
-            facility = JsonConvert.DeserializeObject<Facilities>(json);
 
-            return facility;
+            facilities = JsonConvert.DeserializeObject<Facilities>(json);
+
+
+            return facilities;
 
         }
 
-        public async Task<Consultation> GetConsltantByConsId(int consId)
+  
+        public async Task<LabTests> GetLabTestById(int labtestId)
+        {
+            var labtests= new LabTests();
+
+            var response = await client.GetAsync($"/api/hospitalservices/GetLabtestsById/{labtestId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+            labtests = JsonConvert.DeserializeObject<LabTests>(json);
+
+            return labtests;
+
+        }
+        public async Task<Consultation> GetConsultationById(int consultationId)
         {
             var consultation = new Consultation();
 
-            var response = await client.GetAsync($"/api/HospitalServices/GetConsltantByConsId/{consId}");
+            var response = await client.GetAsync($"/api/hospitalservices/GetConsultationById/{consultationId}");
             response.EnsureSuccessStatusCode();
             var json = response.Content.ReadAsStringAsync().Result;
 
             consultation = JsonConvert.DeserializeObject<Consultation>(json);
 
             return consultation;
+
+        }
+        public async Task<RoomDetails> GetRoomById(int roomId)
+        {
+            var room= new RoomDetails();
+
+            var response = await client.GetAsync($"/api/hospitalservices/GetRoomByRoomId/{roomId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+           room = JsonConvert.DeserializeObject<RoomDetails>(json);
+
+            return room;
 
         }
 

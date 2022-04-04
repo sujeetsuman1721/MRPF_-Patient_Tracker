@@ -30,6 +30,7 @@ namespace SecuringApplication.Reposetory
 
         public async Task<int> GetByUserId(string id)
         {
+
             Patient patient = await context.Patient.FirstAsync(p => p.ApplicationUserId == id);
 
 

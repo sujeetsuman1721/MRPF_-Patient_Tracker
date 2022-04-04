@@ -21,7 +21,7 @@ namespace Maintain_Patient_Info.Controllers
         private readonly IRepository<Room> roomRepository;
         private readonly IMapper mapper;
 
-        public HospitalServicesController(PatientManagementContext context,IMapper mapper,
+        public HospitalServicesController(PatientManagementContext context, IMapper mapper,
             IRepository<LabTests> labtestsrepository,
             IRepository<Consultation> consultationRepository,
             IRepository<Room> roomRepository)
@@ -51,6 +51,8 @@ namespace Maintain_Patient_Info.Controllers
             var DTO = mapper.Map<List<RoomDTO>>(rooms);
             return Ok(DTO);
         }
+
+
         [HttpGet("ConsultationDetails")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<ConsultationDTO>))]
         public async Task<IActionResult> GetConsultationDetails()
@@ -60,56 +62,50 @@ namespace Maintain_Patient_Info.Controllers
             var dto = mapper.Map<List<ConsultationDTO>>(consultants);
             return Ok(dto);
         }
+        [HttpGet]
+        [Route("[action]/{labtestId}")]
+        [ProducesResponseType(200, Type = typeof(LabTestsDTO))]
 
-        [HttpGet("GetByRoomId")]
-        [ProducesResponseType(200, Type = typeof(RoomDTO))]
-
-        public async Task<IActionResult> GetRoomById(int roomId)
+        public async Task<IActionResult> GetLabtestsById(int labtestId)
         {
 
-            IEnumerable<Room> rooms = await roomRepository.GetAsync();
+            var labtest = await labtestsrepository.GetLabTestsById(labtestId);
+            return Ok(labtest);
+        }
 
-            var room = rooms
-                   .Where(r => r.RoomId == roomId);
+        [HttpGet]
+        [Route("[action]/{RoomId}")]
+        [ProducesResponseType(200, Type = typeof(RoomDTO))]
 
+        public async Task<IActionResult> GetRoomByRoomId(int RoomId)
+        {
 
+            var room = await roomRepository.GetRoomById(RoomId);
             return Ok(room);
         }
 
-        [HttpGet("GetByLabId")]
-        [ProducesResponseType(200, Type = typeof(LabTestsDTO))]
+        [HttpGet]
+        [Route("[action]/{cunstationId}")]
+        [ProducesResponseType(200, Type = typeof(ConsultationDTO))]
 
-        public async Task<IActionResult> GetByLabId(int LabTestId)
+        public async Task<IActionResult> GetConsultationById(int cunstationId)
         {
 
-            IEnumerable<LabTests> labTests = await labtestsrepository.GetAsync();
+            var cons = await consultationRepository.GetConsultationById(cunstationId);
+            return Ok(cons);
 
-            var labTest = labTests
-                   .Where(l => l.LabTestId == LabTestId);
-
-
-            return Ok(labTest);
         }
-
-        //[HttpGet]
-        //[Route("[action]/{consultationId}")]
-        //[ProducesResponseType(200, Type = typeof(ConsultationDTO))]
-
-        //public async Task<IActionResult> GetConsltantByConsId(int consultationId)
-        //{
-
-        //    var cons = await consultationRepository.GetAsync();
-
-        //    var con = cons.FirstOrDefault(consultationId);
-
-            
-
-            
-        //    return Ok(con);
-        //}
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
 }
+

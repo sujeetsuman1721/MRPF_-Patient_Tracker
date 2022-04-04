@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maintain_Patient_Info.Migrations
 {
-    public partial class dataisadded : Migration
+    public partial class db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,8 @@ namespace Maintain_Patient_Info.Migrations
                     PateintId = table.Column<int>(nullable: false),
                     DoctorId = table.Column<int>(nullable: false),
                     DateOfRegi = table.Column<DateTime>(nullable: false),
-                    Status = table.Column<string>(nullable: true)
+                    Status = table.Column<string>(nullable: true),
+                    Priscription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

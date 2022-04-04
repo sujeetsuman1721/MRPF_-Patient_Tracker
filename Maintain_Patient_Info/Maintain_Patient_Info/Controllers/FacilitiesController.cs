@@ -33,13 +33,13 @@ namespace Maintain_Patient_Info.Controllers
 
         [HttpPost("AddFacility")]
         [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
-        public async Task<IActionResult> Post(FacilitiesDTO model)
+        public async Task<IActionResult> Post(Facilites model)
         {
+
             Facilites facility = mapper.Map<Facilites>(model);
             facilitiesRepository.Add(facility);
             await facilitiesRepository.SaveAsync();
             var dto = mapper.Map<FacilitiesDTO>(facility);
-
             return StatusCode(200, dto);
 
         }
@@ -48,13 +48,8 @@ namespace Maintain_Patient_Info.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<FacilitiesDTO>))]
 
         public async Task<IActionResult> GetFacilityByAppontmentId(int appointmentId)
-        {
-
+        { 
             var facility = await facilitiesRepository.GetFacilityByIdAsync(appointmentId);
-
-            
-
-         
 
             return Ok(facility);
         }

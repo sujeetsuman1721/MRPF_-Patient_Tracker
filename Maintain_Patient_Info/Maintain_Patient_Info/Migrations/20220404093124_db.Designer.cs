@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-    [Migration("20220403115816_the Priscription is added into PatientsRegistory")]
-    partial class thePriscriptionisaddedintoPatientsRegistory
+    [Migration("20220404093124_db")]
+    partial class db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -12,33 +12,32 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="AppointmentId" class="control-label"></label>
-                <input asp-for="AppointmentId" value=@ViewBag.Id class="field left" readonly/>
+                <label asp-for="AppointmentId" value=@ViewBag.Id class="field left" readonly/>
                 <span asp-validation-for="AppointmentId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ConsultationCharges" class="control-label"></label>
-                <select asp-for="ConsultationCharges" class="form-control" asp-items="@ViewBag.ConsultationCharges"></select>
+                <p>@ViewBag.conCharge</p>
                 <span asp-validation-for="ConsultationCharges" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LabTestCharges" class="control-label"></label>
-                <select asp-for="LabTestCharges" class="form-control" asp-items="@ViewBag.LabtestCharges"></select>
-                <span asp-validation-for="LabTestCharges" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="RoomCharges" class="control-label"></label>
-                <select asp-for="RoomCharges" class="form-control" asp-items="@ViewBag.RoomCharges"></select>
+                <p>@ViewBag.RoomCharge</p>
                 <span asp-validation-for="RoomCharges" class="text-danger"></span>
             </div>
+
+             <div class="form-group">
+                <label asp-for="LabTestCharges" class="control-label"></label>
+                <p>@ViewBag.LabCharge</p>
+                <span asp-validation-for="LabTestCharges" class="text-danger"></span>
+            </div>
             
-<<<<<<< HEAD
-=======
             <div class="form-group">
                 <label asp-for="TotalAmount" class="control-label"></label>
-                <input asp-for="TotalAmount" class="form-control"  />
+                <p>@ViewBag.totalCharge</p>
                 <span asp-validation-for="TotalAmount" class="text-danger"></span>
             </div>
->>>>>>> 3f501adbc82ee9a85edd2d4a8ea5cb1e0d4fd621
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

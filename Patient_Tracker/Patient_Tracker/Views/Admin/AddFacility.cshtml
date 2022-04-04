@@ -14,8 +14,8 @@
 
             
             <div class="form-group">
-                <label asp-for="AppointmentId" class="control-label"></label>
-                <label asp-for="AppointmentId" >   @ViewBag.Id    </label>
+                
+                <input asp-for="AppointmentId" value=@ViewBag.Id type="hidden" />
                
                 <span asp-validation-for="AppointmentId" class="text-danger"></span>
 

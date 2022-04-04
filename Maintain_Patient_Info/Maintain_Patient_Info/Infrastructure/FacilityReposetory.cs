@@ -1,4 +1,5 @@
 ﻿using Maintain_Patient_Info.Base;
+using Maintain_Patient_Info.HospitalServices;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,19 +20,11 @@ namespace Maintain_Patient_Info.Infrastructure
 
         public T Add(T item)
         {
-            throw new System.NotImplementedException();
+            return context.Add(item).Entity;
         }
-
-        public T Delete(T item)
+        public async Task<IReadOnlyCollection<T>> GetAsync()
         {
-            throw new System.NotImplementedException();
-        }
-
-      
-
-        public Task<IReadOnlyCollection<T>> GetAsync()
-        {
-            throw new System.NotImplementedException();
+            return await context.Set<T>().ToListAsync();
         }
 
         public async Task<Facilites> GetAsyncBYId(int id)
@@ -40,15 +33,40 @@ namespace Maintain_Patient_Info.Infrastructure
             return facility;
         }
 
+
         public async Task<Facilites> GetFacilityByIdAsync(int id)
         {
             Facilites facility = await context.Facilites.FirstAsync(p => p.AppointmentId == id);
             return facility;
         }
 
-        public Task<int> SaveAsync()
+    
+
+        public Task<Consultation> GetConsultationById(int id)
+
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<Facilites> GetFacilityByAsyncBYId(int id)
+        {
+            Facilites facility = await context.Facilites.FirstAsync(p => p.AppointmentId == id);
+            return facility;
+        }
+
+        public Task<LabTests> GetLabTestsById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Room> GetRoomById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            return await context.SaveChangesAsync();
         }
 
         public T Update(T item)
@@ -56,6 +74,5 @@ namespace Maintain_Patient_Info.Infrastructure
             throw new System.NotImplementedException();
         }
 
-       
     }
 }
