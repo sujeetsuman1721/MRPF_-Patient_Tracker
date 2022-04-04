@@ -1,0 +1,54 @@
+﻿@model Patient_Tracker.Models.HospitalServices.PatientRegistory
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 style="text-align:center; margin-top:20px;">Take a new Appoinment</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>1. Select the Patient from below List</label>
+                <select asp-for="PateintId" class="form-control" asp-items="@ViewBag.patientList">
+                   
+                </select>
+            </div>
+            <div class="form-group">
+                <label>1. Select the doctor from below List</label>
+         
+               <select asp-for="DoctorId" class="form-control" asp-items="@ViewBag.DoctorList">
+                  
+                </select>
+            </div>
+             
+          
+            <div class="form-group">
+                <label>3. Select Date of Appointment</label>
+                <input asp-for="DateOfRegi" class="form-control" />
+                <span asp-validation-for="DateOfRegi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>4.Select Status</label>
+                 <select class="form-control" id="Status" name="Status">
+                    <option>Pending</option>
+                    <option>Approve</option>
+
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

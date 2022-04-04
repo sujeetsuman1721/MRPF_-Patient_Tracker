@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Patient_Tracker.Models.DTOs;
-using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
 using Patient_Tracker.Models.HospitalServices;
 using Patient_Tracker.Models.Services;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Patient_Tracker.Controllers
 {
-    public class AdminController : Controller
+    public class ClerkController : Controller
     {
         private readonly UserServices userServices;
 
@@ -20,14 +21,14 @@ namespace Patient_Tracker.Controllers
         private readonly BillingServices billingServices;
 
 
-        public AdminController(UserServices userServices, PatientServices patientServices,HospitalServices hospitalServices,BillingServices billingServices)
+        public ClerkController(UserServices userServices, PatientServices patientServices, HospitalServices hospitalServices, BillingServices billingServices)
 
         {
             this.patientServices = patientServices;
             this.userServices = userServices;
             this.hospitalServices = hospitalServices;
             this.billingServices = billingServices;
-   
+
         }
         public IActionResult Index()
 
@@ -45,19 +46,19 @@ namespace Patient_Tracker.Controllers
             var doctors = await userServices.GetDoctors();
 
 
-           var doctorlist= new List<DoctorDTO>();
+            var doctorlist = new List<DoctorDTO>();
             //fetch data
             foreach (var dt in doctors)
             {
-                var d= new DoctorDTO();
+                var d = new DoctorDTO();
 
                 d.DoctorId = dt.DoctorId;
-                d.FirstName=dt.ApplicationUser.FirstName;
-              
+                d.FirstName = dt.ApplicationUser.FirstName;
+
                 d.LastName = dt.ApplicationUser.LastName;
 
                 doctorlist.Add(d);
-                
+
             }
 
             var patientlist = new List<PatientDTO>();
@@ -94,14 +95,14 @@ namespace Patient_Tracker.Controllers
 
             var IsAdded = await patientServices.AppointPatient(model);
 
-           
+
             return RedirectToAction("Appointed");
 
         }
 
         public async Task<IActionResult> Appointed()
         {
-            var pat= await patientServices.GetAppointedDoctor();
+            var pat = await patientServices.GetAppointedDoctor();
 
             return View(pat);
 
@@ -156,7 +157,7 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
-        
+
         public async Task<IActionResult> AddFacility(int id)
         {
             ViewBag.Id = id;
@@ -167,7 +168,7 @@ namespace Patient_Tracker.Controllers
             ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
             var rooms = await hospitalServices.GetRoomDetails();
             ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
-           
+
             return View();
 
         }
@@ -175,7 +176,7 @@ namespace Patient_Tracker.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFacility(Facilities facilities)
         {
-            
+
             await hospitalServices.AddFacility(facilities);
             return RedirectToAction("Appointed");
 
@@ -197,14 +198,14 @@ namespace Patient_Tracker.Controllers
             var labId = facility.LabTestId;
             var consId = facility.ConsultationId;
             var roomId = facility.RoomId;
-           
+
 
             var room = await hospitalServices.GetRoomById(roomId);
-            var cons = await hospitalServices.GetConsultationById(consId);
-            var Lab=await hospitalServices.GetLabTestById(consId);
+            var cons = await hospitalServices.GetRoomById(consId);
+            var Lab = await hospitalServices.GetLabTestById(consId);
 
             ViewBag.LabCharge = Lab.Charge;
-            ViewBag.conCharge=cons.Charge;
+            ViewBag.conCharge = cons.Charge;
             ViewBag.RoomCharge = room.Charge;
 
             ViewBag.totalCharge = Lab.Charge + cons.Charge + room.Charge;
@@ -236,12 +237,5 @@ namespace Patient_Tracker.Controllers
             return RedirectToAction("Billing");
 
         }
-
-
-
-
-
-
-
     }
 }

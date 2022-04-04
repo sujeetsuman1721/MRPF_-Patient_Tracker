@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Patient_Tracker.Models.HospitalServices.PatientRegistory>
+
+@{
+    ViewData["Title"] = "Appointed";
+}
+
+<h1>Appointed</h1>
+
+<p>
+    <a asp-action="Register">Create New</a>
+</p>
+<table class="table table-striped table-dark">
+    <thead>
+         <tr>
+          <th scope="col">Appointment Id</th>
+          <th scope="col">Paseint Id</th>
+          <th scope="col">Doctor Id</th>
+           <th scope="col">Date of Appointment</th>
+          <th scope="col">Status</th>
+          <th scope="col">Add Facility</th>
+        </tr>
+       
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PateintId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => (item.DateOfRegi))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Add Facility", "AddFacility", new {  id=item.Id  }) 
+               @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

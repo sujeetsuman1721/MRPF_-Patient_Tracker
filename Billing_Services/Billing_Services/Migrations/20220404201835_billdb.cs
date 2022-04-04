@@ -2,7 +2,7 @@
 
 namespace Billing_Services.Migrations
 {
-    public partial class newdatabasecreated : Migration
+    public partial class billdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

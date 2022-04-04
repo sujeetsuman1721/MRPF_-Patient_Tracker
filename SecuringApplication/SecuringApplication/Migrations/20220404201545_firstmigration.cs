@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SecuringApplication.Migrations
 {
-    public partial class dataisadded : Migration
+    public partial class firstmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +42,7 @@ namespace SecuringApplication.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
+                    Status = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     Gender = table.Column<string>(nullable: false),
                     ContactNumber = table.Column<int>(maxLength: 10, nullable: false),
@@ -201,7 +202,7 @@ namespace SecuringApplication.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Patiennt",
+                name: "Patient",
                 columns: table => new
                 {
                     PatientId = table.Column<int>(nullable: false)
@@ -210,9 +211,9 @@ namespace SecuringApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patiennt", x => x.PatientId);
+                    table.PrimaryKey("PK_Patient", x => x.PatientId);
                     table.ForeignKey(
-                        name: "FK_Patiennt_AspNetUsers_ApplicationUserId",
+                        name: "FK_Patient_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -269,8 +270,8 @@ namespace SecuringApplication.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patiennt_ApplicationUserId",
-                table: "Patiennt",
+                name: "IX_Patient_ApplicationUserId",
+                table: "Patient",
                 column: "ApplicationUserId");
         }
 
@@ -298,7 +299,7 @@ namespace SecuringApplication.Migrations
                 name: "Doctor");
 
             migrationBuilder.DropTable(
-                name: "Patiennt");
+                name: "Patient");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
