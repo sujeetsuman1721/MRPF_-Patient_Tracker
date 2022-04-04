@@ -8,9 +8,9 @@ namespace SecuringApplication.Models.Registration
 {
     public class PatientModel : BaseEntity
     {
-       
-       [Required]
-        public   string UserName { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
 
 
         [Required(ErrorMessage = "FirstName can't be empty")]
@@ -24,10 +24,10 @@ namespace SecuringApplication.Models.Registration
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
 
-      
+
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public string ContactNumber { get; set; }
-       
+
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }
         [Required(ErrorMessage = "The type of password should be atleast minimum 8 characters atleast contain 1 capital letter,1 small letter,1 special character ")]
@@ -39,7 +39,7 @@ namespace SecuringApplication.Models.Registration
         public string Password { get; set; }
         [DataType(DataType.Password)]
 
-        [Compare("Password", ErrorMessage ="the password not mathing")]
+        [Compare("Password", ErrorMessage = "the password not mathing")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string SecretQuestions { get; set; }
@@ -50,7 +50,7 @@ namespace SecuringApplication.Models.Registration
 
 
 
-        public  PatientModel(string userName, string password,string firstName,string gender,string address, string contactNumber,string conformPassword)
+        public PatientModel(string userName, string password, string firstName, string gender, string address, string contactNumber, string conformPassword)
         {
             if (string.IsNullOrEmpty(userName))
                 throw new ArgumentException($"Invalid value for : ${nameof(userName)}");
@@ -58,52 +58,54 @@ namespace SecuringApplication.Models.Registration
             if (string.IsNullOrEmpty(firstName))
                 throw new ArgumentException($"Invalid value for : ${nameof(firstName)}");
 
-          //  if ( DateTime.IsNullorEmpty(dateOfBirth))
-         //      throw new ArgumentException($"Invalid value for : ${nameof(dateOfBirth)}");
-
             if (string.IsNullOrEmpty(gender))
                 throw new ArgumentException($"Invalid value for : ${nameof(gender)}");
 
             if (string.IsNullOrEmpty(address))
                 throw new ArgumentException($"Invalid value for : ${nameof(address)}");
 
-            if (string.IsNullOrEmpty(contactNumber) || !contactNumber.Length.Equals(10)) 
-                 throw new ArgumentException($"Invalid value for : ${nameof(contactNumber)}");
+            if (string.IsNullOrEmpty(contactNumber) || !contactNumber.Length.Equals(10))
+                throw new ArgumentException($"Invalid value for : ${nameof(contactNumber)}");
 
-            if (string.IsNullOrEmpty(password)|| !password.StartsWith("uppercase letter") || !password.Contains("lowercase letter") ||!password.Length.Equals(8)) 
+            if (string.IsNullOrEmpty(password) && !password.StartsWith("Uppercase letters") && !password.Contains("lowercase letter") && !password.Length.Equals(8))
                 throw new ArgumentException($"Invalid value for : ${nameof(password)}");
 
 
-            this.UserName       = userName;
-            this.Password       = password;
-            this.FirstName      = firstName;
-            this.Gender         = gender;
-            this.Address        = address;
-            this.ContactNumber  = contactNumber;
-            this.ConfirmPassword= conformPassword;
-            
 
 
-            public void ChangeUserName(string userName)
-              {
-                if (string.IsNullOrEmpty(userName))
-                    throw new ArgumentException($"Invalid value for : ${nameof(userName)}");
-                if (UserName == userName)
-                    return;
-                   UserName = userName;
-               }
 
-            public void ConfirmsNewPassword(string confirmPassword)
-            {
-                if (string.IsNullOrEmpty(conformPassword))
-                    throw new ArgumentException($"Invalid value for : ${nameof(confirmPassword)}");
-                if (ConfirmPassword == confirmPassword)
-                    return;
-                ConfirmPassword = confirmPassword;
-            }
-
+            this.UserName = userName;
+            this.Password = password;
+            this.FirstName = firstName;
+            this.Gender = gender;
+            this.Address = address;
+            this.ContactNumber = contactNumber;
+            this.ConfirmPassword = conformPassword;
 
         }
+
+
+
+
+        public void ChangeUserName(string userName)
+        {
+            if (string.IsNullOrEmpty(userName))
+                throw new ArgumentException($"Invalid value for : ${nameof(userName)}");
+            if (UserName == userName)
+                return;
+            UserName = userName;
+        }
+
+        public void ConfirmsNewPassword(string confirmPassword)
+        {
+            if (string.IsNullOrEmpty(confirmPassword))
+                throw new ArgumentException($"Invalid value for : ${nameof(confirmPassword)}");
+            if (ConfirmPassword == confirmPassword)
+                return;
+            ConfirmPassword = confirmPassword;
+        }
+
     }
-}
+ }
+
 

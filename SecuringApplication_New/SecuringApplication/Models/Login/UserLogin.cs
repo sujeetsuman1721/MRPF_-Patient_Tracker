@@ -19,7 +19,7 @@ namespace SecuringApplication.Models
                 throw new ArgumentException($"Invalid value for : ${nameof(userName)}");
 
 
-            if (string.IsNullOrEmpty(password)  || !password.StartsWith("uppercase letter") || !password.Contains("lowercase letter") || !password.Length.Equals(8)) 
+            if (string.IsNullOrEmpty(password) && !password.StartsWith("uppercase letter") && ! password.Contains("lowercase letter")|| !password.Length.Equals(8)) 
             throw new ArgumentException($"Invalid value for : ${nameof(password)}");
 
 
@@ -27,11 +27,6 @@ namespace SecuringApplication.Models
             this.Password = password;
 
          }
-
-           public UserLogin()
-           {
-           }
-
        
 
            public class Loginsuccessful : IAggergateService
@@ -46,7 +41,7 @@ namespace SecuringApplication.Models
 
             }
 
-    }
+      }
 }
 
 

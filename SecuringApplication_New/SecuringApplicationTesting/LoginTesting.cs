@@ -13,28 +13,35 @@ namespace SecuringApplicationTesting
     public class LoginTesting
     {
          [Test]
-          public void  SameUsers_Login()
-           {
-             var user1 = new UserLogin( "vana", "Jhan");
-             var user2 = new  UserLogin("vana" , "Jhan");
+         public void  SameUsers_Login()
+          {
+             var user1 = new UserLogin( "John", "John@123");
+             var user2 = new  UserLogin("John" , "John@123");
 
-             user1.UserName= "vana";
-             user2.UserName = "vana";
+            user1.Id = 10;
+            user2.Id = 10;
         
              var result = user1.Equals(user2);
-
              Assert.That(result ,Is.True );
+          }
 
-            }
-        
-       
+
+        [Test]
+        public void Login_WillNotEmpty()
+          {
+            var Patient = new UserLogin("Hani", "HaniHani");
+            Assert.That(Patient, Is.Not.Null);
+          }
+
+
+
 
 
 
             [TestCase("khan", "")]
-            [TestCase("khan", null)]
-            [TestCase("", "khan123")]
-            [TestCase(null, "khan123")]
+            [TestCase("",null )]
+            [TestCase("", "khan1234")]
+            [TestCase(null, "khan1234")]
             [TestCase("", "")]
             public void Throw_ArgumentException_For_Invalid_Input(string username, string password)
              {
