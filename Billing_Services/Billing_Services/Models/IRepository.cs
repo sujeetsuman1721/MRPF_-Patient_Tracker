@@ -17,6 +17,9 @@ namespace Billing_Services.Models
         Task<IReadOnlyCollection<T>> GetAsync();
         Task<int> SaveAsync();
 
+        Task<BillingServices> GetBillyAppointId(int id);
+        
+
 
 
     }

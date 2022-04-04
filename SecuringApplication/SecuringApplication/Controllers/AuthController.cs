@@ -114,7 +114,8 @@ namespace SecuringApplication.Controllers
                 PhoneNumber = model.ContactNumber,
                 PasswordHash = model.Password,
                 SecretQuestions = model.SecretQuestions,
-                Answer = model.Answer
+                Answer = model.Answer,
+                
 
             };
 

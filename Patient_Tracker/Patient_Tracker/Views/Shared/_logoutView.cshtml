@@ -1,0 +1,74 @@
+﻿
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                @if (ViewBag.Role != null)
+                {
+                    switch (ViewBag.Role.ToString())
+                    {
+                        case "Admin":
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </li>
+                            <li class="nav-item">
+                                Hello <b>Admin @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
+                                {
+                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
+                                }
+                            </li>
+                            break;
+                        case "Patient":
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </li>
+                            <li class="nav-item">
+                                Hello <b>Patient @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
+                                {
+                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
+                                }
+                            </li>
+                            break;
+                        case "Doctor":
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </li>
+                            <li class="nav-item">
+                                Hello <b>Doctor @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
+                                {
+                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
+                                }
+                            </li>
+                            break;
+                        case "Clerk":
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </li>
+                            <li class="nav-item">
+                                Hello <b>Clerk @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
+                                {
+                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
+                                }
+                            </li>
+                            break;
+                    }
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark btn btn-outline-info btn-sm" asp-area="" asp-controller="Auth" asp-action="Login"><b>Admin</b></a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+

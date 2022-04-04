@@ -191,6 +191,8 @@ namespace Patient_Tracker.Controllers
         public async Task<IActionResult> GenerateBill(int id)
         {
 
+            ViewBag.Id = id;
+
             var facility = await hospitalServices.GetFacilityByAppontmentId(id);
             var labId = facility.LabTestId;
             var consId = facility.ConsultationId;
@@ -213,9 +215,25 @@ namespace Patient_Tracker.Controllers
         [HttpPost]
         public async Task<IActionResult> GenerateBill(Billing billing)
         {
-         
+
+            var facility = await hospitalServices.GetFacilityByAppontmentId(billing.AppointmentId);
+            var labId = facility.LabTestId;
+            var consId = facility.ConsultationId;
+            var roomId = facility.RoomId;
+
+
+            var room = await hospitalServices.GetRoomById(roomId);
+            var cons = await hospitalServices.GetRoomById(consId);
+            var Lab = await hospitalServices.GetLabTestById(consId);
+
+            billing.LabTestCharges = Lab.Charge;
+            billing.RoomCharges = room.Charge;
+            billing.ConsultationCharges = cons.Charge;
+
+            billing.TotalAmount = Lab.Charge + room.Charge + cons.Charge;
+
             await billingServices.GenerateBill(billing);
-            return View();
+            return RedirectToAction("Billing");
 
         }
 

@@ -20,25 +20,26 @@ namespace Billing_Services.Controllers
             this.BillingRepository = BillingRepository;
             this.mapper = mapper;
         }
-        [HttpGet("GetCharges")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<BillingDTO>))]
-        public async Task<IActionResult> GetCharges()
+        [HttpGet]
+        [Route("[action]/{appointmentId}")]
+        [ProducesResponseType(200, Type = typeof(BillingDTO))]
+        public async Task<IActionResult> GetChargesFromAppointMentId (int appointmentId)
         {
-            IEnumerable<BillingServices> billing = await BillingRepository.GetAsync();
+              var bill=await BillingRepository.GetBillyAppointId(appointmentId);
 
-            var DTOs = mapper.Map<List<BillingDTO>>(billing);
-            return Ok(DTOs);
+            
+            return Ok(bill);
         }
         [HttpPost("Charges")]
-        [ProducesResponseType(200, Type = typeof(BillingDTO))]
+        [ProducesResponseType(201, Type = typeof(BillingDTO))]
         public async Task<IActionResult> Post(BillingServices model)
         {
-            model.TotalAmount = model.LabTestCharges + model.RoomCharges+model.ConsultationCharges;
-         //   model.Id = 0;
+            
+      
             BillingRepository.Add(model);
             await BillingRepository.SaveAsync();
 
-            return StatusCode(200, model);
+            return StatusCode(201, model);
 
         }
     }

@@ -9,7 +9,7 @@ namespace Billing_Services.Models
     public class BillingServices
     {
         [Key]
-        public int Id { get; set; }
+       public int Id { get; set; }  
         public int AppointmentId { get; set; }
         public int ConsultationCharges { get; set; }
         public int LabTestCharges { get; set; }

@@ -97,15 +97,5 @@ namespace Maintain_Patient_Info.Controllers
         }
     }
 
-
-
-
-
-
-
-
-
-
-
 }
 

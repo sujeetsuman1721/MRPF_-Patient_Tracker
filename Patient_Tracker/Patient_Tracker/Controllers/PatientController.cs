@@ -92,12 +92,13 @@ namespace Patient_Tracker.Controllers
         }
         public async Task<IActionResult> GetCharge(int id)
         {
-            var appointment = await patientServices.GetAppointmentById(id);
+            var billing = await billingServices.GetBillDetailsyAppoimentId(id);
 
-            var p = appointment[0];
 
-            ViewBag.UserName = UserName;
-            return View(p);
+
+         
+
+            return View(billing);
 
         }
         

@@ -8,7 +8,7 @@ namespace Patient_Tracker.Models.HospitalServices
 {
     public class Billing
     {
-        public int Id { get; set; }
+        [Key]
         public int AppointmentId { get; set; }
         public int ConsultationCharges { get; set; }
         public int LabTestCharges { get; set; }

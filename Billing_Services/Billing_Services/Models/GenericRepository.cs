@@ -50,8 +50,10 @@ namespace Billing_Services.Models
             return context.Add(item).Entity;
         }
 
-
-
-
+        public async Task<BillingServices> GetBillyAppointId(int id)
+        {
+            BillingServices bill = await context.BillingServices.FirstAsync(p => p.AppointmentId == id);
+            return bill;
+        }
     }
 }

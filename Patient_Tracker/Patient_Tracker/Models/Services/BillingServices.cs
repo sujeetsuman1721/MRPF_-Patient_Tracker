@@ -21,14 +21,15 @@ namespace Patient_Tracker.Models.Services
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         }
-        public async Task<List<Billing>> GetBillDetails()
+        public async Task<Billing> GetBillDetailsyAppoimentId(int id)
         {
+            var response = await client.GetAsync($"/api/Billing/GetChargesFromAppointMentId/{id}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
 
-            var Response = await client.GetAsync("/api/billing/getcharges");
-            Response.EnsureSuccessStatusCode();
-            var Json = await Response.Content.ReadAsStringAsync();
-            var generatebill = JsonConvert.DeserializeObject<List<Billing>>(Json);
-            return generatebill;
+            var bill = JsonConvert.DeserializeObject<Billing>(json);
+
+            return bill;
         }
 
         //

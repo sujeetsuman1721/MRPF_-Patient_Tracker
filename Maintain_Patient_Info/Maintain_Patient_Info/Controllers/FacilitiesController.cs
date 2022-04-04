@@ -43,8 +43,11 @@ namespace Maintain_Patient_Info.Controllers
             return StatusCode(200, dto);
 
         }
+
+
         [HttpGet]
         [Route("[action]/{appointmentId}")]
+
         [ProducesResponseType(200, Type = typeof(IEnumerable<FacilitiesDTO>))]
 
         public async Task<IActionResult> GetFacilityByAppontmentId(int appointmentId)
