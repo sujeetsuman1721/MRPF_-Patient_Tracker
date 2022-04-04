@@ -10,7 +10,7 @@ namespace Patient_Tracker.Models.DTOs.HospitalServicesDTOs
     {
         [Key]
         public int RoomId { get; set; }
-        public int charge { get; set; }
+        public int Charge { get; set; }
         public string RoomType { get; set; }
     }
 }

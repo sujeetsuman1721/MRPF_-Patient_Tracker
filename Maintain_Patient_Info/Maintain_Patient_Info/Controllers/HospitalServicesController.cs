@@ -60,51 +60,41 @@ namespace Maintain_Patient_Info.Controllers
             var dto = mapper.Map<List<ConsultationDTO>>(consultants);
             return Ok(dto);
         }
+        [HttpGet]
+        [Route("[action]/{labtestId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<LabTestsDTO>))]
 
-        [HttpGet("GetByRoomId")]
-        [ProducesResponseType(200, Type = typeof(RoomDTO))]
-
-        public async Task<IActionResult> GetRoomById(int roomId)
+        public async Task<IActionResult> GetLabtestsById(int labtestId)
         {
 
-            IEnumerable<Room> rooms = await roomRepository.GetAsync();
-
-            var room = rooms
-                   .Where(r => r.RoomId == roomId);
-
-
-            return Ok(room);
+            var labtest = await labtestsrepository.GetLabTestsById(labtestId);
+            return Ok(labtest);
         }
-
-        [HttpGet("GetByLabId")]
-        [ProducesResponseType(200, Type = typeof(LabTestsDTO))]
-
-        public async Task<IActionResult> GetByLabId(int LabTestId)
-        {
-
-            IEnumerable<LabTests> labTests = await labtestsrepository.GetAsync();
-
-            var labTest = labTests
-                   .Where(l => l.LabTestId == LabTestId);
-
-
-            return Ok(labTest);
-        }
-
-        [HttpGet("GetConsultationById")]
-        [ProducesResponseType(200, Type = typeof(ConsultationDTO))]
+        [HttpGet]
+        [Route("[action]/{consultationId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<ConsultationDTO>))]
 
         public async Task<IActionResult> GetConsultationById(int consultationId)
         {
 
-            IEnumerable<Consultation> consultants = await consultationRepository.GetAsync();
-
-            var consultant = consultants
-                   .Where(co => co.ConsultationId == consultationId);
-
-
+            var consultant = await consultationRepository.GetConsultationById(consultationId);
             return Ok(consultant);
         }
+        [HttpGet]
+        [Route("[action]/{roomId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<RoomDTO>))]
+
+        public async Task<IActionResult> GetRoomById(int roomId)
+        {
+
+            var room = await roomRepository.GetRoomById(roomId);
+            return Ok(room);
+        }
+
+
+
+
+
 
 
 

@@ -35,9 +35,9 @@ namespace Maintain_Patient_Info
             var connectionstring = Configuration.GetConnectionString("PM_Connection");
             services.AddDbContext<PatientManagementContext>(setup => setup.UseSqlServer(connectionstring));
             services.AddScoped<IRepository<PatientsRegistory>, GenericRepository<PatientsRegistory>>();
-            services.AddScoped<IRepository<LabTests>, GenericRepository<LabTests>>();
-            services.AddScoped<IRepository<Consultation>, GenericRepository<Consultation>>();
-            services.AddScoped<IRepository<Room>, GenericRepository<Room>>();
+            services.AddScoped<IRepository<LabTests>,LabtestsRepository<LabTests>>();
+            services.AddScoped<IRepository<Consultation>, ConsultationRepository<Consultation>>();
+            services.AddScoped<IRepository<Room>, RoomRepository<Room>>();
 
             services.AddScoped<IRepository<Facilites>, FacilityReposetory<Facilites>>();
 

@@ -66,17 +66,56 @@ namespace Patient_Tracker.Models.Services
 
         }
 
-        public async Task<List<Facilities>> GetFacilityByAppontmentId(int appointmentId)
+        public async Task<Facilities> GetFacilityByAppontmentId(int appointmentId)
         {
-            var facilities = new List<Facilities>();
+            var facilities = new Facilities();
 
             var response = await client.GetAsync($"/api/Facilities/GetFacilityByAppontmentId/{appointmentId}");
             response.EnsureSuccessStatusCode();
             var json = response.Content.ReadAsStringAsync().Result;
 
-            facilities = JsonConvert.DeserializeObject<List<Facilities>>(json);
+            facilities = JsonConvert.DeserializeObject<Facilities>(json);
 
             return facilities;
+
+        }
+        public async Task<List<LabTests>> GetLabTestById(int labtestId)
+        {
+            var labtests= new List<LabTests>();
+
+            var response = await client.GetAsync($"/api/hospitalservices/GetLabTestsById/{labtestId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+            labtests = JsonConvert.DeserializeObject<List<LabTests>>(json);
+
+            return labtests;
+
+        }
+        public async Task<List<Consultation>> GetConsultationById(int consultationId)
+        {
+            var consultation = new List<Consultation>();
+
+            var response = await client.GetAsync($"/api/hospitalservices/GetConsultationById/{consultationId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+            consultation = JsonConvert.DeserializeObject<List<Consultation>>(json);
+
+            return consultation;
+
+        }
+        public async Task<List<RoomDetails>> GetRoomById(int roomId)
+        {
+            var room= new List<RoomDetails>();
+
+            var response = await client.GetAsync($"/api/hospitalservices/GetRoomById/{roomId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+           room = JsonConvert.DeserializeObject<List<RoomDetails>>(json);
+
+            return room;
 
         }
 

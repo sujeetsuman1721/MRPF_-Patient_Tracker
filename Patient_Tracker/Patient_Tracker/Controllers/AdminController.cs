@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Patient_Tracker.Models.DTOs;
+using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
 using Patient_Tracker.Models.HospitalServices;
 using Patient_Tracker.Models.Services;
 using System.Collections.Generic;
@@ -185,39 +186,23 @@ namespace Patient_Tracker.Controllers
 
         public async Task<IActionResult> GenerateBill(int id)
         {
-
-           // var facility = new Facilities();
-
-           // // facility = hospitalServices.GetFacilityByAppontmentId(id);
-
-           // // 
-           // var consIs = facility.ConsultationId;
-           // var roomId = facility.RoomId;
-           // var labId = facility.LabTestId;
-
-           // //var cons=hospitalServices.GetConstationByConsId(consIs);
-           // // var room=
-           // // var labtest==
-
-
-           ////ViewBag.chargeCon = cons.Charge;
-
-           // //
-           // //
-
-
+            var facility = new Facilities();
+            facility =await  hospitalServices.GetFacilityByAppontmentId(id);
            
+            var labId = facility.LabTestId;
+            var consId = facility.ConsultationId;
+            var roomId = facility.RoomId;
+            var room = await hospitalServices.GetRoomById(id);
+            ViewBag.RoomCharge = room.Charge;
 
-            ViewBag.Id = id;
-
-            ViewBag
+            
      
-            var labcharges = await hospitalServices.GetLabTests();
-            ViewBag.LabtestCharges = new SelectList(labch, "Charge", "Charge");
+            /*var labcharges = await hospitalServices.GetLabTests();
+            ViewBag.LabtestCharges = new SelectList(labcharges, "Charge", "Charge");
             var consultantcharges = await hospitalServices.GetConsultationDetails();
             ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
             var roomcharges = await hospitalServices.GetRoomDetails();
-            ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
+            ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");*/
 
             return View();
         }

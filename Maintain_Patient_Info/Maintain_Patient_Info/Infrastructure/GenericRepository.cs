@@ -1,4 +1,5 @@
 ﻿using Maintain_Patient_Info.Base;
+using Maintain_Patient_Info.HospitalServices;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -41,16 +42,35 @@ namespace Maintain_Patient_Info.Infrastructure
             return await context.SaveChangesAsync();
         }
 
-       
-
         public T Add(T item)
         {
             return context.Add(item).Entity;
         }
 
-        public Task<T> GetAsyncBYId(int id)
+        public Task<Facilites> GetAsyncBYId(int id)
         {
             throw new NotImplementedException();
         }
+
+        public Task<Consultation> GetConsultationById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<LabTests> GetLabTestsById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Room> GetRoomById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public Task<T> GetAsyncBYId(int id)
+        {
+            throw new NotImplementedException();
+        }*/
+
     }
-}
+  }
