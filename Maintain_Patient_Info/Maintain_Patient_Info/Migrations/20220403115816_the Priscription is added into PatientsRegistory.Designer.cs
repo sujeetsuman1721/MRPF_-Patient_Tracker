@@ -4,14 +4,16 @@ using Maintain_Patient_Info.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-    partial class PatientManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20220403115816_the Priscription is added into PatientsRegistory")]
+    partial class thePriscriptionisaddedintoPatientsRegistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

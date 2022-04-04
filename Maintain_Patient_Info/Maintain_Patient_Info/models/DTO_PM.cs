@@ -8,6 +8,8 @@ namespace Maintain_Patient_Info.models
 {
     public class DTO_PM
     {
+        
+
         [Key]
         public int Id { get; set; }
 
@@ -18,6 +20,8 @@ namespace Maintain_Patient_Info.models
 
         public DateTime DateOfRegi { get; set; }
         public string Status { get; set; }
+
+        public string Priscription { get; set; }
 
     }
 }

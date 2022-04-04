@@ -66,23 +66,21 @@ namespace Patient_Tracker.Models.Services
 
         }
 
-        public async Task<PatientRegistory> GetAppointmentById(int id)
+        public async Task<List<Facilities>> GetFacilityByAppontmentId(int appointmentId)
         {
+            var facilities = new List<Facilities>();
 
-            var appointmentdetail = new PatientRegistory();
-
-            var response = await client.GetAsync($"/api/Facilities/GetByAppontmentById/{id}");
-
-
+            var response = await client.GetAsync($"/api/Facilities/GetFacilityByAppontmentId/{appointmentId}");
             response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
 
-            var json = await response.Content.ReadAsStringAsync();
+            facilities = JsonConvert.DeserializeObject<List<Facilities>>(json);
 
-            appointmentdetail=  JsonConvert.DeserializeObject< PatientRegistory>(json);
-
-            return appointmentdetail;
+            return facilities;
 
         }
+
+
 
 
     }

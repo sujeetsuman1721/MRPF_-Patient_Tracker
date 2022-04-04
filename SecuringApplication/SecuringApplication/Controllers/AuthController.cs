@@ -232,24 +232,18 @@ namespace SecuringApplication.Controllers
                 );
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             string token = tokenHandler.WriteToken(jwtSecurityToken);
-            var response = new LoginResponse { jwt = token, name = appUser.UserName, role = roles.First(),UserId=0 };
+            var response = new LoginResponse { Jwt = token, UserName = appUser.UserName, UserRole = roles.First(),UserId=0 };
 
 
-            if (response.role == "Patient")
+            if (response.UserRole == "Patient")
             {
                 response.UserId = await patientsRepository.GetByUserId(appUser.Id);
             }
-            if (response.role == "Doctor")
+            if (response.UserRole == "Doctor")
             {
                 response.UserId = await doctorsRepository.GetByUserId(appUser.Id);
             }
             return Ok(response);
         }
-
-       
-
-
-
-
-        }
+     }
 }

@@ -9,12 +9,7 @@ namespace SecuringApplication.Reposetory
         Task<IReadOnlyCollection<T>> GetAsync();
 
         Task<int> SaveAsync();
-<<<<<<< HEAD
-        //Task<IReadOnlyCollection<T>> GetUserDetailsAsync();
-=======
-        
 
->>>>>>> 3f501adbc82ee9a85edd2d4a8ea5cb1e0d4fd621
 
          Task<int> GetByUserId(string id);
     }

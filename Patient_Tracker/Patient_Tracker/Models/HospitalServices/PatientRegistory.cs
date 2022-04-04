@@ -16,5 +16,7 @@ namespace Patient_Tracker.Models.HospitalServices
    
         public DateTime DateOfRegi { get; set; }
         public string Status { get; set; }
+
+        public string Priscription { get; set; }
     }
 }

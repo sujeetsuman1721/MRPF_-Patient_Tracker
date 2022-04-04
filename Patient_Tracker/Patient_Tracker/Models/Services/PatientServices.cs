@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using Patient_Tracker.Models.DTOs.HospitalServicesDTOs;
 
 using Patient_Tracker.Models.DTOs;
-
+using System;
 
 namespace Patient_Tracker.Models.Services
 {
@@ -40,6 +40,24 @@ namespace Patient_Tracker.Models.Services
             return Response.StatusCode == HttpStatusCode.OK;
 
         }
+
+        public async Task<bool> UpdatePatient(PatientRegistory register)
+        {
+
+            var Json = JsonConvert.SerializeObject(register);
+
+            var Content = new StringContent(Json, Encoding.UTF8, "application/json");
+
+            var Response = await client.PutAsync("/api/Patient/Update", Content);
+
+
+            Response.EnsureSuccessStatusCode();
+            return Response.StatusCode == HttpStatusCode.OK;
+
+        }
+
+
+
 
         public async Task<IReadOnlyCollection<PatientRegistory>> GetAppointedDoctor()
         {
@@ -92,14 +110,17 @@ namespace Patient_Tracker.Models.Services
 
 
         }
-        public async Task<PatientRegistory> GetAppointmentById(int id)
+        public async Task<List<PatientRegistory>> GetAppointmentById(int appointmentId)
         {
-            var appointmentdetail = new PatientRegistory();
-            var response = await client.GetAsync($"/api/Facilities/GetByAppontmentById/{id}");
+            var patients = new List<PatientRegistory>();
+
+            var response = await client.GetAsync($"/api/Patient/GetAppointmentById/{appointmentId}");
             response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
-            appointmentdetail = JsonConvert.DeserializeObject<PatientRegistory>(json);
-            return appointmentdetail;
+            var json = response.Content.ReadAsStringAsync().Result;
+
+            patients = JsonConvert.DeserializeObject<List<PatientRegistory>>(json);
+
+            return patients;
 
         }
         public async Task<LabTests> GetLabById(int id)
@@ -132,6 +153,54 @@ namespace Patient_Tracker.Models.Services
             return roomid;
 
         }
+
+        public async Task<List<PatientRegistory>> GetAppointmentByPatientId(int ? id)
+        {
+
+         
+            var patients = new List<PatientRegistory>();
+
+            try
+            {
+                var response = await client.GetAsync($"/api/Patient/GetAppointmentByPatientId/{id}");
+                response.EnsureSuccessStatusCode();
+                var json =  response.Content.ReadAsStringAsync().Result;
+                patients = JsonConvert.DeserializeObject<List<PatientRegistory>>(json);
+
+                return patients;
+            }
+            catch(Exception ex)
+            {
+                return null;
+
+            }
+
+
+        }
+        public async Task<List<PatientRegistory>> GetAppointmentByDoctorId(int? id)
+        {
+
+
+            var patients = new List<PatientRegistory>();
+
+            try
+            {
+                var response = await client.GetAsync($"/api/Patient/GetAppointmentByDocotoId/{id}");
+                response.EnsureSuccessStatusCode();
+                var json = response.Content.ReadAsStringAsync().Result;
+                patients = JsonConvert.DeserializeObject<List<PatientRegistory>>(json);
+
+                return patients;
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+
+
+        }
+
     }
 
    

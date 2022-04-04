@@ -3,6 +3,7 @@ using Maintain_Patient_Info.Base;
 using Maintain_Patient_Info.models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Maintain_Patient_Info.Controllers
@@ -27,16 +28,7 @@ namespace Maintain_Patient_Info.Controllers
             var DTOs = mapper.Map<List<DTO_PM>>(patient); 
             return Ok(DTOs);
         }
-        [HttpGet("{username}")]
-        [ProducesResponseType(200,Type=typeof(DTO_PM))]
-        public async Task<IActionResult> GetPatientByName(string username)
-        {
-           PatientsRegistory Patients = await PatientRepository.GetAsync(username);
-            var DTO = mapper.Map<DTO_PM>(Patients);
-            
-            return Ok(DTO);
-
-        }
+      
         [HttpPost("AddPatient")]
         [ProducesResponseType(200, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Post(PatientsRegistory model)
@@ -49,7 +41,7 @@ namespace Maintain_Patient_Info.Controllers
             return  StatusCode(200,model);
 
         }
-        [HttpPut]
+        [HttpPut("Update")]
         [ProducesResponseType(200, Type = typeof(DTO_PM))]
         public async Task<IActionResult> Put(DTO_PM model)
         {
@@ -62,7 +54,52 @@ namespace Maintain_Patient_Info.Controllers
         }
 
 
+        [HttpGet]
+        [Route("[action]/{patinetId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PatientsRegistory>))]
 
-       
+        public async Task<IActionResult> GetAppointmentByPatientId(int patinetId)
+        {
+
+            IEnumerable<PatientsRegistory> patients = await PatientRepository.GetAsync();
+
+            var patientsList = patients.Where(p => p.PateintId == patinetId);
+
+            return Ok(patientsList);
+        }
+
+        [HttpGet]
+        [Route("[action]/{appointmentId}")]
+        [ProducesResponseType(200, Type = typeof(PatientsRegistory))]
+
+        public async Task<IActionResult> GetAppointmentById(int appointmentId)
+        {
+
+            IEnumerable<PatientsRegistory> patients = await PatientRepository.GetAsync();
+
+            var patient = patients.Where(p => p.Id == appointmentId);
+
+            return Ok(patient);
+        }
+
+
+        [HttpGet]
+        [Route("[action]/{id}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PatientsRegistory>))]
+
+        public async Task<IActionResult> GetAppointmentByDocotoId(int id)
+        {
+
+            IEnumerable<PatientsRegistory> patients = await PatientRepository.GetAsync();
+
+            var patientsList = patients.Where(p => p.DoctorId == id);
+
+            return Ok(patientsList);
+        }
+
+
+
     }
+
 }
+    

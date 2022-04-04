@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Patient_Tracker.Models.HospitalServices;
 using Patient_Tracker.Models.Services;
 using System.Threading.Tasks;
 
 namespace Patient_Tracker.Controllers
 {
-    public class PatientController : Controller
+    public class DoctorController : Controller
     {
 
-        
         private readonly UserServices userServices;
 
         private readonly PatientServices patientServices;
@@ -18,12 +18,12 @@ namespace Patient_Tracker.Controllers
 
         private readonly BillingServices billingServices;
 
-        public int? patientId;
+        public int? DoctorId;
 
         public string UserName;
 
 
-        public PatientController(UserServices userServices, PatientServices patientServices, HospitalServices hospitalServices, BillingServices billingServices)
+        public DoctorController(UserServices userServices, PatientServices patientServices, HospitalServices hospitalServices, BillingServices billingServices)
 
         {
             this.patientServices = patientServices;
@@ -39,51 +39,36 @@ namespace Patient_Tracker.Controllers
             base.OnActionExecuting(context);
             //patientServices.SetBearerToken(HttpContext.Session.GetString("Jwt"));
             UserName = HttpContext.Session.GetString("UserName");
-            
+
             var Role = HttpContext.Session.GetString("UserRole");
-            patientId = HttpContext.Session.GetInt32("UserId");
+            DoctorId = HttpContext.Session.GetInt32("UserId");
 
             ViewBag.Role = Role;
-            if (!Role.Equals("Patient"))
+            if (!Role.Equals("Doctor"))
                 context.Result = new RedirectToActionResult("Logout", "Auth", null);
         }
-
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-           
-            return View();
-        }
-        public IActionResult GetDetails()
-        {
-            return View();
-
-        }
-
-        public async Task<IActionResult> ViewRecord()
-        {
-            var appointment =await patientServices.GetAppointmentByPatientId(patientId);
-            
+            var appointment = await patientServices.GetAppointmentByDoctorId(DoctorId);
             ViewBag.UserName = UserName;
-       
             return View(appointment);
-
         }
-        public async Task<IActionResult> Details(int id)
+
+        public async Task<IActionResult> Update(int id )
         {
-            var appointment= await patientServices.GetAppointmentById(id);
-
-
+            var appointment = await patientServices.GetAppointmentById(id);
             var p = appointment[0];
-
             ViewBag.UserName = UserName;
             return View(p);
-
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Update(PatientRegistory patientRegistory)
+        {
+            var appointment = await patientServices.UpdatePatient(patientRegistory);
 
-
-
+            return RedirectToAction("Index");
+        }
 
 
     }

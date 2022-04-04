@@ -104,21 +104,21 @@ namespace Patient_Tracker.Controllers
 
             var Result = await userServices.Login(model);
 
-            HttpContext.Session.SetString("token", Result.jwt);
-            HttpContext.Session.SetString("name", Result.name);
-            HttpContext.Session.SetString("role", Result.role);
+            HttpContext.Session.SetString("Jwt", Result.Jwt);
+            HttpContext.Session.SetString("UserName", Result.UserName);
+            HttpContext.Session.SetString("UserRole", Result.UserRole);
 
             HttpContext.Session.SetInt32("UserId", Result.UserId);
 
        
 
-            if (Result.role.Equals("Admin"))
+            if (Result.UserRole.Equals("Admin"))
                 return RedirectToAction("Index", "Admin");
-            else if (Result.role.Equals("Clerk"))
+            else if (Result.UserRole.Equals("Clerk"))
                 return RedirectToAction("Index", "Clerk");
-            else if (Result.role.Equals("Doctor"))
+            else if (Result.UserRole.Equals("Doctor"))
                 return RedirectToAction("Index", "Doctor");
-            else if (Result.role.Equals("Patient"))
+            else if (Result.UserRole.Equals("Patient"))
                 return RedirectToAction("Index", "Patient");
 
             ModelState.AddModelError("", "Cannot identify the user");

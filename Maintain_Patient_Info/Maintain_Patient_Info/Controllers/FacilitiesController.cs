@@ -43,18 +43,22 @@ namespace Maintain_Patient_Info.Controllers
 
         }
         [HttpGet]
-        [Route("[action]/{AppointmentId}")]
-        [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
+        [Route("[action]/{appointmentId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<FacilitiesDTO>))]
 
-        public async Task<IActionResult> GetByAppontmentById(int AppointmentId)
+        public async Task<IActionResult> GetFacilityByAppontmentId(int appointmentId)
         {
 
-            IEnumerable<Facilites> facilities = await facilitiesRepository.GetAsync();
-            var facility = facilities
-            .Where(f => f.AppointmentId == AppointmentId);
+            var facility = await facilitiesRepository.GetAsyncBYId(appointmentId);
+
+            
+
+         
 
             return Ok(facility);
         }
+
+
 
     }
 }

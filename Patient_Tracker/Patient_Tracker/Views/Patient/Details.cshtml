@@ -1,0 +1,42 @@
+﻿@model Patient_Tracker.Models.HospitalServices.PatientRegistory
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3 style="align-content:center;color:palevioletred">Hello, @ViewBag.UserName</h3>
+
+      <h3 style="align-content:center;color:palevioletred">Your Patinet Id Is : @Html.DisplayFor(model => model.PateintId)</h3>
+
+
+    </div>
+  
+    <div class="col-sm">
+    <h3 style="align-content:center;color:palevioletred">AppointmentId :  @Html.DisplayFor(model => model.Id)</h3>
+
+    <h3 style="align-content:center;color:palevioletred">Date Of Appointment: @Html.DisplayFor(model => model.DateOfRegi)</h3>
+
+    </div>
+  </div>
+</div>
+
+
+ <hr />
+
+  <div class="panel panel-default">
+	<div class="panel-heading">Priscription</div>
+	<div class="panel-body">
+    	@Html.DisplayFor(model=>model.Priscription)
+    </div>
+</div>
+      
+
+<div style="align-self:baseline">
+    
+    <a asp-action="ViewRecord">Back to Appoinment List</a>
+</div>

@@ -17,7 +17,11 @@ namespace Maintain_Patient_Info.Base
         public int DoctorId { get; set; }
 
         public DateTime DateOfRegi { get; set; }
+
+
         public string Status { get; set; }
+
+        public string Priscription { get; set; }
 
 
 

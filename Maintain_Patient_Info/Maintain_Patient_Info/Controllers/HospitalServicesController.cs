@@ -91,10 +91,10 @@ namespace Maintain_Patient_Info.Controllers
             return Ok(labTest);
         }
 
-        [HttpGet("ConsultationId")]
+        [HttpGet("GetConsultationById")]
         [ProducesResponseType(200, Type = typeof(ConsultationDTO))]
 
-        public async Task<IActionResult> ConsultationId(int consultationId)
+        public async Task<IActionResult> GetConsultationById(int consultationId)
         {
 
             IEnumerable<Consultation> consultants = await consultationRepository.GetAsync();
@@ -105,6 +105,9 @@ namespace Maintain_Patient_Info.Controllers
 
             return Ok(consultant);
         }
+
+
+
 
 
     }

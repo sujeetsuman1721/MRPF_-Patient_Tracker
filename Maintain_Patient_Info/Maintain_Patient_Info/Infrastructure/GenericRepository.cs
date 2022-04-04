@@ -41,18 +41,16 @@ namespace Maintain_Patient_Info.Infrastructure
             return await context.SaveChangesAsync();
         }
 
-        public async Task<T> GetAsync(string username)
-        {
-            return await context.Set<T>().FindAsync(username);
-        }
+       
 
         public T Add(T item)
         {
             return context.Add(item).Entity;
         }
 
-     
-
-       
+        public Task<T> GetAsyncBYId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

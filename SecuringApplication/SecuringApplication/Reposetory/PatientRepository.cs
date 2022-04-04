@@ -27,8 +27,7 @@ namespace SecuringApplication.Reposetory
 
         }
 
-<<<<<<< HEAD:SecuringApplication/SecuringApplication/Reposetory/GenereicRepository.cs
-=======
+
         public async Task<int> GetByUserId(string id)
         {
             Patient patient = await context.Patient.FirstAsync(p => p.ApplicationUserId == id);
@@ -37,8 +36,6 @@ namespace SecuringApplication.Reposetory
 
             return patient.PatientId;
         }
-
->>>>>>> 3f501adbc82ee9a85edd2d4a8ea5cb1e0d4fd621:SecuringApplication/SecuringApplication/Reposetory/PatientRepository.cs
 
     }
 }
