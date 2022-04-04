@@ -18,5 +18,7 @@ namespace Patient_Tracker.Models.HospitalServices
         public string Status { get; set; }
 
         public string Priscription { get; set; }
+
+        public string ExerciseOrDiet { get; set; }
     }
 }

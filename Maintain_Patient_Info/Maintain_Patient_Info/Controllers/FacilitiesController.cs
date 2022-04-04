@@ -30,6 +30,7 @@ namespace Maintain_Patient_Info.Controllers
             var DTOs = mapper.Map<List<FacilitiesDTO>>(facilities);
             return Ok(DTOs);
         }
+
         [HttpPost("AddFacility")]
         [ProducesResponseType(200, Type = typeof(FacilitiesDTO))]
         public async Task<IActionResult> Post(FacilitiesDTO model)
@@ -49,7 +50,7 @@ namespace Maintain_Patient_Info.Controllers
         public async Task<IActionResult> GetFacilityByAppontmentId(int appointmentId)
         {
 
-            var facility = await facilitiesRepository.GetAsyncBYId(appointmentId);
+            var facility = await facilitiesRepository.GetFacilityByIdAsync(appointmentId);
 
             
 

@@ -51,6 +51,8 @@ namespace Patient_Tracker.Models.Services
             return consultants;
         }
 
+
+
         public async Task<bool> AddFacility(Facilities facilities)
         {
 
@@ -66,17 +68,31 @@ namespace Patient_Tracker.Models.Services
 
         }
 
-        public async Task<List<Facilities>> GetFacilityByAppontmentId(int appointmentId)
+        public async Task<Facilities> GetFacilityByAppontmentId(int appointmentId)
         {
-            var facilities = new List<Facilities>();
+            var facility = new Facilities();
 
             var response = await client.GetAsync($"/api/Facilities/GetFacilityByAppontmentId/{appointmentId}");
             response.EnsureSuccessStatusCode();
             var json = response.Content.ReadAsStringAsync().Result;
 
-            facilities = JsonConvert.DeserializeObject<List<Facilities>>(json);
+            facility = JsonConvert.DeserializeObject<Facilities>(json);
 
-            return facilities;
+            return facility;
+
+        }
+
+        public async Task<Consultation> GetConsltantByConsId(int consId)
+        {
+            var consultation = new Consultation();
+
+            var response = await client.GetAsync($"/api/HospitalServices/GetConsltantByConsId/{consId}");
+            response.EnsureSuccessStatusCode();
+            var json = response.Content.ReadAsStringAsync().Result;
+
+            consultation = JsonConvert.DeserializeObject<Consultation>(json);
+
+            return consultation;
 
         }
 

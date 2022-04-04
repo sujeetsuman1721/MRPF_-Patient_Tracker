@@ -28,15 +28,27 @@
 
  <hr />
 
-  <div class="panel panel-default">
-	<div class="panel-heading">Priscription</div>
+ <div class="modal-body row">
+  <div class="col-md-6">
+   <div><h4 style="color:black">Priscription</h4></div>
 	<div class="panel-body">
     	@Html.DisplayFor(model=>model.Priscription)
     </div>
+  </div>
+  <div class="col-md-6">
+    <div ><h4  style="color:black">Exercise and Diet</h4> </div>
+	<div class="panel-body">
+    	@Html.DisplayFor(model=>model.ExerciseOrDiet)
+    </div>
+  </div>
 </div>
+
+ 
+
+
       
 
 <div style="align-self:baseline">
     
-    <a asp-action="ViewRecord">Back to Appoinment List</a>
+    <a asp-action="ViewRecord">Go Back </a>
 </div>

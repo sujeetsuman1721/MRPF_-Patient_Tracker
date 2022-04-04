@@ -91,21 +91,22 @@ namespace Maintain_Patient_Info.Controllers
             return Ok(labTest);
         }
 
-        [HttpGet("GetConsultationById")]
-        [ProducesResponseType(200, Type = typeof(ConsultationDTO))]
+        //[HttpGet]
+        //[Route("[action]/{consultationId}")]
+        //[ProducesResponseType(200, Type = typeof(ConsultationDTO))]
 
-        public async Task<IActionResult> GetConsultationById(int consultationId)
-        {
+        //public async Task<IActionResult> GetConsltantByConsId(int consultationId)
+        //{
 
-            IEnumerable<Consultation> consultants = await consultationRepository.GetAsync();
+        //    var cons = await consultationRepository.GetAsync();
 
-            var consultant = consultants
-                   .Where(co => co.ConsultationId == consultationId);
+        //    var con = cons.FirstOrDefault(consultationId);
 
+            
 
-            return Ok(consultant);
-        }
-
+            
+        //    return Ok(con);
+        //}
 
 
 

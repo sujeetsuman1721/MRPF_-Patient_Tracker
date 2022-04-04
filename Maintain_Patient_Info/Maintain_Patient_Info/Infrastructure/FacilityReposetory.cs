@@ -40,6 +40,12 @@ namespace Maintain_Patient_Info.Infrastructure
             return facility;
         }
 
+        public async Task<Facilites> GetFacilityByIdAsync(int id)
+        {
+            Facilites facility = await context.Facilites.FirstAsync(p => p.AppointmentId == id);
+            return facility;
+        }
+
         public Task<int> SaveAsync()
         {
             throw new System.NotImplementedException();
@@ -50,9 +56,6 @@ namespace Maintain_Patient_Info.Infrastructure
             throw new System.NotImplementedException();
         }
 
-        Task<T> IRepository<T>.GetAsyncBYId(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+       
     }
 }

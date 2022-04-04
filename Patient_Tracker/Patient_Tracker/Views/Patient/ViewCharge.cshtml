@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Patient_Tracker.Models.HospitalServices.PatientRegistory>
+
+@{
+    ViewData["Title"] = "ViewCharge";
+}
+<h3>Hello, @ViewBag.UserName</h3>
+
+<h4>Your Appointment Details</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Your Appointment Id
+            </th>
+            <
+            <th>
+                Doctor Id
+            </th>
+            <th>
+               date Of Registration 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priscription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExerciseOrDiet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfRegi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priscription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseOrDiet)
+            </td>
+            <td>
+                @Html.ActionLink("Get Charge", "GetCharge", new {id=item.Id })
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

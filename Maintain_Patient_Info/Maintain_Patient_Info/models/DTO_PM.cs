@@ -23,5 +23,6 @@ namespace Maintain_Patient_Info.models
 
         public string Priscription { get; set; }
 
+        public string ExerciseOrDiet { get; set; }
     }
 }

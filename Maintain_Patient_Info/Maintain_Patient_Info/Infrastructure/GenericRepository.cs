@@ -52,5 +52,15 @@ namespace Maintain_Patient_Info.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public Task<T> GetFacilityByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Facilites> IRepository<T>.GetFacilityByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

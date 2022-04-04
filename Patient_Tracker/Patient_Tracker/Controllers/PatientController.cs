@@ -69,6 +69,16 @@ namespace Patient_Tracker.Controllers
             return View(appointment);
 
         }
+
+        public async Task<IActionResult> ViewCharge()
+        {
+            var appointment = await patientServices.GetAppointmentByPatientId(patientId);
+
+            ViewBag.UserName = UserName;
+
+            return View(appointment);
+
+        }
         public async Task<IActionResult> Details(int id)
         {
             var appointment= await patientServices.GetAppointmentById(id);

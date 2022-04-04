@@ -23,6 +23,8 @@ namespace Maintain_Patient_Info.Base
 
         public string Priscription { get; set; }
 
+        public string ExerciseOrDiet { get; set; }
+
 
 
     }

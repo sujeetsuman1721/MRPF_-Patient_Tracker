@@ -89,6 +89,8 @@ namespace Patient_Tracker.Controllers
                 return View(model);
 
             model.Priscription = "Yet to update By doctor";
+            model.ExerciseOrDiet = "Yet to add by the doctor";
+
             var IsAdded = await patientServices.AppointPatient(model);
 
            
@@ -186,16 +188,16 @@ namespace Patient_Tracker.Controllers
         public async Task<IActionResult> GenerateBill(int id)
         {
 
-           // var facility = new Facilities();
+           
 
-           // // facility = hospitalServices.GetFacilityByAppontmentId(id);
+           var facility =await hospitalServices.GetFacilityByAppontmentId(id);
 
-           // // 
-           // var consIs = facility.ConsultationId;
-           // var roomId = facility.RoomId;
-           // var labId = facility.LabTestId;
+          
+            var consIs = facility.ConsultationId;
+            var roomId = facility.RoomId;
+            var labId = facility.LabTestId;
 
-           // //var cons=hospitalServices.GetConstationByConsId(consIs);
+           var cons=await hospitalServices.GetConsltantByConsId(consIs);
            // // var room=
            // // var labtest==
 
@@ -208,16 +210,16 @@ namespace Patient_Tracker.Controllers
 
            
 
-            ViewBag.Id = id;
+            //ViewBag.Id = id;
 
-            ViewBag
+            //ViewBag
      
-            var labcharges = await hospitalServices.GetLabTests();
-            ViewBag.LabtestCharges = new SelectList(labch, "Charge", "Charge");
-            var consultantcharges = await hospitalServices.GetConsultationDetails();
-            ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
-            var roomcharges = await hospitalServices.GetRoomDetails();
-            ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
+            //var labcharges = await hospitalServices.GetLabTests();
+            //ViewBag.LabtestCharges = new SelectList(labch, "Charge", "Charge");
+            //var consultantcharges = await hospitalServices.GetConsultationDetails();
+            //ViewBag.ConsultationCharges = new SelectList(consultantcharges, "Charge", "Charge");
+            //var roomcharges = await hospitalServices.GetRoomDetails();
+            //ViewBag.RoomCharges = new SelectList(roomcharges, "charge", "charge");
 
             return View();
         }

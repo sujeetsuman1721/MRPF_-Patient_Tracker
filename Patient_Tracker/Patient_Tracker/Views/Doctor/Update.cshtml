@@ -4,58 +4,74 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
+<h1>@ViewBag.UserName</h1>
 
-<h4>Update pri</h4>
+<h4> Update Priscription And Diet </h4>
 <hr />
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
-            
+
+
             @Html.HiddenFor(m => m.Id)
 
             <div class="form-group">
-                
-                <input asp-for="Id" class="form-control" type="hidden"/>
+
+                <input asp-for="Id" class="form-control" type="hidden" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
 
-             @Html.HiddenFor(m => m.PateintId)
+            @Html.HiddenFor(m => m.PateintId)
 
             <div class="form-group">
-                
-                <input asp-for="PateintId" class="form-control" type="hidden"/>
+
+                <input asp-for="PateintId" class="form-control" type="hidden" />
                 <span asp-validation-for="PateintId" class="text-danger"></span>
             </div>
 
-             @Html.HiddenFor(m => m.DoctorId)
+            @Html.HiddenFor(m => m.DoctorId)
             <div class="form-group">
-          
-                <input asp-for="DoctorId" class="form-control"  type="hidden"/>
+
+                <input asp-for="DoctorId" class="form-control" type="hidden" />
                 <span asp-validation-for="DoctorId" class="text-danger"></span>
             </div>
 
             @Html.HiddenFor(m => m.DateOfRegi)
             <div class="form-group">
-              
+
                 <input asp-for="DateOfRegi" class="form-control" type="hidden" />
                 <span asp-validation-for="DateOfRegi" class="text-danger"></span>
             </div>
-       
-            <div class="form-group">
-             
-                <input asp-for="Status" class="form-control" type="hidden" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
 
             <div class="form-group">
+                <label>4. Update status Status</label>
+                <select class="form-control" id="Status" name="Status">
+                    <option>Pending</option>
+                    <option>Yet To checked</option>
+                    <option>Checked</option>
+
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+               8</div>
+
+            
+                 <div class="md-form mb-4 pink-textarea active-pink-textarea">
                 <label asp-for="Priscription" class="control-label"></label>
-                <textarea asp-for="Priscription" class="form-control" ></textarea>
+                <textarea asp-for="Priscription" class="md-textarea form-control" rows="3" ></textarea>
                 <span asp-validation-for="Priscription" class="text-danger"></span>
-            </div>
+               </div>
+               
+        
+              
+                 <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                <label asp-for="ExerciseOrDiet" class="control-label"></label>
+                <textarea asp-for="ExerciseOrDiet" class="md-textarea form-control" rows="3" ></textarea>
+                <span asp-validation-for="ExerciseOrDiet" class="text-danger"></span>
+               </div>
+        
+          
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -69,5 +85,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
