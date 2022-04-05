@@ -102,7 +102,10 @@ namespace Patient_Tracker.Models.Services
         }
         public async Task<Consultation> GetConsultationById(int consultationId)
         {
+
             var consultation = new Consultation();
+
+            
 
             var response = await client.GetAsync($"/api/hospitalservices/GetConsultationById/{consultationId}");
             response.EnsureSuccessStatusCode();

@@ -7,48 +7,49 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <h3 style="align-content:center;color:palevioletred">Hello, @ViewBag.UserName</h3>
+    <div class="row">
+        <div class="col-sm">
+            <h5 style="align-content:center;color:darkgray">Hello, @ViewBag.UserName</h5>
 
-      <h3 style="align-content:center;color:palevioletred">Your Patinet Id Is : @Html.DisplayFor(model => model.PateintId)</h3>
+            <h5 style="align-content:center;color:darkgray">Your Patinet Id Is : @Html.DisplayFor(model => model.PateintId)</h5>
 
 
+        </div>
+
+        <div class="col-sm">
+            <hh5 style="align-content:center;color:darkgray">AppointmentId :  @Html.DisplayFor(model => model.Id)</hh5>
+
+            <h5 style="align-content:center;color:darkgray">Date Of Appointment: @Html.DisplayFor(model => model.DateOfRegi)</h5>
+
+        </div>
     </div>
-  
-    <div class="col-sm">
-    <h3 style="align-content:center;color:palevioletred">AppointmentId :  @Html.DisplayFor(model => model.Id)</h3>
+    <hr />
 
-    <h3 style="align-content:center;color:palevioletred">Date Of Appointment: @Html.DisplayFor(model => model.DateOfRegi)</h3>
+    <div class="modal-body row">
+        <div class="col-md-6">
+            <div><h3 style="color:black">Priscription</h3></div>
+            <div class="panel-body">
+                @Html.DisplayFor(model=>model.Priscription)
+            </div>
+        </div>
 
+
+        <div class="col-md-6">
+            <div><h3 style="color:black">Exercise and Diet</h3> </div>
+            <div class="panel-body">
+                @Html.DisplayFor(model=>model.ExerciseOrDiet)
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div style="text-align:center;bottom:0;">
+        <a asp-action="ViewRecord" asp-controller="Patient" class="btn btn-secondary"><b>Back To Appointment List</b></a>
+    </div>
 </div>
 
 
- <hr />
-
- <div class="modal-body row">
-  <div class="col-md-6">
-   <div><h4 style="color:black">Priscription</h4></div>
-	<div class="panel-body">
-    	@Html.DisplayFor(model=>model.Priscription)
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div ><h4  style="color:black">Exercise and Diet</h4> </div>
-	<div class="panel-body">
-    	@Html.DisplayFor(model=>model.ExerciseOrDiet)
-    </div>
-  </div>
-</div>
-
- 
 
 
-      
 
-<div style="align-self:baseline">
-    
-    <a asp-action="ViewRecord">Go Back </a>
-</div>
+
+

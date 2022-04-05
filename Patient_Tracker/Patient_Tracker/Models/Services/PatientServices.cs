@@ -178,9 +178,7 @@ namespace Patient_Tracker.Models.Services
 
         }
         public async Task<List<PatientRegistory>> GetAppointmentByDoctorId(int? id)
-        {
-
-
+        { 
             var patients = new List<PatientRegistory>();
 
             try

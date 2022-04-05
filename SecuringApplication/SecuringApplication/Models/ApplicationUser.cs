@@ -13,7 +13,7 @@ namespace SecuringApplication.Models
         
         public string LastName { get; set; }
 
-        public string Status { get; set; }
+        public string RegistratioStatus { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }

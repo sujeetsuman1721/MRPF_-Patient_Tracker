@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SecuringApplication.Models;
 using SecuringApplication.Models.DTOs;
+using SecuringApplication.Models.Login;
 using SecuringApplication.Models.Registration;
 using SecuringApplication.Reposetory;
 using System;
@@ -55,7 +56,30 @@ namespace SecuringApplication.Controllers
         public async Task<IActionResult> Register(DoctorModel model)
         {
 
-            ApplicationUser appUser = new ApplicationUser
+
+            try
+            {
+                var userExists = await userManager.FindByNameAsync(model.UserName);
+
+
+                if (userExists != null)
+                {
+
+                    if (userExists.RegistratioStatus == RegistrationStatus.DENIED)
+                    {
+                        response.Status = RegistrationStatus.DENIED;
+                        response.Message = "You cannot register again as your previous registration request with this credentials is denied by admin";
+
+                        return response;
+                    }
+
+                    response.Status = "ERROR";
+                    response.Message = "User already exists";
+
+                    return response;
+                }
+
+                ApplicationUser appUser = new ApplicationUser
             {
 
                 UserName = model.UserName,

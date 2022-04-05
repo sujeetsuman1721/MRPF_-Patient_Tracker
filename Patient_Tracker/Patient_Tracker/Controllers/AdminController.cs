@@ -12,6 +12,9 @@ namespace Patient_Tracker.Controllers
     public class AdminController : Controller
     {
         private readonly UserServices userServices;
+     
+
+
 
         private readonly PatientServices patientServices;
 
@@ -177,6 +180,7 @@ namespace Patient_Tracker.Controllers
         {
             
             await hospitalServices.AddFacility(facilities);
+            TempData["Success"] = "Facility is added to the Appointment Id "+facilities.AppointmentId+" successfully";
             return RedirectToAction("Appointed");
 
         }
@@ -194,6 +198,7 @@ namespace Patient_Tracker.Controllers
             ViewBag.Id = id;
 
             var facility = await hospitalServices.GetFacilityByAppontmentId(id);
+            
             var labId = facility.LabTestId;
             var consId = facility.ConsultationId;
             var roomId = facility.RoomId;
@@ -231,10 +236,22 @@ namespace Patient_Tracker.Controllers
             billing.ConsultationCharges = cons.Charge;
 
             billing.TotalAmount = Lab.Charge + room.Charge + cons.Charge;
+            var total = Lab.Charge + room.Charge + cons.Charge;
 
             await billingServices.GenerateBill(billing);
+
+
+            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId ;
+            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId ;
             return RedirectToAction("Billing");
 
+        }
+
+        public async Task<IActionResult> Approval()
+        {
+            //userManager.Users();
+
+            return View();
         }
 
 
@@ -243,5 +260,6 @@ namespace Patient_Tracker.Controllers
 
 
 
-    }
+
+        }
 }

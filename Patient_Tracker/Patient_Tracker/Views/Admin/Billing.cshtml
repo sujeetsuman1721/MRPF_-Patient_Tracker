@@ -2,8 +2,24 @@
 
 @{
     ViewData["Title"] = "Billing";
+
+
 }
-<h1>Generate a Bill For the Patient</h1>
+
+@if (TempData["Success"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+}
+
+<h3>Generate The Bill</h3>
+
+<div class="col-md-6" style="margin-top:10px;float:left">
+    <a  asp-action="Appointed" asp-controller="Admin" class="btn btn-secondary m-5 "><b>Go to Appointment List</b></a>
+</div>
+<div class="col-md-4" style="margin-top:10px;float:right">
+    <a asp-action="Index" asp-controller="Admin" class="btn btn-secondary m-5 "><b>Goto Admin Dashboard</b></a>
+</div>
+
 <table class="table table-striped table-dark">
     <thead>
         <tr>
@@ -37,8 +53,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("GenerateBill", "GenerateBill", new { id = item.Id })
-                    @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                 
                 </td>
             </tr>
         }

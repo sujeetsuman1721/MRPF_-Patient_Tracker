@@ -30,6 +30,7 @@ namespace Patient_Tracker.Controllers
         [HttpPost("PatientRegister")]
         public async Task<IActionResult> PatientRegister(PatientDTO model)
         {
+           
             if (!ModelState.IsValid)
                 return View(model);
             var IsAdded = await userServices.SavePatient(model);
