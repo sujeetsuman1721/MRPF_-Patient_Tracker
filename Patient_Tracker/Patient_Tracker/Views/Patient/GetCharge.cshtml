@@ -1,0 +1,28 @@
+﻿@model Patient_Tracker.Models.HospitalServices.Billing
+
+<table class="table table-striped">
+    <tr>
+        <th scope="col">Facility Name</th>
+        <th scope="col">Charges</th>
+    </tr>
+    <tr>
+        <td class="table-primary">Lab Test Charge </td>
+        <td class="table-secondary">@ViewBag.LabCharge</td>
+    </tr>
+    <tr>
+        <td class="table-primary">Consultation Charge </td>
+        <td class="table-secondary">@ViewBag.conCharge</td>
+    </tr>
+    <tr>
+        <td class="table-primary">Room Charge  </td>
+        <td class="table-secondary">@ViewBag.RoomCharge</td>
+    </tr>
+
+    <tr>
+        <td class="table-primary">Total Charge </td>
+        <td class="table-secondary">@ViewBag.totalCharge</td>
+    </tr>
+
+</table>
+<div>
+</div>

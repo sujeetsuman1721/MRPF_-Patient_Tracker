@@ -94,9 +94,15 @@ namespace Patient_Tracker.Controllers
         {
             var billing = await billingServices.GetBillDetailsyAppoimentId(id);
 
+            ViewBag.LabCharge = billing.LabTestCharges;
+            ViewBag.conCharge = billing.ConsultationCharges;
+            ViewBag.RoomCharge = billing.RoomCharges;
+
+            ViewBag.totalCharge = billing.LabTestCharges + billing.ConsultationCharges + billing.RoomCharges;
 
 
-         
+
+
 
             return View(billing);
 

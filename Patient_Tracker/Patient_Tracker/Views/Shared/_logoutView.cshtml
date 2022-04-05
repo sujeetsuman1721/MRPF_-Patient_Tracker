@@ -17,10 +17,8 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                             </li>
                             <li class="nav-item">
-                                Hello <b>Admin @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
-                                {
-                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
-                                }
+                                Hello <b>Admin</b> <a asp-controller="Auth" asp-action="Logout" class="btn btn-dark">Logout</a>
+                                
                             </li>
                             break;
                         case "Patient":
@@ -28,10 +26,10 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                             </li>
                             <li class="nav-item">
-                                Hello <b>Patient @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
-                                {
-                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
-                                }
+                                Hello <b>Patient </b>
+                                
+                                   <a asp-controller="Auth" asp-action="Logout" class="btn btn-dark">Logout</a>
+                                
                             </li>
                             break;
                         case "Doctor":
@@ -39,10 +37,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                             </li>
                             <li class="nav-item">
-                                Hello <b>Doctor @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
-                                {
-                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
-                                }
+                                Hello <b>Doctor </b> <a asp-controller="Auth" asp-action="Logout" class="btn btn-dark">Logout</a>
                             </li>
                             break;
                         case "Clerk":
@@ -50,10 +45,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                             </li>
                             <li class="nav-item">
-                                Hello <b>Clerk @( ViewBag.FirstName ?? "")</b> @if (ViewBag.FirstName != null)
-                                {
-                                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
-                                }
+                                Hello <b>Clerk </b><a asp-controller="Auth" asp-action="Logout" class="btn btn-dark">Logout</a>
                             </li>
                             break;
                     }
