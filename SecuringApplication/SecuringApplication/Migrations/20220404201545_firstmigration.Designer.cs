@@ -10,8 +10,8 @@ using SecuringApplication.Models;
 namespace SecuringApplication.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220404193716_this is first migration")]
-    partial class thisisfirstmigration
+    [Migration("20220404201545_firstmigration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
