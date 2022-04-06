@@ -12,7 +12,7 @@ namespace Patient_Tracker.Controllers
     public class AdminController : Controller
     {
         private readonly UserServices userServices;
-     
+
 
 
 
@@ -23,14 +23,14 @@ namespace Patient_Tracker.Controllers
         private readonly BillingServices billingServices;
 
 
-        public AdminController(UserServices userServices, PatientServices patientServices,HospitalServices hospitalServices,BillingServices billingServices)
+        public AdminController(UserServices userServices, PatientServices patientServices, HospitalServices hospitalServices, BillingServices billingServices)
 
         {
             this.patientServices = patientServices;
             this.userServices = userServices;
             this.hospitalServices = hospitalServices;
             this.billingServices = billingServices;
-   
+
         }
         public IActionResult Index()
 
@@ -48,19 +48,19 @@ namespace Patient_Tracker.Controllers
             var doctors = await userServices.GetDoctors();
 
 
-           var doctorlist= new List<DoctorDTO>();
+            var doctorlist = new List<DoctorDTO>();
             //fetch data
             foreach (var dt in doctors)
             {
-                var d= new DoctorDTO();
+                var d = new DoctorDTO();
 
                 d.DoctorId = dt.DoctorId;
-                d.FirstName=dt.ApplicationUser.FirstName;
-              
+                d.FirstName = dt.ApplicationUser.FirstName;
+
                 d.LastName = dt.ApplicationUser.LastName;
 
                 doctorlist.Add(d);
-                
+
             }
 
             var patientlist = new List<PatientDTO>();
@@ -97,14 +97,14 @@ namespace Patient_Tracker.Controllers
 
             var IsAdded = await patientServices.AppointPatient(model);
 
-           
+
             return RedirectToAction("Appointed");
 
         }
 
         public async Task<IActionResult> Appointed()
         {
-            var pat= await patientServices.GetAppointedDoctor();
+            var pat = await patientServices.GetAppointedDoctor();
 
             return View(pat);
 
@@ -159,7 +159,7 @@ namespace Patient_Tracker.Controllers
             return View();
 
         }
-        
+
         public async Task<IActionResult> AddFacility(int id)
         {
             ViewBag.Id = id;
@@ -170,7 +170,7 @@ namespace Patient_Tracker.Controllers
             ViewBag.ConsultationPurpose = new SelectList(consultants, "ConsultationId", "Purpose");
             var rooms = await hospitalServices.GetRoomDetails();
             ViewBag.RoomDetails = new SelectList(rooms, "RoomId", "RoomType");
-           
+
             return View();
 
         }
@@ -178,9 +178,9 @@ namespace Patient_Tracker.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFacility(Facilities facilities)
         {
-            
+
             await hospitalServices.AddFacility(facilities);
-            TempData["Success"] = "Facility is added to the Appointment Id "+facilities.AppointmentId+" successfully";
+            TempData["Success"] = "Facility is added to the Appointment Id " + facilities.AppointmentId + " successfully";
             return RedirectToAction("Appointed");
 
         }
@@ -198,18 +198,18 @@ namespace Patient_Tracker.Controllers
             ViewBag.Id = id;
 
             var facility = await hospitalServices.GetFacilityByAppontmentId(id);
-            
+
             var labId = facility.LabTestId;
             var consId = facility.ConsultationId;
             var roomId = facility.RoomId;
-           
+
 
             var room = await hospitalServices.GetRoomById(roomId);
             var cons = await hospitalServices.GetConsultationById(consId);
-            var Lab=await hospitalServices.GetLabTestById(consId);
+            var Lab = await hospitalServices.GetLabTestById(consId);
 
             ViewBag.LabCharge = Lab.Charge;
-            ViewBag.conCharge=cons.Charge;
+            ViewBag.conCharge = cons.Charge;
             ViewBag.RoomCharge = room.Charge;
 
             ViewBag.totalCharge = Lab.Charge + cons.Charge + room.Charge;
@@ -241,25 +241,81 @@ namespace Patient_Tracker.Controllers
             await billingServices.GenerateBill(billing);
 
 
-            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId ;
-            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId ;
+            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId;
+            TempData["Success"] = "Bill is Genarated for Appointment Id " + billing.AppointmentId;
             return RedirectToAction("Billing");
 
         }
 
         public async Task<IActionResult> Approval()
         {
-            //userManager.Users();
+            var newRegistration = await userServices.GetAllRegistration();
 
-            return View();
+            List<ApplicationUserDto> users = new List<ApplicationUserDto>();
+
+            ApplicationUserDto user;
+
+            foreach (ApplicationUserDto userItem in newRegistration)
+            {
+                user = new ApplicationUserDto();
+
+                user.UserName = userItem.UserName;
+                user.RegistratioStatus = userItem.RegistratioStatus;
+                user.FirstName = userItem.FirstName;
+                user.LastName = userItem.LastName;
+                user.DateOfBirth = userItem.DateOfBirth;
+                user.RegistratioStatus = userItem.RegistratioStatus;
+                user.Address = userItem.Address;
+                user.Gender = userItem.Gender;
+
+
+                users.Add(user);
+
+            }
+
+
+            return View(users);
+        }
+       
+        public async Task<IActionResult> Accept(string username, string registrationStatus)
+        {
+            var val = await userServices.Approve(username, registrationStatus);
+            if (val == true)
+            {
+                TempData["Approve"] ="The Stutus of "+username+" Accepted";
+                return RedirectToAction("Approval");
+
+            }
+            else
+            {
+                TempData["Approve"] = "The Stutus of " + username +" Denied";
+                return RedirectToAction("Approval");
+            }
+
+
+
+
+
+
+        }
+        
+        public async Task<IActionResult> Deny(string username, string registrationStatus)
+        {
+            var val = await userServices.Approve(username, registrationStatus);
+            if (val == true)
+            {
+                TempData["Success"] = "The Stutus is chaged TO" + registrationStatus + " successfully";
+                return RedirectToAction("Approval");
+
+            }
+            else
+            {
+                TempData["Success"] = "The Stutus is No chaged TO" + registrationStatus;
+                return RedirectToAction("Approval");
+            }
+
         }
 
 
-
-
-
-
-
-
-        }
+    }
 }

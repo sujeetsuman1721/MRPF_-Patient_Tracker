@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maintain_Patient_Info.Migrations
 {
-    public partial class patientinfo : Migration
+    public partial class databaseiscreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

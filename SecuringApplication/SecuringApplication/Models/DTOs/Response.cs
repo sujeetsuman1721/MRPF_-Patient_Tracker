@@ -1,6 +1,13 @@
 ﻿namespace SecuringApplication.Models.DTOs
 {
-    public class Respose
+    public class Response
     {
+      
+            public string Status { get; set; }
+
+            public string Message { get; set; }
+
+            public LoginResponse AuthData { get; set; }
+        
     }
 }

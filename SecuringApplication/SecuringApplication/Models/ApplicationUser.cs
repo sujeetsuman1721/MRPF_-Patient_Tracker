@@ -19,10 +19,6 @@ namespace SecuringApplication.Models
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
-
-        [MaxLength(10)]
-        [Required(ErrorMessage = "Enter correct ContactNumber")]
-        public int ContactNumber { get; set; }
        
         [Required(ErrorMessage = "Address required")]
         public string Address { get; set; }

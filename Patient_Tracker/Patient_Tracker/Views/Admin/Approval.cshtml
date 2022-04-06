@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Patient_Tracker.Models.DTOs.ApplicationUserDto>
+
+<p>
+    <a asp-action="Create">Create New</a>
+
+    @if (TempData["Approve"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Approve"]</p>
+}
+</p>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+           
+         
+            <th>
+                @Html.DisplayNameFor(model => model.RegistratioStatus)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistratioStatus)
+            </td>
+
+         
+          
+      
+            <td>
+                @Html.ActionLink("Accept", "Accept", new {username=item.UserName,registrationStatus="ACCEPTED"}) |
+                @Html.ActionLink("Deny", "Deny", new {username=item.UserName,registrationStatus="DENIED"}) 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

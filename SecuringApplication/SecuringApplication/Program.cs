@@ -23,7 +23,7 @@ namespace SecuringApplication
             {
                 var provider = scope.ServiceProvider;
                 var context = provider.GetRequiredService<ApplicationContext>();
-                //context.Database.Migrate();
+                context.Database.Migrate();
 
                 var seed = provider.GetRequiredService<AppSeedUsers>();
                 await seed.SeedUsersAsync();

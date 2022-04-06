@@ -104,22 +104,27 @@ namespace Patient_Tracker.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var Result = await userServices.Login(model);
+            try
+            {
+                HttpContext.Session.SetString("Jwt", Result.AuthData.Jwt);
+                HttpContext.Session.SetString("UserName", Result.AuthData.UserName);
+                HttpContext.Session.SetString("UserRole", Result.AuthData.UserRole);
 
-            HttpContext.Session.SetString("Jwt", Result.Jwt);
-            HttpContext.Session.SetString("UserName", Result.UserName);
-            HttpContext.Session.SetString("UserRole", Result.UserRole);
-
-            HttpContext.Session.SetInt32("UserId", Result.UserId);
-
+                HttpContext.Session.SetInt32("UserId", Result.AuthData.UserId);
+            }
+            catch (Exception ex)
+            {
+               return  BadRequest(Result.Status+"\n"+Result.Message);
+            }
        
 
-            if (Result.UserRole.Equals("Admin"))
+            if (Result.AuthData.UserRole.Equals("Admin"))
                 return RedirectToAction("Index", "Admin");
-            else if (Result.UserRole.Equals("Clerk"))
+            else if (Result.AuthData.UserRole.Equals("Clerk"))
                 return RedirectToAction("Index", "Clerk");
-            else if (Result.UserRole.Equals("Doctor"))
+            else if (Result.AuthData.UserRole.Equals("Doctor"))
                 return RedirectToAction("Index", "Doctor");
-            else if (Result.UserRole.Equals("Patient"))
+            else if (Result.AuthData.UserRole.Equals("Patient"))
                 return RedirectToAction("Index", "Patient");
 
             ModelState.AddModelError("", "Cannot identify the user");

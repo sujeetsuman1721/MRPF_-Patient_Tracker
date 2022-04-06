@@ -15,8 +15,6 @@ namespace Patient_Tracker.Models.ApplicationModel
         [Required(ErrorMessage = "Gender has to be selected")]
         public string Gender { get; set; }
 
-        public string Status { get; set; } = "toBeAprooved";
-
         [MaxLength(10)]
         [Required(ErrorMessage = "Enter correct ContactNumber")]
         public int ContactNumber { get; set; }

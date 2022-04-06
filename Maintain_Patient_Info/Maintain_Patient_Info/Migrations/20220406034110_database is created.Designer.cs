@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maintain_Patient_Info.Migrations
 {
     [DbContext(typeof(PatientManagementContext))]
-    [Migration("20220404201718_patientinfo")]
-    partial class patientinfo
+    [Migration("20220406034110_database is created")]
+    partial class databaseiscreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

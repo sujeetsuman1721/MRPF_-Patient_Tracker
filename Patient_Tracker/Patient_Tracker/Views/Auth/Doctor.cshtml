@@ -13,86 +13,86 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Information Doctor</h3>
-        <form asp-action="DoctorRegister">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-             <div class="form-group">
-                <label>User Id</label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>First Name</label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Last Name</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Date Of BirthDay</label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Gender</label>
-                <select class="form-control" id="Gender" name="Gender">
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Contact Number </label>
-                <input asp-for="ContactNumber" class="form-control" />
-                <span asp-validation-for="ContactNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Adress</label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Secret Question</label>
-                <select class="form-control" id="SecretQuestions" name="SecretQuestions">
-                    <option>FavouriteFood</option>
-                    <option>FavouriteColor</option>
-                    <option>FavouritePlace</option>
-                    <option>Date Of Birth</option>
-                </select>
-                <span asp-validation-for="SecretQuestions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Answer</label>
-                <input asp-for="Answer" class="form-control" />
-                <span asp-validation-for="Answer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Qualification</label>
-                <input asp-for="Qualification" class="form-control" />
-                <span asp-validation-for="Qualification" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Specialization</label>
-                <input asp-for="Specialization" class="form-control" />
-                <span asp-validation-for="Specialization" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-  
+                        <form asp-action="DoctorRegister">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label>User Id</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Date Of BirthDay</label>
+                                <input asp-for="DateOfBirth" class="form-control" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control" id="Gender" name="Gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Number </label>
+                                <input asp-for="ContactNumber" class="form-control" />
+                                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Adress</label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Secret Question</label>
+                                <select class="form-control" id="SecretQuestions" name="SecretQuestions">
+                                    <option>FavouriteFood</option>
+                                    <option>FavouriteColor</option>
+                                    <option>FavouritePlace</option>
+                                    <option>Date Of Birth</option>
+                                </select>
+                                <span asp-validation-for="SecretQuestions" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Answer</label>
+                                <input asp-for="Answer" class="form-control" />
+                                <span asp-validation-for="Answer" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Qualification</label>
+                                <input asp-for="Qualification" class="form-control" />
+                                <span asp-validation-for="Qualification" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Specialization</label>
+                                <input asp-for="Specialization" class="form-control" />
+                                <span asp-validation-for="Specialization" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+
                     </div>
                     <p class="text-center text-muted mt-5 mb-0">Have already an account? <a class="fw-bold text-body" asp-controller="Auth" asp-action="Login"><u>Login here</u></a></p>
 
@@ -107,5 +107,7 @@
 </section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using SecuringApplication.Models.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace SecuringApplication.Models
             {
                 var Admin = new ApplicationUser
                 {
-                    UserName = "Sujeet@12",
+                    UserName = "Sujeet@123",
                     FirstName = "Sujeet",
                     LastName = "Suman",
                     Address = "Kolkata",
@@ -38,7 +39,9 @@ namespace SecuringApplication.Models
                     PhoneNumber = "8340493413",
                     PasswordHash = "Sujeet@123",
                     SecretQuestions = "What is your Name ?",
-                    Answer = "Sujeet Suman"
+                    Answer = "Sujeet Suman",
+                    RegistratioStatus = RegistrationStatus.ACCEPTED
+                   
 
 
                 };

@@ -56,7 +56,7 @@ namespace Patient_Tracker.Models.Services
             Response.EnsureSuccessStatusCode();
             return Response.StatusCode == HttpStatusCode.OK;
         }
-        public async Task<LoginResponse> Login(LoginRequest login)
+        public async Task<Response> Login(LoginRequest login)
         {
             var Json = JsonConvert.SerializeObject(login);
             var Content = new StringContent(Json, Encoding.UTF8, "application/json");
@@ -64,7 +64,7 @@ namespace Patient_Tracker.Models.Services
             var Response = await client.PostAsync("/api/auth/login", Content);
             Response.EnsureSuccessStatusCode();
             Json = await Response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<LoginResponse>(Json);
+            var result = JsonConvert.DeserializeObject<Response>(Json);
             return result;
         }
 
@@ -96,6 +96,38 @@ namespace Patient_Tracker.Models.Services
 
 
             return patients;
+        }
+
+        public async Task<IReadOnlyCollection<ApplicationUserDto>> GetAllRegistration()
+        {
+           
+
+            var Response = await client.GetAsync("api/Member/GetNewRegistrations");
+
+            Response.EnsureSuccessStatusCode();
+
+            var Json = await Response.Content.ReadAsStringAsync();
+            var user = JsonConvert.DeserializeObject<List<ApplicationUserDto>>(Json);
+
+
+            return user;
+        }
+
+        public async Task<bool> Approve(string username, string registrationStatus)
+        {
+           
+            var Content = new StringContent("", Encoding.UTF8, "application/json");
+            var response = await client.PostAsync($"/api/Member/ApproveUser/{username}/{registrationStatus}",Content);
+
+
+            var Json = await response.Content.ReadAsStringAsync();
+            var res = JsonConvert.DeserializeObject<bool>(Json);
+
+
+
+            return res;
+
+
         }
 
     }
