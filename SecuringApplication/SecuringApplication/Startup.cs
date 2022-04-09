@@ -96,6 +96,8 @@ namespace SecuringApplication
             services.AddScoped(typeof(AppSeedUsers));
             services.AddScoped(typeof(UserServices));
 
+          
+
 
         }
 

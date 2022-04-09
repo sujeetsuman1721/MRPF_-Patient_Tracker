@@ -16,23 +16,14 @@ namespace SecuringApplication.Controllers
 
 
         private readonly ApplicationContext context;
-        private readonly IReposetory<Patient> patientsRepository;
-        private readonly IReposetory<Doctor> doctorsRepository;
-        private readonly IReposetory<Clerk> clerksRepository;
+  
 
 
-        public AccessUsersController(
-       
-          IReposetory<Patient> patientsRepository,
-          IReposetory<Doctor> doctorsRepository,
-          ApplicationContext context,
-          IReposetory<Clerk> clerksRepository)
+        public AccessUsersController(ApplicationContext context  )
 
         {
             this.context = context;
-            this.patientsRepository = patientsRepository;
-            this.doctorsRepository = doctorsRepository;
-            this.clerksRepository = clerksRepository;
+      
         }
 
         [HttpGet("GetDoctors")]

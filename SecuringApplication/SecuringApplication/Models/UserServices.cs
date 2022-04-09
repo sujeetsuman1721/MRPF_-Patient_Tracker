@@ -13,24 +13,26 @@ namespace SecuringApplication.Models
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationContext context;
 
-        public UserServices(UserManager<ApplicationUser> userManager,  ApplicationContext context)
-            {
-                _userManager = userManager;
+        public UserServices(UserManager<ApplicationUser> userManager, ApplicationContext context)
+        {
+            _userManager = userManager;
             this.context = context;
+
+
+
+        }
+
+        public List<ApplicationUser> FetchNewRegistrations()
+        {
+            List<ApplicationUser> newRegistrations = new List<ApplicationUser>();
+            
             
 
-               
-            }
+            newRegistrations = _userManager.Users.Where(user => user.RegistratioStatus == RegistrationStatus.INPROGRESS).ToList<ApplicationUser>();
 
-            public List<ApplicationUser> FetchNewRegistrations()
-            {
-                List<ApplicationUser> newRegistrations = new List<ApplicationUser>();
+            return newRegistrations;
 
-               newRegistrations = _userManager.Users.Where(user => user.RegistratioStatus == RegistrationStatus.INPROGRESS).ToList<ApplicationUser>();
-
-               return newRegistrations;
-
-            }
+        }
 
         public async Task<bool> ApproveUser(string username, string registrationStatus)
         {
@@ -41,12 +43,12 @@ namespace SecuringApplication.Models
                 user.RegistratioStatus = registrationStatus;
                 context.SaveChanges();
 
-                
+
 
                 return true;
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -58,5 +60,5 @@ namespace SecuringApplication.Models
 
 
 
-        }
     }
+}

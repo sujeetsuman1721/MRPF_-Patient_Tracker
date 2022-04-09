@@ -11,13 +11,13 @@ namespace SecuringApplication.Controllers
     [ApiController]
     public class MemberController : ControllerBase
     {
-        private readonly ApplicationContext context;
+     
         private readonly UserServices _membersService;
 
-        public MemberController(UserServices membersService, ApplicationContext context)
+        public MemberController(UserServices membersService)
         {
 
-            this.context = context;
+           
             _membersService = membersService;
         }
 
